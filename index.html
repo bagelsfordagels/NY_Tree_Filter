@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NY Reforestation Species Tool</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+
+<body>
+    <h1>NY Reforestation Species Tool</h1>
+
+
+    <div class="filters">
+        <label id="search-label">
+            Common Name:
+            <input type="text" id="common-name-filter" placeholder="Birch, Oak, Maple, ..." />
+        </label>
+
+        <label>
+            Region:
+            <select id="region-filter">
+                <option value="">All</option>
+                <option value="Northern">NY</option>
+                <option value="Central">VT</option>
+                <option value="Southern">MI</option>
+            </select>
+        </label>
+
+        <label>
+            Climate:
+            <select id="climate-filter">
+                <option value="">All</option>
+                <option value="Poor">Poor</option>
+                <option value="Good">Good</option>
+
+        </label>
+    </div>
+
+    <script src="demo.js"></script>
+
+</body>
