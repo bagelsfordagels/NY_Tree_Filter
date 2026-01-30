@@ -15,7 +15,7 @@ while(True):
         break
     
     df = pd.read_csv(f'./csv_files/{fileName}.csv', header=0);
-    df.iloc[1:] = df.iloc[1:].map(xToBool)
+    df.iloc[1:,0] = df.iloc[1:,0].map(xToBool) # [row, clumn] 1: skip first look at rest
 
     print(df);
 
