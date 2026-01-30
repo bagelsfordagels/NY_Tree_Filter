@@ -8,8 +8,16 @@ def xToBool(value):
     if text == "x":
         return True
     else: return False
-    
-df = pd.read_csv('./csv_files/SAF_Forest_Type.csv', header=0);
-df.iloc[1:] = df.iloc[1:].map(xToBool)
 
-print(df.head);
+while(True):
+    fileName = input("Enter name of file (or stop to exit): ")
+    if fileName.lower() == 'stop':
+        break
+    
+    df = pd.read_csv(f'./csv_files/{fileName}.csv', header=0);
+    df.iloc[1:] = df.iloc[1:].map(xToBool)
+
+    print(df);
+
+    df.to_csv(f'./bool_csv/{fileName}_Bool.csv',index=False);
+    
