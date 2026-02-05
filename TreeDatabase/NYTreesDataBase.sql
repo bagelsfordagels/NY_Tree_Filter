@@ -10,40 +10,40 @@ CREATE TABLE if not exists Trees(
 );
 create table if not exists LandformPref(
 	TreeID INT NOT Null auto_increment primary key,
-    FloodPlainBottomLand bool,
-    UPlandMesic bool,
-    UplandDry bool,
+    FloodPlainBottomLand boolean,
+    UPlandMesic boolean,
+    UplandDry boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SiteChemPref(
 	TreeID INT NOT Null auto_increment primary key,
-    SoilAcidTol bool,
-    SoilAlkainTol bool,
-    SaltTol bool,
+    SoilAcidTol boolean,
+    SoilAlkainTol boolean,
+    SaltTol boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists Ecoregion(
 	TreeID INT NOT Null auto_increment primary key,
-    EasternGreatLakeLowLands bool,
-    NorthernAlleghenyPlateau bool,
-    ErieDriftPlain bool,
-    NorthernCoastalZone bool,
-    NorthernPiedmont bool,
-    RidgeAndValley bool,
-    AtlanticCoastalPineBarrens bool,
-    NortheasternHighlands bool,
-    NorthCentralAppalachian bool,
+    EasternGreatLakeLowLands boolean,
+    NorthernAlleghenyPlateau boolean,
+    ErieDriftPlain boolean,
+    NorthernCoastalZone boolean,
+    NorthernPiedmont boolean,
+    RidgeAndValley boolean,
+    AtlanticCoastalPineBarrens boolean,
+    NortheasternHighlands boolean,
+    NorthCentralAppalachian boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SAFForestTypeGroup(
 	TreeID INT NOT Null auto_increment primary key,
-    AspenBirch bool,
-    ElmAshCottonwood bool,
-    LoblollyShortleafPine bool,
-    MapleBeechBirch bool,
-    OakHickory bool,
-    SpruceFir bool,
-    WhiteRedJackPine bool,
+    AspenBirch boolean,
+    ElmAshCottonwood boolean,
+    LoblollyShortleafPine boolean,
+    MapleBeechBirch boolean,
+    OakHickory boolean,
+    SpruceFir boolean,
+    WhiteRedJackPine boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SpeciesCharacteristics(
@@ -57,21 +57,21 @@ create table if not exists SpeciesCharacteristics(
 );
 create table if not exists EconomicValue(
 	TreeID INT NOT Null auto_increment primary key,
-    Edible bool,
-    Lumber bool,
-    FuelWood bool,
+    Edible boolean,
+    Lumber boolean,
+    FuelWood boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists EcologicalValue(
 	TreeID INT NOT Null auto_increment primary key,
     KnownInteractions Int,
-    AttractsPollinators bool,
-    AttractsBirds bool,
+    AttractsPollinators boolean,
+    AttractsBirds boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists PlantingConsiderations(
 	TreeID INT NOT Null auto_increment primary key,
-    RecomendedForWindbreak bool,
+    RecomendedForWindbreak boolean,
     DeerResistance enum('Very Low','Low','Intermidiate','High','Very High'),
     PestAndPathogenSusceptibility enum('Very Low','Low','Intermidiate','High','Very High'),
     foreign key (TreeId) references Trees (TreeId)
