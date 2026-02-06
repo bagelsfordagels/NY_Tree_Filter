@@ -1,29 +1,29 @@
 CREATE DATABASE `NYTreeFilter`;
 use NYTreeFilter;
 CREATE TABLE if not exists Trees(
-	TreeId INT NOT Null auto_increment primary key,
+	TreeId INT NOT Null,
     species varchar(255),
     CommonName varchar (255),
     AGCT enum('Uncertain','Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
     ACProd enum('Uncertain','Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
-	NWIStatus enum('OBL', 'FACW', 'FAC', 'FACU', 'UPL')
+	NWIStatus enum('Uncertain','OBL', 'FACW', 'FAC', 'FACU', 'UPL')
 );
 create table if not exists LandformPref(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     FloodPlainBottomLand boolean,
     UPlandMesic boolean,
     UplandDry boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SiteChemPref(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     SoilAcidTol boolean,
     SoilAlkainTol boolean,
     SaltTol boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists Ecoregion(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     EasternGreatLakeLowLands boolean,
     NorthernAlleghenyPlateau boolean,
     ErieDriftPlain boolean,
@@ -36,7 +36,7 @@ create table if not exists Ecoregion(
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SAFForestTypeGroup(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     AspenBirch boolean,
     ElmAshCottonwood boolean,
     LoblollyShortleafPine boolean,
@@ -47,7 +47,7 @@ create table if not exists SAFForestTypeGroup(
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists SpeciesCharacteristics(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     LifeSpane Int,
     TreeHeight Int,
     CanopySpread Int,
@@ -56,21 +56,21 @@ create table if not exists SpeciesCharacteristics(
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists EconomicValue(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     Edible boolean,
     Lumber boolean,
     FuelWood boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists EcologicalValue(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     KnownInteractions Int,
     AttractsPollinators boolean,
     AttractsBirds boolean,
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists PlantingConsiderations(
-	TreeID INT NOT Null auto_increment primary key,
+	TreeID INT NOT Null,
     RecomendedForWindbreak boolean,
     DeerResistance enum('Very Low','Low','Intermidiate','High','Very High'),
     PestAndPathogenSusceptibility enum('Very Low','Low','Intermidiate','High','Very High'),
