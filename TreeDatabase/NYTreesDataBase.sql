@@ -4,8 +4,8 @@ CREATE TABLE if not exists Trees(
 	TreeId INT NOT Null auto_increment primary key,
     species varchar(255),
     CommonName varchar (255),
-    AGCT enum('Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
-    ACProd enum('Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
+    AGCT enum('Uncertain','Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
+    ACProd enum('Uncertain','Very Poor', 'Poor', 'Fair', 'Good', 'Very Good'),
 	NWIStatus enum('OBL', 'FACW', 'FAC', 'FACU', 'UPL')
 );
 create table if not exists LandformPref(
