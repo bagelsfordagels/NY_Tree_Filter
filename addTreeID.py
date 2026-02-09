@@ -11,4 +11,4 @@ df.insert(0, "TreeID", range(1, len(df) + 1))
 df.iloc[1:,1:] = df.iloc[1:,1:].map(NA) # [row, clumn] 1: skip first look at rest
 print(df);
 
-df.to_csv(f'./bool_csv/{fileName}.csv',index=False);
+df.to_csv(f'./csv_files/{fileName}.csv',index=False);

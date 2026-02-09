@@ -48,11 +48,11 @@ create table if not exists SAFForestTypeGroup(
 );
 create table if not exists SpeciesCharacteristics(
 	TreeID INT NOT Null,
-    LifeSpane Int,
+    LifeSpan Int,
     TreeHeight Int,
     CanopySpread Int,
-    GrowthRate enum('Slow','Moderate','Radpid'),
-    ShadeTol enum('Low', 'Imtermidiate', 'High'),
+    GrowthRate enum('Slow','Moderate','Rapid'),
+    ShadeTol enum('Low', 'Intermediate', 'High'),
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists EconomicValue(
@@ -72,7 +72,7 @@ create table if not exists EcologicalValue(
 create table if not exists PlantingConsiderations(
 	TreeID INT NOT Null,
     RecomendedForWindbreak boolean,
-    DeerResistance enum('Very Low','Low','Intermidiate','High','Very High'),
-    PestAndPathogenSusceptibility enum('Very Low','Low','Intermidiate','High','Very High'),
+    DeerResistance enum('Very Low','Low','Intermediate','High'),
+    PestAndPathogenSusceptibility enum('Low','Intermediate','High'),
     foreign key (TreeId) references Trees (TreeId)
 );
