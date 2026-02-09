@@ -1,103 +1,103 @@
-Species,Common Name,Aggregrated Global Change Tolerance,Aggregated Commercial Production ,National Wetland Indicator (NWI) Status
-Abies balsamea,balsam fir,Very Poor,Good,FAC
-Acer negundo,boxelder,Good,Poor,FAC
-Acer nigrum,black maple,Very Good,Fair,FACU
-Acer pensylvanicum,striped maple,Poor,Poor,FACU
-Acer rubrum,red maple,Very Good,Very Good,FAC
-Acer saccharinum,silver maple,Good,Good,FACW
-Acer saccharum,sugar maple,Good,Very Good,FACU
-Acer spicatum,mountain maple,Fair,Poor,FACU
-Aesculus flava,yellow buckeye,Fair,Poor,FACU
-Aesculus glabra,Ohio buckeye,Fair,Fair,FAC
-Amelanchier arborea,common serviceberry,Poor,Good,FACU
-Asimina triloba,pawpaw,Fair,Fair,FAC
-Betula alleghaniensis,yellow birch,Poor,Good,FAC
-Betula lenta,sweet birch,Fair,Good,FACU
-Betula nigra,river birch,Very Poor,Good,FACW
-Betula papyrifera,paper birch,Fair,Fair,FACU
-Betula populifolia,gray birch,Very Poor,Fair,FAC
-Carpinus caroliniana,American hornbeam,Fair,Good,FAC
-Carya cordiformis,bitternut hickory,Good,Good,FAC
-Carya glabra,pignut hickory,Good,Fair,FACU
-Carya laciniosa,shellbark hickory,Very Poor,Fair,FACW
-Carya ovata,shagbark hickory,Good,Good,FACU
-Carya tomentosa,mockernut hickory,Good,Fair,NA
-Castanea dentata,American chestnut,Good,Fair,NA
-Celtis occidentalis,common hackberry,Good,Fair,FAC
-Cercis canadensis,eastern redbud,Good,Poor,FACU
-Chamaecyparis thyoides,Atlantic white cedar,Poor,Fair,OBL
-Cornus florida,flowering dogwood,Fair,Fair,FACU
-Crataegus chrysocarpa,fireberry hawthorn,NA,Poor,NA
-Crataegus crus-galli,cockspur hawthorn,NA,Poor,FAC
-Crataegus intricata,Copenhagen hawthorn,NA,Poor,NA
-Crataegus macrosperma,bigfruit hawthorn,NA,Poor,NA
-Crataegus pruinosa,waxyfruit hawthorn,NA,Poor,NA
-Crataegus submollis,Quebec hawthorn,NA,Poor,NA
-Crataegus succulenta,fleshy hawthorn,NA,Poor,NA
-Diospyros virginiana,common persimmon,Very Good,Fair,FAC
-Fagus grandifolia,American beech,Fair,Good,FACU
-Fraxinus americana,white ash,Poor,Good,FACU
-Fraxinus nigra,black ash,Very Poor,Fair,FACW
-Fraxinus pennsylvanica,green ash,Fair,Fair,FACW
-Gleditsia triacanthos,honeylocust,Very Good,Poor,FAC
-Gymnocladus dioicus,Kentucky coffeetree,NA,Fair,NA
-Hamamelis virginiana,American witchhazel,NA,Fair,FACU
-Ilex opaca,American holly,Good,Good,FACU
-Juglans cinerea,butternut,Poor,Good,FACU
-Juglans nigra,black walnut,Fair,Very Good,FACU
-Juniperus virginiana,eastern redcedar,Fair,Very Good,FACU
-Larix laricina,tamarack,Very Poor,Fair,FACW
-Liquidambar styraciflua,sweetgum,Good,Fair,FAC
-Liriodendron tulipifera,tuliptree,Good,Fair,FACU
-Maclura pomifera,Osage-orange,NA,Poor,FACU
-Magnolia acuminata,cucumber tree,Poor,Fair,FACU
-Magnolia virginiana,sweetbay,Very Good,Very Poor,FACW
-Malus coronaria,sweet crab apple,NA,Poor,NA
-Morus rubra,red mulberry,Good,Fair,FACU
-Nyssa sylvatica,blackgum,Good,Fair,FAC
-Ostrya virginiana,hophornbeam,Good,Fair,FACU
-Oxydendrum arboreum,sourwood,NA,Poor,FACU
-Picea glauca,white spruce,Very Poor,Good,FACU
-Picea mariana,black spruce,Poor,Fair,FACW
-Picea rubens,red spruce,Very Poor,Fair,FACU
-Pinus banksiana,jack pine,Fair,Fair,FACU
-Pinus echinata,shortleaf pine,Fair,Poor,NA
-Pinus resinosa,red pine,Poor,Good,FACU
-Pinus rigida,pitch pine,Poor,Fair,FACU
-Pinus strobus,eastern white pine,Poor,Good,FACU
-Pinus taeda,loblolly pine,Fair,Poor,NA
-Pinus virginiana,Virginia pine,Fair,Fair,NA
-Platanus occidentalis,American sycamore,Good,Good,FACW
-Populus balsamifera,balsam poplar,Very Poor,Poor,FACW
-Populus deltoides,eastern cottonwood,Poor,Fair,FAC
-Populus grandidentata,bigtooth aspen,Good,Fair,FACU
-Populus tremuloides,quaking aspen,Poor,Poor,FACU
-Prunus pensylvanica,pin cherry,Poor,Fair,FACU
-Prunus serotina,black cherry,Poor,Very Good,FACU
-Quercus alba,white oak,Very Good,Good,FACU
-Quercus bicolor,swamp white oak,Poor,Good,FACW
-Quercus coccinea,scarlet oak,Fair,Fair,NA
-Quercus falcata,southern red oak,Very Good,Fair,FACU
-Quercus imbricaria,shingle oak,Good,Fair,FACU
-Quercus macrocarpa,bur oak,Fair,Good,FACU
-Quercus marilandica,blackjack oak,Very Good,Fair,NA
-Quercus michauxii,swamp chestnut oak,Good,Poor,FACW
-Quercus montana,chestnut oak,Very Good,Fair,UPL
-Quercus muehlenbergii,chinquapin oak,Good,Poor,FACU
-Quercus pagoda,cherrybark oak,Fair,Poor,FACW
-Quercus palustris,pin oak,Very Poor,Fair,FACW
-Quercus phellos,willow oak,Good,Fair,FACW
-Quercus rubra,northern red oak,Very Good,Good,FACU
-Quercus shumardii,Shumard's oak,Very Good,Poor,FACW
-Quercus stellata,post oak,Good,Fair,FACU
-Quercus velutina,black oak,Good,Good,NA
-Salix amygdaloides,peachleaf willow,Fair,Very Poor,FACW
-Salix nigra,black willow,Very Poor,Fair,OBL
-Sassafras albidum,sassafras,Good,Poor,FACU
-Sorbus americana,American mountain ash,Very Poor,Poor,FAC
-Thuja occidentalis,northern white-cedar,Fair,Good,FACW
-Tilia americana,American basswood,Good,Good,FACU
-Tsuga canadensis,eastern hemlock,Poor,Good,FACU
-Ulmus americana,American elm,Fair,Good,FACW
-Ulmus rubra,slippery elm,Fair,Fair,FAC
-Ulmus thomasii,rock elm,Poor,Poor,FAC
+TreeID,Species,Common Name,Aggregrated Global Change Tolerance,Aggregated Commercial Production ,National Wetland Indicator (NWI) Status
+1,Abies balsamea,balsam fir,Very Poor,Good,FAC
+2,Acer negundo,boxelder,Good,Poor,FAC
+3,Acer nigrum,black maple,Very Good,Fair,FACU
+4,Acer pensylvanicum,striped maple,Poor,Poor,FACU
+5,Acer rubrum,red maple,Very Good,Very Good,FAC
+6,Acer saccharinum,silver maple,Good,Good,FACW
+7,Acer saccharum,sugar maple,Good,Very Good,FACU
+8,Acer spicatum,mountain maple,Fair,Poor,FACU
+9,Aesculus flava,yellow buckeye,Fair,Poor,FACU
+10,Aesculus glabra,Ohio buckeye,Fair,Fair,FAC
+11,Amelanchier arborea,common serviceberry,Poor,Good,FACU
+12,Asimina triloba,pawpaw,Fair,Fair,FAC
+13,Betula alleghaniensis,yellow birch,Poor,Good,FAC
+14,Betula lenta,sweet birch,Fair,Good,FACU
+15,Betula nigra,river birch,Very Poor,Good,FACW
+16,Betula papyrifera,paper birch,Fair,Fair,FACU
+17,Betula populifolia,gray birch,Very Poor,Fair,FAC
+18,Carpinus caroliniana,American hornbeam,Fair,Good,FAC
+19,Carya cordiformis,bitternut hickory,Good,Good,FAC
+20,Carya glabra,pignut hickory,Good,Fair,FACU
+21,Carya laciniosa,shellbark hickory,Very Poor,Fair,FACW
+22,Carya ovata,shagbark hickory,Good,Good,FACU
+23,Carya tomentosa,mockernut hickory,Good,Fair,Uncertain
+24,Castanea dentata,American chestnut,Good,Fair,Uncertain
+25,Celtis occidentalis,common hackberry,Good,Fair,FAC
+26,Cercis canadensis,eastern redbud,Good,Poor,FACU
+27,Chamaecyparis thyoides,Atlantic white cedar,Poor,Fair,OBL
+28,Cornus florida,flowering dogwood,Fair,Fair,FACU
+29,Crataegus chrysocarpa,fireberry hawthorn,Uncertain,Poor,Uncertain
+30,Crataegus crus-galli,cockspur hawthorn,Uncertain,Poor,FAC
+31,Crataegus intricata,Copenhagen hawthorn,Uncertain,Poor,Uncertain
+32,Crataegus macrosperma,bigfruit hawthorn,Uncertain,Poor,Uncertain
+33,Crataegus pruinosa,waxyfruit hawthorn,Uncertain,Poor,Uncertain
+34,Crataegus submollis,Quebec hawthorn,Uncertain,Poor,Uncertain
+35,Crataegus succulenta,fleshy hawthorn,Uncertain,Poor,Uncertain
+36,Diospyros virginiana,common persimmon,Very Good,Fair,FAC
+37,Fagus grandifolia,American beech,Fair,Good,FACU
+38,Fraxinus americana,white ash,Poor,Good,FACU
+39,Fraxinus nigra,black ash,Very Poor,Fair,FACW
+40,Fraxinus pennsylvanica,green ash,Fair,Fair,FACW
+41,Gleditsia triacanthos,honeylocust,Very Good,Poor,FAC
+42,Gymnocladus dioicus,Kentucky coffeetree,Uncertain,Fair,Uncertain
+43,Hamamelis virginiana,American witchhazel,Uncertain,Fair,FACU
+44,Ilex opaca,American holly,Good,Good,FACU
+45,Juglans cinerea,butternut,Poor,Good,FACU
+46,Juglans nigra,black walnut,Fair,Very Good,FACU
+47,Juniperus virginiana,eastern redcedar,Fair,Very Good,FACU
+48,Larix laricina,tamarack,Very Poor,Fair,FACW
+49,Liquidambar styraciflua,sweetgum,Good,Fair,FAC
+50,Liriodendron tulipifera,tuliptree,Good,Fair,FACU
+51,Maclura pomifera,Osage-orange,Uncertain,Poor,FACU
+52,Magnolia acuminata,cucumber tree,Poor,Fair,FACU
+53,Magnolia virginiana,sweetbay,Very Good,Very Poor,FACW
+54,Malus coronaria,sweet crab apple,Uncertain,Poor,Uncertain
+55,Morus rubra,red mulberry,Good,Fair,FACU
+56,Nyssa sylvatica,blackgum,Good,Fair,FAC
+57,Ostrya virginiana,hophornbeam,Good,Fair,FACU
+58,Oxydendrum arboreum,sourwood,Uncertain,Poor,FACU
+59,Picea glauca,white spruce,Very Poor,Good,FACU
+60,Picea mariana,black spruce,Poor,Fair,FACW
+61,Picea rubens,red spruce,Very Poor,Fair,FACU
+62,Pinus banksiana,jack pine,Fair,Fair,FACU
+63,Pinus echinata,shortleaf pine,Fair,Poor,Uncertain
+64,Pinus resinosa,red pine,Poor,Good,FACU
+65,Pinus rigida,pitch pine,Poor,Fair,FACU
+66,Pinus strobus,eastern white pine,Poor,Good,FACU
+67,Pinus taeda,loblolly pine,Fair,Poor,Uncertain
+68,Pinus virginiana,Virginia pine,Fair,Fair,Uncertain
+69,Platanus occidentalis,American sycamore,Good,Good,FACW
+70,Populus balsamifera,balsam poplar,Very Poor,Poor,FACW
+71,Populus deltoides,eastern cottonwood,Poor,Fair,FAC
+72,Populus grandidentata,bigtooth aspen,Good,Fair,FACU
+73,Populus tremuloides,quaking aspen,Poor,Poor,FACU
+74,Prunus pensylvanica,pin cherry,Poor,Fair,FACU
+75,Prunus serotina,black cherry,Poor,Very Good,FACU
+76,Quercus alba,white oak,Very Good,Good,FACU
+77,Quercus bicolor,swamp white oak,Poor,Good,FACW
+78,Quercus coccinea,scarlet oak,Fair,Fair,Uncertain
+79,Quercus falcata,southern red oak,Very Good,Fair,FACU
+80,Quercus imbricaria,shingle oak,Good,Fair,FACU
+81,Quercus macrocarpa,bur oak,Fair,Good,FACU
+82,Quercus marilandica,blackjack oak,Very Good,Fair,Uncertain
+83,Quercus michauxii,swamp chestnut oak,Good,Poor,FACW
+84,Quercus montana,chestnut oak,Very Good,Fair,UPL
+85,Quercus muehlenbergii,chinquapin oak,Good,Poor,FACU
+86,Quercus pagoda,cherrybark oak,Fair,Poor,FACW
+87,Quercus palustris,pin oak,Very Poor,Fair,FACW
+88,Quercus phellos,willow oak,Good,Fair,FACW
+89,Quercus rubra,northern red oak,Very Good,Good,FACU
+90,Quercus shumardii,Shumard's oak,Very Good,Poor,FACW
+91,Quercus stellata,post oak,Good,Fair,FACU
+92,Quercus velutina,black oak,Good,Good,Uncertain
+93,Salix amygdaloides,peachleaf willow,Fair,Very Poor,FACW
+94,Salix nigra,black willow,Very Poor,Fair,OBL
+95,Sassafras albidum,sassafras,Good,Poor,FACU
+96,Sorbus americana,American mountain ash,Very Poor,Poor,FAC
+97,Thuja occidentalis,northern white-cedar,Fair,Good,FACW
+98,Tilia americana,American basswood,Good,Good,FACU
+99,Tsuga canadensis,eastern hemlock,Poor,Good,FACU
+100,Ulmus americana,American elm,Fair,Good,FACW
+101,Ulmus rubra,slippery elm,Fair,Fair,FAC
+102,Ulmus thomasii,rock elm,Poor,Poor,FAC
