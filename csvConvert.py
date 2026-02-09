@@ -17,7 +17,7 @@ while(True):
     df = pd.read_csv(f'./csv_files/{fileName}.csv', header=0);
     # add TreeID starting at 1
     df.insert(0, "TreeID", range(1, len(df) + 1))
-    df.iloc[1:,1:] = df.iloc[1:,1:].map(xToBool) # [row, clumn] 1: skip first look at rest
+    df.iloc[0:,1:] = df.iloc[0:,1:].map(xToBool) # [row, clumn] 1: skip first look at rest
 
     print(df);
 
