@@ -18,7 +18,7 @@ Help nurseries and land owners make the best decisions regarding what to plant.
 Learn new skills when it comes to developing a full stack application.
 Have project to showcase 
 # Proposed timeline
-Week 2-3: Set up SQL Database 
-Week 4-8: set Up functionality(add/remove from database, filter for trees in your region, etc.)
-Week 9-10: testing full functionality
-Week 11-12: finish fixing errors and make app look more appealing  
+- Week 2-3: Set up SQL Database 
+- Week 4-8: set Up functionality(add/remove from database, filter for trees in your region, etc.)
+- Week 9-10: testing full functionality
+- Week 11-12: finish fixing errors and make app look more appealing  
