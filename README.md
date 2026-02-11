@@ -1,4 +1,4 @@
-# NY_Tree_Filter
+# NY Tree Filter
 This is a utility to sort and categorize a collection of tree species based on provided parameters from a database for restoration purposes. This project aims to replace the spreadsheet tool originally created for this purpose. This app will reduce user error and make it easier for individuals and groups to choose what at-risk trees they should plant in a particular region. Some filtering criteria include, the tree's use case (Lumber, fruitbearing, firewood), tree specific characteristics like canopy size, and potential risks/issues this tree might have when planting it. We plan to include admin CRUD functionality for managing species and classification data.
 # Goal of the project
 The goal of this project is to create an intuitive website that filters the tree data in order to help New Yorkers who own land and want to contribute to reforesting New York with native species.
