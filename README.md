@@ -3,14 +3,14 @@ This is a utility to sort and categorize a collection of tree species based on p
 # Goal of the project
 The goal of this project is to create an intuitive website that filters the tree data in order to help New Yorkers who own land and want to contribute to reforesting New York with native species.
 # User Examples
-## What trees would be appropriate for the upland dry region that are deer resistant?
-## Can I add new trees or remove them?
-## Which trees could I use for lumber?
-## What trees could I plant so I can have more birds?
-## What trees will live 100+ years?
-## Would I be able to change the characteristics of a tree?
-## Would I be able to add new characteristics if I wanted to include seasons to plant?
-## Would I be able to find trees good for my region if I don't know the ecoregion?
+- What trees would be appropriate for the upland dry region that are deer resistant?
+- Can I add new trees or remove them?
+- Which trees could I use for lumber?
+- What trees could I plant so I can have more birds?
+- What trees will live 100+ years?
+- Would I be able to change the characteristics of a tree?
+- Would I be able to add new characteristics if I wanted to include seasons to plant?
+- Would I be able to find trees good for my region if I don't know the ecoregion?
 # Deliverable expected
 A full stack application using a database, an API, and web facing component.
 # Motivation
