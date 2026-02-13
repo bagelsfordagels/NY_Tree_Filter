@@ -16,7 +16,6 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-// Basic trees endpoint (no filters yet)
 app.get("/api/Trees", async (req, res) => {
   try {
     const [rows] = await pool.query(
