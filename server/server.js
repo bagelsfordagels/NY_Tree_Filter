@@ -2,9 +2,11 @@ require("dotenv").config();
 
 const express = require("express");
 const pool = require("./db");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
 app.use(express.json());
+app.use("/api/admin", adminRoutes);
 
 // Basic health check
 app.get("/api/health", async (req, res) => {
