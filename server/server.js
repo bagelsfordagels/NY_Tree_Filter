@@ -2,9 +2,11 @@ require("dotenv").config();
 
 const express = require("express");
 const pool = require("./db");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(__dirname,"../public")));
 
 // Basic health check
 app.get("/api/health", async (req, res) => {
@@ -16,11 +18,17 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-app.get("/api/Trees", async (req, res) => {
+app.get("/api/trees", async (req, res) => {
   try {
-    const [rows] = await pool.query(
-      "SELECT TreeId, commonName, species FROM Trees ORDER BY TreeId"
-    );
+    const q = (req.query.q || "").toLowerCase();
+      let sql = "SELECT TreeId, CommonName, species FROM Trees";
+      const params = [];
+      if(q){
+        sql += " WHERE LOWER(CommonName) LIKE ? OR LOWER(species) LIKE ?";
+      }
+      params.push(`%${q}%`, `%${q}%`);
+      sql += " ORDER BY TreeId";
+    const [rows] = await pool.query(sql,params);
     res.json(rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
