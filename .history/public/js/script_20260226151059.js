@@ -6,11 +6,11 @@ function buildParams() {
   const params = new URLSearchParams();
 
   const species = getVal("filterSpecies");
-  const CommonName = getVal("filterCommon");
+  const commonName = getVal("filterCommon");
   const agct = getVal("filterAGCT");
 
   if (species) params.set("species", species);
-  if (CommonName) params.set("CommonName", CommonName);
+  if (commonName) params.set("commonName", commonName);
   if (agct) params.set("agct", agct);
 
   return params;
@@ -43,9 +43,9 @@ async function fetchAndRenderTrees() {
   rows.forEach(r => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-        <td>${r.species ?? ""}</td>
-        <td>${r.CommonName ?? ""}</td>
-        <td>${r.AGCT ?? ""}</td>
+      <td>${r.CommonName ?? ""}</td>
+      <td>${r.species ?? ""}</td>
+      <td>${r.AGCT ?? ""}</td>
     `;
     tbody.appendChild(tr);
   });
