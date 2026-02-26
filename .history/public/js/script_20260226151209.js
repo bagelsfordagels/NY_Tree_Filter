@@ -43,9 +43,9 @@ async function fetchAndRenderTrees() {
   rows.forEach(r => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-        <td>${r.species ?? ""}</td>
-        <td>${r.CommonName ?? ""}</td>
-        <td>${r.AGCT ?? ""}</td>
+      <td>${r.CommonName ?? ""}</td>
+      <td>${r.species ?? ""}</td>
+      <td>${r.AGCT ?? ""}</td>
     `;
     tbody.appendChild(tr);
   });
