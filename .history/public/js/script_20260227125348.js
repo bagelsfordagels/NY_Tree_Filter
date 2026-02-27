@@ -62,7 +62,7 @@ function clearFilters() {
     document.getElementById("filterCommon").value = "";
     document.getElementById("filterAGCT").value = "";
     document.getElementById("filterACProd").value = "";
-    document.getElementById("filterNWI").value = "";
+    document.getElementById("filterNWIStatus").value = "";
 
 }
 

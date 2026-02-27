@@ -47,10 +47,8 @@ main.container{
 .cardTitle{margin:0 0 12px 0;font-size:1.05rem;color:var(--green-900)}
 
 .filters .filterGrid{display:flex;flex-direction:column;gap:12px}
-/* Each filter row: label at left, select on right */
-.field{display:flex;flex-direction:row;align-items:center;gap:12px}
-.labelText{font-size:0.9rem;color:var(--muted);margin-bottom:0;flex:0 0 140px}
-select{flex:1}
+.field{display:flex;flex-direction:column}
+.labelText{font-size:0.85rem;color:var(--muted);margin-bottom:6px}
 select{appearance:none;padding:10px 12px;border-radius:10px;border:1px solid rgba(6,78,59,0.08);background:var(--surface);outline:none}
 select:focus{box-shadow:0 4px 12px rgba(16,185,129,0.08);border-color:var(--green-300)}
 
@@ -81,9 +79,5 @@ select:focus{box-shadow:0 4px 12px rgba(16,185,129,0.08);border-color:var(--gree
 	main.container{display:block}
 	.card.filters{position:static;max-width:100%;margin-bottom:12px}
 	.filters .filterGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-	/* revert each field to column layout for narrow widths */
-	.field{flex-direction:column;align-items:stretch}
-	.labelText{flex:unset;margin-bottom:6px}
-	select{flex:unset}
 }
 

@@ -67,7 +67,7 @@ app.get("/api/filter", async (req, res) => {
     const acprod = (req.query.acprod || "").trim();
     const nwistatus = (req.query.nwistatus || "").trim();
 
-    let sql = "SELECT CommonName, species, AGCT, ACProd, NWIStatus FROM Trees";
+    let sql = "SELECT CommonName, species, AGCT, ACProd FROM Trees";
     const where = [];
     const params = [];
 
