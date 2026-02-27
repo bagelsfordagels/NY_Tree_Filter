@@ -64,18 +64,14 @@ app.get("/api/filter", async (req, res) => {
     const species = (req.query.species || "").trim();
     const CommonName = (req.query.CommonName || "").trim();
     const agct = (req.query.agct || "").trim();
-    const acprod = (req.query.acprod || "").trim();
-    const nwistatus = (req.query.nwistatus || "").trim();
 
-    let sql = "SELECT CommonName, species, AGCT, ACProd, NWIStatus FROM Trees";
+    let sql = "SELECT CommonName, species, AGCT, ACProd FROM Trees";
     const where = [];
     const params = [];
 
     if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
     if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
     if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
-    if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
-    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     sql += " ORDER BY TreeId LIMIT 200";

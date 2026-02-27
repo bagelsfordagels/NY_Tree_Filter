@@ -9,13 +9,11 @@ function buildParams() {
     const CommonName = getVal("filterCommon");
     const agct = getVal("filterAGCT");
     const acprod = getVal("filterACProd");
-    const nwistatus = getVal("filterNWI")
 
     if (species) params.set("species", species);
     if (CommonName) params.set("CommonName", CommonName);
     if (agct) params.set("agct", agct);
-    if (acprod) params.set("acprod", acprod);
-    if (nwistatus) params.set("nwistatus", nwistatus)
+    if (acprod) params.set("ACProd", ACProd);
 
     return params;
 }
@@ -51,7 +49,6 @@ async function fetchAndRenderTrees() {
             <td>${r.CommonName ?? ""}</td>
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
-            <td>${r.NWIStatus ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
@@ -62,14 +59,12 @@ function clearFilters() {
     document.getElementById("filterCommon").value = "";
     document.getElementById("filterAGCT").value = "";
     document.getElementById("filterACProd").value = "";
-    document.getElementById("filterNWI").value = "";
 
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSpecies", "Trees", "species");
     await populateDropdown("filterCommon", "Trees", "CommonName");
-    await populateDropdown("filterNWI", "Trees","NWIStatus" )
 
   document
     .getElementById("applyFilters")
