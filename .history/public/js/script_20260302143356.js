@@ -10,16 +10,16 @@ function buildParams() {
     const agct = getVal("filterAGCT");
     const acprod = getVal("filterACProd");
     const nwistatus = getVal("filterNWI")
-    const floodplainbottomland = getVal("filterFloodBottom");
+    const floodbottom = getVal("filterFloodBottom");
     const uplandmesic = getVal("filterUplandMesic");
-    const uplanddry = getVal("filterUplandDry");
+    const uplanddry = getVale("filterUplandDry");
 
     if (species) params.set("species", species);
     if (CommonName) params.set("CommonName", CommonName);
     if (agct) params.set("agct", agct);
     if (acprod) params.set("acprod", acprod);
     if (nwistatus) params.set("nwistatus", nwistatus);
-    if (floodplainbottomland) params.set("floodplainbottomland", floodplainbottomland);
+    if (floodbottom) params.set("floodbottom", floodbottom);
     if (uplandmesic) params.set("uplandmesic", uplandmesic);
     if (uplanddry) params.set("uplanddry", uplanddry);
 
@@ -58,18 +58,12 @@ async function fetchAndRenderTrees() {
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
             <td>${r.NWIStatus ?? ""}</td>
-            <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td>${booleanToYn(r.UplandMesic)}</td>
-            <td>${booleanToYn(r.UplandDry)}</td>
+            <td>${r.FloodPlainBottomLand ?? ""}</td>
+            <td>${r.UplandMesic ?? ""}</td>
+            <td>${r.UplandDry ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
-}
-
-function booleanToYn(val){
-    if (val == 1) return "Yes";
-    if (val == 0) return "No";
-    return "";
 }
 
 function clearFilters() {

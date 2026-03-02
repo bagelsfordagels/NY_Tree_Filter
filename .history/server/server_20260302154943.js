@@ -81,8 +81,8 @@ app.get("/api/filter", async (req, res) => {
     if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
     if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
     if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
+    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
+    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     //sql += " ORDER BY TreeId LIMIT 200";
