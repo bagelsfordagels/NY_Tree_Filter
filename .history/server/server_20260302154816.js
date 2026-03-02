@@ -67,7 +67,7 @@ app.get("/api/filter", async (req, res) => {
     const agct = (req.query.agct || "").trim();
     const acprod = (req.query.acprod || "").trim();
     const nwistatus = (req.query.nwistatus || "").trim();
-    const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
+    const floodbottom = (req.query.floodbottom || "").trim();
     const uplandmesic = (req.query.uplandmesic || "").trim();
     const uplanddry = (req.query.uplanddry || "").trim();
 
@@ -80,9 +80,9 @@ app.get("/api/filter", async (req, res) => {
     if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
     if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
     if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
-    if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
+    if (floodbottom) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodbottom); }
+    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
+    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     //sql += " ORDER BY TreeId LIMIT 200";
