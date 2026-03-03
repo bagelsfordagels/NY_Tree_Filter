@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
 
-const app = express();
+//const app = express();
 app.use(express.json());
 app.use("/api/admin", adminRoutes);
 
