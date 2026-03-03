@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
+
 app.use("/api/admin", adminRoutes);
 
 // Basic health check
