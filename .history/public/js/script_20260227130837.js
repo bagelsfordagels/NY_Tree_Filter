@@ -10,18 +10,12 @@ function buildParams() {
     const agct = getVal("filterAGCT");
     const acprod = getVal("filterACProd");
     const nwistatus = getVal("filterNWI")
-    const floodplainbottomland = getVal("filterFloodBottom");
-    const uplandmesic = getVal("filterUplandMesic");
-    const uplanddry = getVal("filterUplandDry");
 
     if (species) params.set("species", species);
     if (CommonName) params.set("CommonName", CommonName);
     if (agct) params.set("agct", agct);
     if (acprod) params.set("acprod", acprod);
-    if (nwistatus) params.set("nwistatus", nwistatus);
-    if (floodplainbottomland) params.set("floodplainbottomland", floodplainbottomland);
-    if (uplandmesic) params.set("uplandmesic", uplandmesic);
-    if (uplanddry) params.set("uplanddry", uplanddry);
+    if (nwistatus) params.set("nwistatus", nwistatus)
 
     return params;
 }
@@ -58,18 +52,9 @@ async function fetchAndRenderTrees() {
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
             <td>${r.NWIStatus ?? ""}</td>
-            <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td>${booleanToYn(r.UplandMesic)}</td>
-            <td>${booleanToYn(r.UplandDry)}</td>
         `;
         tbody.appendChild(tr);
     });
-}
-
-function booleanToYn(val){
-    if (val == 1) return "Yes";
-    if (val == 0) return "No";
-    return "";
 }
 
 function clearFilters() {
@@ -78,9 +63,7 @@ function clearFilters() {
     document.getElementById("filterAGCT").value = "";
     document.getElementById("filterACProd").value = "";
     document.getElementById("filterNWI").value = "";
-    document.getElementById("filterFloodBottom").value = "";
-    document.getElementById("filterUplandMesic").value = "";
-    document.getElementById("filterUplandDry").value = "";
+
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

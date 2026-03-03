@@ -9,7 +9,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
-
 app.use("/api/admin", adminRoutes);
 
 // Basic health check
@@ -42,10 +41,9 @@ app.get("/api/trees", async (req, res) => {
 app.get("/api/distinct/:table/:column", async (req, res) => {
     try {
         const{ table, column } = req.params;
-        // whitelist for SQL injection protection
+        // whitelist for SQL injection
         const allowed = {
-            Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
-            LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"]
+            Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});
@@ -66,27 +64,19 @@ app.get("/api/filter", async (req, res) => {
     const species = (req.query.species || "").trim();
     const CommonName = (req.query.CommonName || "").trim();
     const agct = (req.query.agct || "").trim();
-    const acprod = (req.query.acprod || "").trim();
-    const nwistatus = (req.query.nwistatus || "").trim();
-    const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
-    const uplandmesic = (req.query.uplandmesic || "").trim();
-    const uplanddry = (req.query.uplanddry || "").trim();
+    const acprod = (req.query.agct || "").trim();
 
-    let sql = "SELECT Trees.*, LandformPref.* FROM Trees JOIN LandformPref on Trees.TreeId = LandformPref.TreeId";
+    let sql = "SELECT CommonName, species, AGCT, ACProd FROM Trees";
     const where = [];
     const params = [];
 
     if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
     if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
     if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
-    if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
-    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
-    if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
+    //if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
-    //sql += " ORDER BY TreeId LIMIT 200";
+    sql += " ORDER BY TreeId LIMIT 200";
 
     const [rows] = await pool.query(sql, params);
     res.json(rows);

@@ -11,7 +11,7 @@ CREATE TABLE if not exists Trees(
 create table if not exists LandformPref(
 	TreeID INT NOT Null,
     FloodPlainBottomLand boolean,
-    UplandMesic boolean,
+    UPlandMesic boolean,
     UplandDry boolean,
     foreign key (TreeId) references Trees (TreeId)
 );

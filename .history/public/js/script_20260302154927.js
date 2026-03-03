@@ -58,18 +58,12 @@ async function fetchAndRenderTrees() {
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
             <td>${r.NWIStatus ?? ""}</td>
-            <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td>${booleanToYn(r.UplandMesic)}</td>
-            <td>${booleanToYn(r.UplandDry)}</td>
+            <td>${r.FloodPlainBottomLand ?? ""}</td>
+            <td>${r.UplandMesic ?? ""}</td>
+            <td>${r.UplandDry ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
-}
-
-function booleanToYn(val){
-    if (val == 1) return "Yes";
-    if (val == 0) return "No";
-    return "";
 }
 
 function clearFilters() {

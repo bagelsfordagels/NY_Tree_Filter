@@ -10,7 +10,7 @@ function buildParams() {
     const agct = getVal("filterAGCT");
     const acprod = getVal("filterACProd");
     const nwistatus = getVal("filterNWI")
-    const floodplainbottomland = getVal("filterFloodBottom");
+    const floodbottom = getVal("filterFloodBottom");
     const uplandmesic = getVal("filterUplandMesic");
     const uplanddry = getVal("filterUplandDry");
 
@@ -19,7 +19,7 @@ function buildParams() {
     if (agct) params.set("agct", agct);
     if (acprod) params.set("acprod", acprod);
     if (nwistatus) params.set("nwistatus", nwistatus);
-    if (floodplainbottomland) params.set("floodplainbottomland", floodplainbottomland);
+    if (floodbottom) params.set("floodbottom", floodbottom);
     if (uplandmesic) params.set("uplandmesic", uplandmesic);
     if (uplanddry) params.set("uplanddry", uplanddry);
 
@@ -44,7 +44,7 @@ async function populateDropdown(selectId, table, column) {
 
 async function fetchAndRenderTrees() {
     const params = buildParams();
-    const res = await fetch(`/api/filter?${params.toString()}`);
+    const res = await fetch(`/api/trees/filter?${params.toString()}`);
     const rows = await res.json();
 
     const tbody = document.getElementById("tableBody");
@@ -58,18 +58,12 @@ async function fetchAndRenderTrees() {
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
             <td>${r.NWIStatus ?? ""}</td>
-            <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td>${booleanToYn(r.UplandMesic)}</td>
-            <td>${booleanToYn(r.UplandDry)}</td>
+            <td>${r.FloodPlainBottomLand ?? ""}</td>
+            <td>${r.UplandMesic ?? ""}</td>
+            <td>${r.UplandDry ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
-}
-
-function booleanToYn(val){
-    if (val == 1) return "Yes";
-    if (val == 0) return "No";
-    return "";
 }
 
 function clearFilters() {

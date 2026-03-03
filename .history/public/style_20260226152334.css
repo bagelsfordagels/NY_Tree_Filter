@@ -22,22 +22,6 @@ body{
 
 .container{max-width:1100px;margin:0 auto;padding:24px}
 
-/* layout: left column filters, right column results */
-main.container{
-	display:flex;
-	gap:24px;
-	align-items:flex-start;
-}
-.card.filters{ /* keep filters narrow */
-	flex:0 0 300px;
-	max-width:320px;
-	position:sticky;
-	top:20px;
-}
-.card.results{
-	flex:1 1 auto;
-}
-
 .siteHeader{background:linear-gradient(90deg,var(--green-700),var(--green-500));color:white;padding:28px 0;border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius)}
 .siteHeader .container{display:flex;flex-direction:column;gap:6px}
 .siteHeader h1{margin:0;font-size:1.5rem;font-weight:700}
@@ -46,11 +30,9 @@ main.container{
 .card{background:var(--bg);border-radius:12px;padding:18px;margin-top:18px;box-shadow:var(--card-shadow)}
 .cardTitle{margin:0 0 12px 0;font-size:1.05rem;color:var(--green-900)}
 
-.filters .filterGrid{display:flex;flex-direction:column;gap:12px}
-/* Each filter row: label at left, select on right */
-.field{display:flex;flex-direction:row;align-items:center;gap:12px}
-.labelText{font-size:0.9rem;color:var(--muted);margin-bottom:0;flex:0 0 140px}
-select{flex:1}
+.filters .filterGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.field{display:flex;flex-direction:column}
+.labelText{font-size:0.85rem;color:var(--muted);margin-bottom:6px}
 select{appearance:none;padding:10px 12px;border-radius:10px;border:1px solid rgba(6,78,59,0.08);background:var(--surface);outline:none}
 select:focus{box-shadow:0 4px 12px rgba(16,185,129,0.08);border-color:var(--green-300)}
 
@@ -74,16 +56,5 @@ select:focus{box-shadow:0 4px 12px rgba(16,185,129,0.08);border-color:var(--gree
 	.siteHeader .container{padding:0 12px}
 	.container{padding:12px}
 	.siteHeader h1{font-size:1.25rem}
-}
-
-@media (max-width:900px){
-	/* stack on small screens */
-	main.container{display:block}
-	.card.filters{position:static;max-width:100%;margin-bottom:12px}
-	.filters .filterGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-	/* revert each field to column layout for narrow widths */
-	.field{flex-direction:column;align-items:stretch}
-	.labelText{flex:unset;margin-bottom:6px}
-	select{flex:unset}
 }
 

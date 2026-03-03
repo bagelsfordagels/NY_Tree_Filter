@@ -9,7 +9,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
-
 app.use("/api/admin", adminRoutes);
 
 // Basic health check
@@ -45,7 +44,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         // whitelist for SQL injection protection
         const allowed = {
             Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
-            LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"]
+            LandformPref: ["FloodPlainBottomLand", "UPlandMesic", "UplandDry"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});
@@ -68,9 +67,6 @@ app.get("/api/filter", async (req, res) => {
     const agct = (req.query.agct || "").trim();
     const acprod = (req.query.acprod || "").trim();
     const nwistatus = (req.query.nwistatus || "").trim();
-    const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
-    const uplandmesic = (req.query.uplandmesic || "").trim();
-    const uplanddry = (req.query.uplanddry || "").trim();
 
     let sql = "SELECT Trees.*, LandformPref.* FROM Trees JOIN LandformPref on Trees.TreeId = LandformPref.TreeId";
     const where = [];
@@ -81,9 +77,6 @@ app.get("/api/filter", async (req, res) => {
     if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
     if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
     if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
-    if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     //sql += " ORDER BY TreeId LIMIT 200";

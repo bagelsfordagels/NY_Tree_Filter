@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NY Trees — Filter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="siteHeader">
+  <div class="container">
+    <h1>NY Collaborative Priority Species List</h1>
+    <p class="subtitle">Filter the dataset using the dropdowns below</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card filters">
+    <h2 class="cardTitle">Filters</h2>
+
+    <div class="filterGrid">
+
+      <label>
+        Species
+        <select id="filterSpecies">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Common Name
+        <select id="filterCommon">
+            <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Aggregated Climate Tolerance
+        <select id="filterAGCT">
+            <option value="">Any</option>
+            <option value="Uncertain">Uncertain</option>
+            <option value="Very Poor">Very Poor</option>
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Very Good">Very Good</option>
+        </select>
+      </label>
+
+      <label>
+        Aggregated Commercial Production
+        <select id="filterACProd">
+            <option value="">Any</option>
+            <option value="Uncertain">Uncertain</option>
+            <option value="Very Poor">Very Poor</option>
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+        </select>
+      </label>
+
+    </div>
+
+    <div class="actions">
+      <button id="applyFilters">Apply filters</button>
+      <button id="clearFilters">Clear</button>
+    </div>
+  </section>
+
+  <section class="card results">
+    <table>
+      <thead>
+        <tr>
+          <th>Species</th>
+          <th>Common Name</th>
+          <th>AGCT</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

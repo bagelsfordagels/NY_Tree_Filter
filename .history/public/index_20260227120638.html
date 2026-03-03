@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NY Trees — Filter</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NY Trees — Filter</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="siteHeader">
-    <div class="container">
-        <h1>NY Collaborative Priority Species List</h1>
-        <p class="subtitle">Filter the dataset using the dropdowns below</p>
-    </div>
+  <div class="container">
+    <h1>NY Collaborative Priority Species List</h1>
+    <p class="subtitle">Filter the dataset using the dropdowns below</p>
+  </div>
 </header>
 
 <main class="container">
@@ -62,45 +62,11 @@
         </select>
       </label>
 
-      <label>
-        National Wetland Status
-        <select id="filterNWI">
-          <option value="">Any</option>
-        </select>
-      </label>
-
-      <label>
-        Flood Plain / Bottom Land
-        <select id="filterFloodBottom">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Upland Mesic
-        <select id="filterUplandMesic">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Upland Dry
-        <select id="filterUplandDry">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
     </div>
 
     <div class="actions">
-        <button id="applyFilters">Apply filters</button>
-        <button id="clearFilters">Clear</button>
+      <button id="applyFilters">Apply filters</button>
+      <button id="clearFilters">Clear</button>
     </div>
   </section>
 
@@ -108,14 +74,9 @@
     <table>
       <thead>
         <tr>
-            <th>Species</th>
-            <th>Common Name</th>
-            <th>Aggregated Climate Tolerance</th>
-            <th>Aggregated Commercial Production</th>
-            <th>National Wetland Status</th>
-            <th>Floodplain / Bottomland</th>
-            <th>Upland Mesic</th>
-            <th>Upland Dry</th>
+          <th>Species</th>
+          <th>Common Name</th>
+          <th>AGCT</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
