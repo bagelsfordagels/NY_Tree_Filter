@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NY Reforestation Priority Species List</title>
+  <meta name="description" content="A simple homepage showcasing the Collaborative Priority Species List for Reforestation in New York." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b2e;
+      --text:#e8eefc;
+      --muted:#b9c6ea;
+      --accent:#36c486;
+      --accent2:#67a8ff;
+      --border:rgba(232,238,252,.12);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 500px at 30% 0%, rgba(54,196,134,.25), transparent 55%),
+                  radial-gradient(900px 450px at 85% 10%, rgba(103,168,255,.20), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:28px 18px 64px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 18px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:750; letter-spacing:.2px}
+    .dot{width:12px;height:12px;border-radius:99px;background:var(--accent); box-shadow:0 0 0 4px rgba(54,196,134,.15)}
+    nav{display:flex; gap:14px; flex-wrap:wrap}
+    nav a{
+      text-decoration:none; color:var(--muted);
+      padding:8px 10px; border:1px solid transparent; border-radius:999px;
+    }
+    nav a:hover{border-color:var(--border); color:var(--text); background:rgba(255,255,255,.03)}
+    .hero{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      padding:26px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 200px at 15% 10%, rgba(54,196,134,.25), transparent 60%),
+                  radial-gradient(600px 240px at 85% 0%, rgba(103,168,255,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative}
+    h1{margin:0 0 10px; font-size: clamp(26px, 4vw, 44px); line-height:1.15}
+    .lead{color:var(--muted); max-width:78ch; margin:0 0 18px}
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .pill{
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid var(--border);
+      background:rgba(17,27,46,.75);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{margin:0 0 8px; font-size:20px}
+    .card p{margin:0 0 10px; color:var(--muted)}
+    .kpi{
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:10px; margin-top:12px
+    }
+    .kpi > div{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background:rgba(255,255,255,.03);
+    }
+    .kpi b{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:13px}
+    .tools{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+      align-items:center;
+    }
+    input[type="search"]{
+      flex:1;
+      min-width:220px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+    }
+    select, button{
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      cursor:pointer;
+    }
+    button:hover, select:hover{background:rgba(255,255,255,.06)}
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      margin-top:12px;
+      overflow:hidden;
+      border-radius:16px;
+      border:1px solid var(--border);
+    }
+    thead th{
+      text-align:left;
+      font-size:13px;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding:12px 12px;
+      background:rgba(255,255,255,.03);
+      border-bottom:1px solid var(--border);
+    }
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--border);
+      vertical-align:top;
+    }
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    tbody tr:last-child td{border-bottom:none}
+    .rank{
+      font-variant-numeric: tabular-nums;
+      color: var(--accent2);
+      font-weight:700;
+      width:80px;
+    }
+    .sci{color:var(--muted); font-style:italic}
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .badge i{
+      display:inline-block;
+      width:10px;height:10px;border-radius:99px;
+      background:var(--accent2);
+      box-shadow:0 0 0 4px rgba(103,168,255,.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand"><span class="dot"></span> NY Reforestation</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#species">Species List</a>
+        <a href="#use">How to Use</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <h1>Collaborative Priority Species List<br/>for Reforestation in New York</h1>
+      <p class="lead">
+        New York has <b>over 1.7 million acres</b> of land suitable for reforestation. This page summarizes
+        a collaborative list of <b>40 priority tree species</b> intended to help practitioners and nurseries
+        coordinate on the species most likely to be needed.
+      </p>
+      <div class="pillrow">
+        <div class="pill">40 species • 20 genera</div>
+        <div class="pill">Prioritized with a multi-criteria framework</div>
+        <div class="pill">Balances ecological + social + practical needs</div>
+      </div>
+    </section>
+
+    <section class="grid" id="about">
+      <div class="card">
+        <h2>Why this list exists</h2>
+        <p>
+          A major obstacle to scaling reforestation is the limited commercial availability of native seedlings.
+          This list is designed to help create clearer demand signals for nurseries and support landscape-scale
+          planting projects across New York.
+        </p>
+        <div class="kpi">
+          <div>
+            <b>1.7M+</b>
+            <span>acres suitable for reforestation in NY</span>
+          </div>
+          <div>
+            <b>111</b>
+            <span>usable survey responses informed the list</span>
+          </div>
+        </div>
+        <div class="badge"><i></i> Source: The Nature Conservancy + Ecological Health Network (summary from the PDF)</div>
+      </div>
+
+      <div class="card" id="use">
+        <h2>How to use it (quick)</h2>
+        <p>
+          Use this list alongside a solid site assessment and the best available seed provenance information.
+          The ranking suggests how frequently species may appear across projects—final choices still depend on
+          region, landform, and site conditions.
+        </p>
+        <ul style="margin:0; padding-left:18px; color:var(--muted)">
+          <li>Evaluate site conditions comprehensively</li>
+          <li>Consider provenance/genetic appropriateness</li>
+          <li>Use with other best-practice guidance</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" id="species" style="margin-top:16px">
+      <h2>Priority Species (Ranked)</h2>
+      <p>Search by common name, scientific name, or rank. Sort by rank or alphabetically.</p>
+
+      <div class="tools">
+        <input id="q" type="search" placeholder="Search (e.g., maple, Quercus, 12)..." autocomplete="off" />
+        <select id="sort">
+          <option value="rank-asc">Sort: Rank (1 → 40)</option>
+          <option value="rank-desc">Sort: Rank (40 → 1)</option>
+          <option value="common-asc">Sort: Common name (A → Z)</option>
+          <option value="common-desc">Sort: Common name (Z → A)</option>
+          <option value="sci-asc">Sort: Scientific name (A → Z)</option>
+          <option value="sci-desc">Sort: Scientific name (Z → A)</option>
+        </select>
+        <button id="clear" type="button">Clear</button>
+      </div>
+
+      <table aria-label="Priority species table">
+        <thead>
+          <tr>
+            <th style="width:90px;">Rank</th>
+            <th>Common Name</th>
+            <th>Scientific Name</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+
+      <div class="footer">
+        Note: The PDF describes this list as hierarchical; species ranked toward the left/top are “highest priority,” but all 40 are considered priority species.
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Attribution / Notes</h2>
+      <p>
+        This homepage is a student-friendly summary view of the PDF:
+        <em>Collaborative Priority Species List for Reforestation in New York</em>.
+        For full methodology, criteria categories (global change, ecological value, relevance, production, post-planting),
+        and additional guidance, refer to the original document.
+      </p>
+      <p class="footer">
+        Built from: <strong>TNC NY Reforestation Species List_Final.pdf</strong>
+      </p>
+    </section>
+  </div>
+
+  <script>
+    // Data transcribed from the PDF table (rank, common name, scientific name)
+    const species = [
+      { rank: 1,  common: "Red maple", scientific: "Acer rubrum" },
+      { rank: 2,  common: "Sugar maple", scientific: "Acer saccharum" },
+      { rank: 3,  common: "Silver maple", scientific: "Acer saccharinum" },
+      { rank: 4,  common: "Northern red oak", scientific: "Quercus rubra" },
+      { rank: 5,  common: "Sweet birch", scientific: "Betula lenta" },
+      { rank: 6,  common: "Bitternut hickory", scientific: "Carya cordiformis" },
+      { rank: 7,  common: "Shagbark hickory", scientific: "Carya ovata" },
+      { rank: 8,  common: "Black cherry", scientific: "Prunus serotina" },
+      { rank: 9,  common: "White oak", scientific: "Quercus alba" },
+      { rank: 10, common: "Eastern redcedar", scientific: "Juniperus virginiana" },
+      { rank: 11, common: "Eastern white pine", scientific: "Pinus strobus" },
+      { rank: 12, common: "Chestnut oak", scientific: "Quercus montana" },
+      { rank: 13, common: "American sycamore", scientific: "Platanus occidentalis" },
+      { rank: 14, common: "Boxelder", scientific: "Acer negundo" },
+      { rank: 15, common: "Black oak", scientific: "Quercus velutina" },
+      { rank: 16, common: "Paper birch", scientific: "Betula papyrifera" },
+      { rank: 17, common: "Common hackberry", scientific: "Celtis occidentalis" },
+      { rank: 18, common: "Yellow birch", scientific: "Betula alleghaniensis" },
+      { rank: 19, common: "Swamp white oak", scientific: "Quercus bicolor" },
+      { rank: 20, common: "River birch", scientific: "Betula nigra" },
+      { rank: 21, common: "Red pine", scientific: "Pinus resinosa" },
+      { rank: 22, common: "Tulip tree", scientific: "Liriodendron tulipifera" },
+      { rank: 23, common: "Black gum", scientific: "Nyssa sylvatica" },
+      { rank: 24, common: "Pitch pine", scientific: "Pinus rigida" },
+      { rank: 25, common: "Eastern cottonwood", scientific: "Populus deltoides" },
+      { rank: 26, common: "Flowering dogwood", scientific: "Cornus florida" },
+      { rank: 27, common: "Black walnut", scientific: "Juglans nigra" },
+      { rank: 28, common: "Black willow", scientific: "Salix nigra" },
+      { rank: 29, common: "Eastern tamarack", scientific: "Larix laricina" },
+      { rank: 30, common: "Sweetgum", scientific: "Liquidambar styraciflua" },
+      { rank: 31, common: "Gray birch", scientific: "Betula populifolia" },
+      { rank: 32, common: "Mockernut hickory", scientific: "Carya tomentosa" },
+      { rank: 33, common: "American hophornbeam", scientific: "Ostrya virginiana" },
+      { rank: 34, common: "Quaking aspen", scientific: "Populus tremuloides" },
+      { rank: 35, common: "Bur oak", scientific: "Quercus macrocarpa" },
+      { rank: 36, common: "Northern white-cedar", scientific: "Thuja occidentalis" },
+      { rank: 37, common: "Pignut hickory", scientific: "Carya glabra" },
+      { rank: 38, common: "Red spruce", scientific: "Picea rubens" },
+      { rank: 39, common: "White spruce", scientific: "Picea glauca" },
+      { rank: 40, common: "American basswood", scientific: "Tilia americana" },
+    ];
+
+    const tbody = document.getElementById("rows");
+    const q = document.getElementById("q");
+    const sort = document.getElementById("sort");
+    const clearBtn = document.getElementById("clear");
+
+    function normalize(s){ return String(s).toLowerCase().trim(); }
+
+    function sortData(data, mode){
+      const copy = [...data];
+      const dir = mode.endsWith("desc") ? -1 : 1;
+
+      if(mode.startsWith("rank")){
+        copy.sort((a,b)=> (a.rank - b.rank) * dir);
+      } else if(mode.startsWith("common")){
+        copy.sort((a,b)=> a.common.localeCompare(b.common) * dir);
+      } else if(mode.startsWith("sci")){
+        copy.sort((a,b)=> a.scientific.localeCompare(b.scientific) * dir);
+      }
+      return copy;
+    }
+
+    function filterData(data, query){
+      if(!query) return data;
+      const nq = normalize(query);
+      return data.filter(s=>{
+        return normalize(s.rank).includes(nq)
+          || normalize(s.common).includes(nq)
+          || normalize(s.scientific).includes(nq);
+      });
+    }
+
+    function render(){
+      const filtered = filterData(species, q.value);
+      const sorted = sortData(filtered, sort.value);
+      tbody.innerHTML = "";
+
+      for(const s of sorted){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="rank">${s.rank}</td>
+          <td>${s.common}</td>
+          <td class="sci">${s.scientific}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      if(sorted.length === 0){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="3" style="color:var(--muted); padding:14px;">No matches found.</td>`;
+        tbody.appendChild(tr);
+      }
+    }
+
+    q.addEventListener("input", render);
+    sort.addEventListener("change", render);
+    clearBtn.addEventListener("click", ()=>{ q.value=""; sort.value="rank-asc"; render(); });
+
+    render();
+  </script>
+</body>
+</html>
