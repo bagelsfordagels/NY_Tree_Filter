@@ -92,7 +92,7 @@ function clearFilters() {
     document.getElementById("filterUplandDry").value = "";  
     document.getElementById("filterSoilAcidTol").value = "";
     document.getElementById("filterSoilAlkTol").value = "";
-    document.getElementById("filterSoilSaltTol").value = "";
+    document.getElementById("filterSaltTol").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

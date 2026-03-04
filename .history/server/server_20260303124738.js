@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
-
+const { updateSiteChemPref } = require("./model/admin");
 app.use("/api/admin", adminRoutes);
 
 // Basic health check
@@ -46,7 +46,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         const allowed = {
             Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
             LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"],
-            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"]
+            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SaltTol"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});
@@ -79,7 +79,7 @@ app.get("/api/filter", async (req, res) => {
 
     let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
-                      S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol 
+                      S.SoilAcidTol, S.SoilAlknTol, S.SoilSaltTol 
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId
                       LEFT JOIN SiteChemPref S ON T.TreeId = S.TreeId  

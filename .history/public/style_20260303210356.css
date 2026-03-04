@@ -129,7 +129,7 @@ select:focus{
 	background:linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
 }
 
-.results .muted{left
+.results .muted{
 	color:var(--muted);
 	margin:6px 0
 }

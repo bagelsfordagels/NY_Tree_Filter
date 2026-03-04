@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
 const adminRoutes = require("./routes/admin");
-
+const { updateSiteChemPref } = require("./model/admin");
 app.use("/api/admin", adminRoutes);
 
 // Basic health check
@@ -46,7 +46,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         const allowed = {
             Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
             LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"],
-            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"]
+            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SaltTol"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});

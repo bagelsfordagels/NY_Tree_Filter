@@ -40,6 +40,12 @@
         Aggregated Climate Tolerance
         <select id="filterAGCT">
             <option value="">Any</option>
+            <option value="Uncertain">Uncertain</option>
+            <option value="Very Poor">Very Poor</option>
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Very Good">Very Good</option>
         </select>
       </label>
 
@@ -47,6 +53,12 @@
         Aggregated Commercial Production
         <select id="filterACProd">
             <option value="">Any</option>
+            <option value="Uncertain">Uncertain</option>
+            <option value="Very Poor">Very Poor</option>
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Very Good">Very Good</option>
         </select>
       </label>
 
@@ -91,22 +103,6 @@
         </select>
       </label>
 
-      <label>
-        Soil Alkalinity Tolerance
-        <select id="filterSoilAlkTol">
-          <option value="">Any</option>
-        </select>
-      </label>
-
-      <label>
-        Soil Salt Tolerance
-        <select id="filterSoilSaltTol">
-          <option value="">Any</option>
-        </select>
-      </label>
-
-
-
     </div>
 
     <div class="actions">
@@ -116,7 +112,7 @@
   </section>
 
   <section class="card results">
-    <table class="reasults-table">
+    <table>
       <thead>
         <tr>
             <th>Species</th>
@@ -127,9 +123,6 @@
             <th>Floodplain / Bottomland</th>
             <th>Upland Mesic</th>
             <th>Upland Dry</th>
-            <th>Soil Acidity Tolerance</th>
-            <th>Soil Alkalinity Tolerance</th>
-            <th>Soil Salt Tolerance</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
