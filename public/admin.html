@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NY Tree  Filter - Admin</title>
+        <link rel="stylesheet" href="style.css">
+<!-- creates the look of the table -->
+        <style>
+            table{
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td{
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            th{
+                background-color: #f2f2f2;
+            }
+            .add-btn{
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+            .add-btn:hover{
+                background-color: #45a049;
+            }
+            .edit-btn{
+                padding: 5px 10px;
+                background-color: #008CBA;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .edit-btn:hover{
+                background-color: #007bb5;
+            }
+            .delete-btn{
+                padding: 5px 10px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .delete-btn:hover{
+                background-color: #da190b;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Manage Trees</h1>
+        <a href="addTree.html"><button type="button" class="add-btn">Add</button></a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Common Name</th>
+                    <th>Species</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="treeTableBody">
+ <!-- tree data will be added here -->
+            </tbody>
+        </table>
+        <script src="js/admin.js"></script>       
+    </body>
+</html>
