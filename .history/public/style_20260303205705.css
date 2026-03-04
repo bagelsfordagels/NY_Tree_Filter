@@ -37,6 +37,7 @@ main.container{
 .card.results{
 	flex:1 1 auto;
 	text-transform: capitalize;
+	text-align: center;
 }
 
 .siteHeader{
@@ -129,7 +130,7 @@ select:focus{
 	background:linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
 }
 
-.results .muted{left
+.results .muted{
 	color:var(--muted);
 	margin:6px 0
 }
@@ -142,7 +143,7 @@ select:focus{
 
 .results-table thead th{
 	background:linear-gradient(180deg,#f0fff4,#ffffff);
-	text-align:center;
+	text-align:left;
 	padding:10px;
 	border-bottom:1px solid rgba(6,78,59,0.06);
 	font-weight:600;
@@ -151,7 +152,7 @@ select:focus{
 .results-table tbody td{
 	padding:10px;
 	border-bottom:1px solid rgba(6,78,59,0.04);
-	text-align:center;
+	text-align:left;
 }
 .results-table tbody tr:nth-child(even){background:#fbfffb}
 

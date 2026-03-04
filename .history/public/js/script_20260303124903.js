@@ -91,8 +91,8 @@ function clearFilters() {
     document.getElementById("filterUplandMesic").value = "";
     document.getElementById("filterUplandDry").value = "";  
     document.getElementById("filterSoilAcidTol").value = "";
-    document.getElementById("filterSoilAlkTol").value = "";
-    document.getElementById("filterSoilSaltTol").value = "";
+    document.getElementById("filterAlkTol").value = "";
+    document.getElementById("filterSaltTol").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

@@ -13,9 +13,6 @@ function buildParams() {
     const floodplainbottomland = getVal("filterFloodBottom");
     const uplandmesic = getVal("filterUplandMesic");
     const uplanddry = getVal("filterUplandDry");
-    const soilacidtol = getVal("filterSoilAcidTol");
-    const soilalktol = getVal("filterSoilAlkTol");
-    const soilsalttol = getVal("filterSoilSaltTol");
 
     if (species) params.set("species", species);
     if (CommonName) params.set("CommonName", CommonName);
@@ -25,9 +22,6 @@ function buildParams() {
     if (floodplainbottomland) params.set("floodplainbottomland", floodplainbottomland);
     if (uplandmesic) params.set("uplandmesic", uplandmesic);
     if (uplanddry) params.set("uplanddry", uplanddry);
-    if (soilacidtol) params.set("soilacidtol", soilacidtol);
-    if (soilalktol) params.set("soilalktol", soilalktol);
-    if (soilsalttol) params.set("soilsalttol", soilsalttol);
 
     return params;
 }
@@ -67,9 +61,6 @@ async function fetchAndRenderTrees() {
             <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
             <td>${booleanToYn(r.UplandMesic)}</td>
             <td>${booleanToYn(r.UplandDry)}</td>
-            <td>${r.SoilAcidTol ?? ""}</td>
-            <td>${r.SoilAlkTol ?? ""}</td>
-            <td>${r.SoilSaltTol ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
@@ -89,10 +80,7 @@ function clearFilters() {
     document.getElementById("filterNWI").value = "";
     document.getElementById("filterFloodBottom").value = "";
     document.getElementById("filterUplandMesic").value = "";
-    document.getElementById("filterUplandDry").value = "";  
-    document.getElementById("filterSoilAcidTol").value = "";
-    document.getElementById("filterSoilAlkTol").value = "";
-    document.getElementById("filterSoilSaltTol").value = "";
+    document.getElementById("filterUplandDry").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -102,8 +90,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterCommon", "Trees", "CommonName");
     await populateDropdown("filterNWI", "Trees","NWIStatus" );
     await populateDropdown("filterSoilAcidTol", "SiteChemPref", "SoilAcidTol");
-    await populateDropdown("filterSoilAlkTol", "SiteChemPref", "SoilAlkTol");
-    await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
 
   document
     .getElementById("applyFilters")
