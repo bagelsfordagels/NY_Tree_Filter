@@ -68,8 +68,8 @@ async function fetchAndRenderTrees() {
             <td>${booleanToYn(r.UplandMesic)}</td>
             <td>${booleanToYn(r.UplandDry)}</td>
             <td>${r.SoilAcidTol ?? ""}</td>
-            <td>${r.SoilAlkTol ?? ""}</td>
-            <td>${r.SoilSaltTol ?? ""}</td>
+            <td>${r.SoilAlkainTol ?? ""}</td>
+            <td>${r.SaltTol ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
@@ -91,8 +91,8 @@ function clearFilters() {
     document.getElementById("filterUplandMesic").value = "";
     document.getElementById("filterUplandDry").value = "";  
     document.getElementById("filterSoilAcidTol").value = "";
-    document.getElementById("filterSoilAlkTol").value = "";
-    document.getElementById("filterSoilSaltTol").value = "";
+    document.getElementById("filterAlkTol").value = "";
+    document.getElementById("filterSaltTol").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

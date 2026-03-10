@@ -59,8 +59,8 @@ async function fetchAndRenderTrees() {
     rows.forEach(r => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${r.species ?? ""}</td>
-            <td>${r.CommonName ?? ""}</td>
+            <td>${capitalize(r.species)}</td>
+            <td>${capitalize(r.CommonName)}</td>
             <td>${r.AGCT ?? ""}</td>
             <td>${r.ACProd ?? ""}</td>
             <td>${r.NWIStatus ?? ""}</td>
@@ -81,6 +81,11 @@ function booleanToYn(val){
     return "";
 }
 
+function capitalize(val){
+    if (!val) return "";
+    return val.CharAt(0).toUpperCase() + string.slice(1);
+}
+
 function clearFilters() {
     document.getElementById("filterSpecies").value = "";
     document.getElementById("filterCommon").value = "";
@@ -91,8 +96,8 @@ function clearFilters() {
     document.getElementById("filterUplandMesic").value = "";
     document.getElementById("filterUplandDry").value = "";  
     document.getElementById("filterSoilAcidTol").value = "";
-    document.getElementById("filterSoilAlkTol").value = "";
-    document.getElementById("filterSoilSaltTol").value = "";
+    document.getElementById("filterAlkTol").value = "";
+    document.getElementById("filterSaltTol").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

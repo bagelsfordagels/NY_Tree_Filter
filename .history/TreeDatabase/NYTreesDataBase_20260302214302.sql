@@ -18,8 +18,8 @@ create table if not exists LandformPref(
 create table if not exists SiteChemPref(
 	TreeID INT NOT Null,
     SoilAcidTol enum('Low','Intermediate','High'),
-    SoilAlkTol enum('Low','Intermediate','High'),
-    SoilSaltTol enum('Low','Intermediate','High'),
+    SoilAlkainTol enum('Low','Intermediate','High'),
+    SaltTol enum('Low','Intermediate','High'),
     foreign key (TreeId) references Trees (TreeId)
 );
 create table if not exists Ecoregion(
