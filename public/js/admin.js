@@ -51,7 +51,7 @@ async function deleteTree(treeId, CommonName){
 
 //Edit tree
 function editTree(treeId){
-    alert('Temp edit function');
+    window.location.href = `updateTree.html?id=${treeId}`;
 }
 
 loadTrees();

@@ -14,13 +14,13 @@ form.addEventListener('submit', async function(event) {
         
         // Landform Preferences
         FloodPlainBottomLand: document.getElementById('floodPlain').checked,
-        UPlandMesic: document.getElementById('uplandMesic').checked,
+        UplandMesic: document.getElementById('uplandMesic').checked,
         UplandDry: document.getElementById('uplandDry').checked,
         
         // Site Chemistry Preferences
         SoilAcidTol: document.getElementById('soilAcidTol').value || null,
-        SoilAlkainTol: document.getElementById('soilAlkainTol').value || null,
-        SaltTol: document.getElementById('saltTol').value || null,
+        SoilAlkTol: document.getElementById('soilAlkainTol').value || null,
+        SoilSaltTol: document.getElementById('saltTol').value || null,
         
         // Ecoregion
         EasternGreatLakeLowLands: document.getElementById('easternGreatLakeLowLands').checked,
@@ -60,7 +60,7 @@ form.addEventListener('submit', async function(event) {
         AttractsBirds: document.getElementById('attractsBirds').checked,
         
         // Planting Considerations
-        RecommendedForWindbreak: document.getElementById('recommendedForWindbreak').checked,
+        RecomendedForWindbreak: document.getElementById('recommendedForWindbreak').checked,
         DeerResistance: document.getElementById('deerResistance').value || null,
         PestAndPathogenSusceptibility: document.getElementById('pestAndPathogenSusceptibility').value || null
     };

@@ -52,14 +52,14 @@ async function createTree(connection, treeData) {
 }
 
 async function createLandformPref(connection, treeId, treeData){
-    let sql = 'INSERT INTO LandformPref (TreeId, FloodPlainBottomLand, UPlandMesic, UplandDry) VALUES (?, ?, ?, ?)';
-    let values = [treeId, treeData.FloodPlainBottomLand, treeData.UPlandMesic, treeData.UplandDry];
+    let sql = 'INSERT INTO LandformPref (TreeId, FloodPlainBottomLand, UplandMesic, UplandDry) VALUES (?, ?, ?, ?)';
+    let values = [treeId, treeData.FloodPlainBottomLand, treeData.UplandMesic, treeData.UplandDry];
     return await connection.query(sql, values);
 }
 
 async function createSiteChemPref(connection, treeId, treeData){
-    let sql = 'INSERT INTO SiteChemPref (TreeId, SoilAcidTol, SoilAlkainTol, SaltTol) VALUES (?, ?, ?, ?)';
-    let values = [treeId, treeData.SoilAcidTol, treeData.SoilAlkainTol, treeData.SaltTol];
+    let sql = 'INSERT INTO SiteChemPref (TreeId, SoilAcidTol, SoilAlkTol, SoilSaltTol) VALUES (?, ?, ?, ?)';
+    let values = [treeId, treeData.SoilAcidTol, treeData.SoilAlkTol, treeData.SoilSaltTol];
     return await connection.query(sql, values);
 }
 
@@ -93,8 +93,8 @@ async function createEcologicVal(connection, treeId, treeData){
     return await connection.query(sql, values);
 }
 async function createPlantingConsiderations(connection, treeId, treeData) {
-    let sql = 'INSERT INTO PlantingConsiderations (TreeId, RecommendedForWindbreak, DeerResistance, PestAndPathogenSusceptibility) VALUES (?, ?, ?, ?)';
-    let values = [treeId, treeData.RecommendedForWindbreak, treeData.DeerResistance, treeData.PestAndPathogenSusceptibility];
+    let sql = 'INSERT INTO PlantingConsiderations (TreeId, RecomendedForWindbreak, DeerResistance, PestAndPathogenSusceptibility) VALUES (?, ?, ?, ?)';
+    let values = [treeId, treeData.RecomendedForWindbreak, treeData.DeerResistance, treeData.PestAndPathogenSusceptibility];
     return await connection.query(sql, values);
 }
 
@@ -214,9 +214,9 @@ async function updateLandformPref(treeId, treeData) {
         update.push('FloodPlainBottomLand = ?');
         values.push(treeData.FloodPlainBottomLand);
     }
-    if(treeData.UPlandMesic !== undefined){
-        update.push('UPlandMesic = ?');
-        values.push(treeData.UPlandMesic);
+    if(treeData.UplandMesic !== undefined){
+    update.push('UplandMesic = ?');
+    values.push(treeData.UplandMesic);
     }
     if(treeData.UplandDry !== undefined){
         update.push('UplandDry = ?');
@@ -235,13 +235,13 @@ async function updateSiteChemPref(treeId, treeData) {
         update.push('SoilAcidTol = ?');
         values.push(treeData.SoilAcidTol);
     }
-    if(treeData.SoilAlkainTol !== undefined){
-        update.push('SoilAlkainTol = ?');
-        values.push(treeData.SoilAlkainTol);
+    if(treeData.SoilAlkTol !== undefined){
+        update.push('SoilAlkTol = ?');
+        values.push(treeData.SoilAlkTol);
     }
-    if(treeData.SaltTol !== undefined){
-        update.push('SaltTol = ?');
-        values.push(treeData.SaltTol);
+    if(treeData.SoilSaltTol !== undefined){
+        update.push('SoilSaltTol = ?');
+        values.push(treeData.SoilSaltTol);
     }
     let sql = `UPDATE SiteChemPref SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
@@ -405,9 +405,9 @@ async function updatePlantingConsiderations(treeId, treeData) {
     const update = [];
     const values = [];
 
-    if(treeData.RecommendedForWindbreak !== undefined){
-        update.push('RecommendedForWindbreak = ?');
-        values.push(treeData.RecommendedForWindbreak);
+    if(treeData.RecomendedForWindbreak !== undefined){
+        update.push('RecomendedForWindbreak = ?');
+        values.push(treeData.RecomendedForWindbreak);
     }
     if(treeData.DeerResistance !== undefined){
         update.push('DeerResistance = ?');
