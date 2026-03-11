@@ -23,16 +23,7 @@ const filtermap = {
   uplanddry: "UplandDry",
   soilacidtol: "SoilAcidTol",
   soilalktol: "SoilAlkTol",
-  soilsalttol: "SoilSaltTol",
-  easterngreatlakelowlands: "EasternGreatLakeLowLands",
-  northernalleghenyplateau: "NorthernAlleghenyPlateau",
-  eriedriftplain: "ErieDriftPlain",
-  northercoastalzone: "NorthernCoastalZone",
-  northernpiedmont: "NorthernPiedmont",
-  ridgeandvalley: "RidgeAndValley",
-  atlanticcoastalpinebarrens: "AtlanticCoastalPineBarrens",
-  northeasternhighlands: "NortheasternHighlands",
-  northcentralappalachian: "NorthCentralAppalachian"
+  soilsalttol: "SoilSaltTol"
 
 };
 
@@ -70,8 +61,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         const allowed = {
             Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
             LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"],
-            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"],
-            Ecoregion: ["EasternGreatLakeLowLands", "NorthernAlleghenyPlateau","ErieDriftPlain", "NorthernCoastalZone", "NorthernPiedmont", "RidgeAndValley", "AtlanticCoastalPineBarrens", "NortheasternHighlands", "NorthCentralAppalachian"]
+            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});

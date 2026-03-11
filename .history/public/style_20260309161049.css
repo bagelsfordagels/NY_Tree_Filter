@@ -20,11 +20,7 @@ body{
 	-moz-osx-font-smoothing:grayscale;
 }
 
-.container{
-	width: 100%;
-	max-width: none;
-	padding: 24px 32px;
-}
+.container{max-width:1100px;margin:0 auto;padding:24px}
 
 /* layout: left column filters, right column results */
 main.container{
@@ -41,12 +37,6 @@ main.container{
 .card.results{
 	flex:1 1 auto;
 	text-transform: capitalize;
-}
-
-.groupControls{
-  margin-bottom:12px;
-  display:flex;
-  gap:10px;
 }
 
 .siteHeader{
@@ -88,10 +78,7 @@ main.container{
 
 .filters .filterGrid{
 	display:flex;
-	flex-direction:column;
-	gap:12px
-}
-
+	flex-direction:column;gap:12px}
 /* Each filter row: label at left, select on right */
 .field{
 	display:flex;

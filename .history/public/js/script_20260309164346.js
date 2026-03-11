@@ -88,29 +88,30 @@ async function fetchAndRenderTrees() {
     rows.forEach(r => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td class="col-species">${r.species ?? ""}</td>
-            <td class="col-CommonName">${r.CommonName ?? ""}</td>
-            <td class="col-AGCT">${r.AGCT ?? ""}</td>
-            <td class="col-ACProd">${r.ACProd ?? ""}</td>
-            <td class="col-NWIStatus">${r.NWIStatus ?? ""}</td>
+            <td data-group="core">${r.species ?? ""}</td>
+            <td data-group="core">${r.CommonName ?? ""}</td>
 
-            <td class="col-lfp">${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandMesic)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandDry)}</td>
+            <td data-group="soil">${r.AGCT ?? ""}</td>
+            <td data-group="soil">${r.ACProd ?? ""}</td>
+            <td data-group="soil">${r.NWIStatus ?? ""}</td>
 
-            <td class="col-SoilAcidTol">${r.SoilAcidTol ?? ""}</td>
-            <td class="col-SoilAlkTol">${r.SoilAlkTol ?? ""}</td>
-            <td class="col-SoilSaltTol">${r.SoilSaltTol ?? ""}</td>
+            <td data-group="landform">${booleanToYn(r.FloodPlainBottomLand)}</td>
+            <td data-group="landform">${booleanToYn(r.UplandMesic)}</td>
+            <td data-group="landform">${booleanToYn(r.UplandDry)}</td>
 
-            <td class="col-EasternGreatLakeLowLands">${booleanToYn(r.EasternGreatLakeLowLands)}</td>
-            <td class="col-NorthernAlleghenyPlateau">${booleanToYn(r.NorthernAlleghenyPlateau)}</td>
-            <td class="col-ErieDriftPlain">${booleanToYn(r.ErieDriftPlain)}</td>
-            <td class="col-NorthernCoastalZone">${booleanToYn(r.NorthernCoastalZone)}</td>
-            <td class="col-NorthernPiedmont">${booleanToYn(r.NorthernPiedmont)}</td>
-            <td class="col-RidgeAndValley">${booleanToYn(r.RidgeAndValley)}</td>
-            <td class="col-AtlanticCoastalPineBarrens">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
-            <td class="col-NortheasternHighlands">${booleanToYn(r.NortheasternHighlands)}</td>
-            <td class="col-NorthCentralAppalachian">${booleanToYn(r.NorthCentralAppalachian)}</td>
+            <td data-group="soil">${r.SoilAcidTol ?? ""}</td>
+            <td data-group="soil">${r.SoilAlkTol ?? ""}</td>
+            <td data-group="soil">${r.SoilSaltTol ?? ""}</td>
+
+            <td data-group="ecoregion">${booleanToYn(r.EasternGreatLakeLowLands)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.NorthernAlleghenyPlateau)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.ErieDriftPlain)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.NorthernCoastalZone)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.NorthernPiedmont)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.RidgeAndValley)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.NortheasternHighlands)}</td>
+            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td>
             
             
         `;
@@ -142,39 +143,17 @@ function clearFilters() {
     // document.getElementById("filterSoilSaltTol").value = "";
 }
 
-function buildColumnControls(){
+function toggleGroup(groupName){
 
-    const controls = document.getElementById("columnControls");
-    const headers = document.querySelectorAll("th[data-col]");
+    const cells = document.querySelectorAll(`[data-group="${groupName}"]`);
 
-        headers.forEach(function(th){
-
-    const col = th.dataset.col;
-    const label = th.textContent;
-
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = true;
-
-    checkbox.addEventListener("change", function(){
-
-        const cells = document.querySelectorAll(".col-" + col);
-
-        cells.forEach(function(cell){
-            cell.style.display = checkbox.checked ? "" : "none";
-        });
-
+    cells.forEach(function(cell){
+        if(cell.style.display === "none"){
+            cell.style.display = "";
+        }else{
+            cell.style.display = "none";
+        }
     });
-
-    const wrapper = document.createElement("label");
-    wrapper.style.marginRight = "10px";
-
-    wrapper.appendChild(checkbox);
-    wrapper.appendChild(document.createTextNode(" " + label));
-
-    controls.appendChild(wrapper);
-
-  });
 
 }
 
@@ -198,6 +177,21 @@ document
       clearFilters();
       fetchAndRenderTrees();
     });
+
+document.getElementById("toggleEcoregion")
+  .addEventListener("click", function(){
+      toggleGroup("ecoregion");
+  });
+
+document.getElementById("toggleLandform")
+  .addEventListener("click", function(){
+      toggleGroup("landform");
+  });
+
+document.getElementById("toggleSoil")
+  .addEventListener("click", function(){
+      toggleGroup("soil");
+  });
 
 
     buildColumnControls();

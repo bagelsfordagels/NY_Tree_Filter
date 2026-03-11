@@ -23,16 +23,7 @@ const filtermap = {
   uplanddry: "UplandDry",
   soilacidtol: "SoilAcidTol",
   soilalktol: "SoilAlkTol",
-  soilsalttol: "SoilSaltTol",
-  easterngreatlakelowlands: "EasternGreatLakeLowLands",
-  northernalleghenyplateau: "NorthernAlleghenyPlateau",
-  eriedriftplain: "ErieDriftPlain",
-  northercoastalzone: "NorthernCoastalZone",
-  northernpiedmont: "NorthernPiedmont",
-  ridgeandvalley: "RidgeAndValley",
-  atlanticcoastalpinebarrens: "AtlanticCoastalPineBarrens",
-  northeasternhighlands: "NortheasternHighlands",
-  northcentralappalachian: "NorthCentralAppalachian"
+  soilsalttol: "SoilSaltTol"
 
 };
 
