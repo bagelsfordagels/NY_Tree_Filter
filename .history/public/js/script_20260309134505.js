@@ -94,9 +94,9 @@ async function fetchAndRenderTrees() {
             <td class="col-ACProd">${r.ACProd ?? ""}</td>
             <td class="col-NWIStatus">${r.NWIStatus ?? ""}</td>
 
-            <td class="col-lfp">${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandMesic)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandDry)}</td>
+            <td class="col-FloodPlainBottomLand">${booleanToYn(r.FloodPlainBottomLand)}</td>
+            <td class="col-UplandMesic">${booleanToYn(r.UplandMesic)}</td>
+            <td class="col-UplandDry">${booleanToYn(r.UplandDry)}</td>
 
             <td class="col-SoilAcidTol">${r.SoilAcidTol ?? ""}</td>
             <td class="col-SoilAlkTol">${r.SoilAlkTol ?? ""}</td>
@@ -142,39 +142,7 @@ function clearFilters() {
     // document.getElementById("filterSoilSaltTol").value = "";
 }
 
-function buildColumnControls(){
-
-    const controls = document.getElementById("columnControls");
-    const headers = document.querySelectorAll("th[data-col]");
-
-        headers.forEach(function(th){
-
-    const col = th.dataset.col;
-    const label = th.textContent;
-
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = true;
-
-    checkbox.addEventListener("change", function(){
-
-        const cells = document.querySelectorAll(".col-" + col);
-
-        cells.forEach(function(cell){
-            cell.style.display = checkbox.checked ? "" : "none";
-        });
-
-    });
-
-    const wrapper = document.createElement("label");
-    wrapper.style.marginRight = "10px";
-
-    wrapper.appendChild(checkbox);
-    wrapper.appendChild(document.createTextNode(" " + label));
-
-    controls.appendChild(wrapper);
-
-  });
+function hideSpecies(){
 
 }
 
@@ -199,8 +167,11 @@ document
       fetchAndRenderTrees();
     });
 
+document
+    .getElementById("hideSpecies")
+    .addEventListener("click", () =>{
 
-    buildColumnControls();
+    })
 
-    fetchAndRenderTrees();
+  fetchAndRenderTrees();
 });

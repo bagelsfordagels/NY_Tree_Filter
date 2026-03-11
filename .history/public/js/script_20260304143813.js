@@ -7,22 +7,13 @@ const filters = [
         { id: "filterCommon", param: "CommonName" },
         { id: "filterAGCT", param: "agct" },
         { id: "filterACProd", param: "acprod" },
-        { id: "filterNWI", param: "nwistatus" },
+        { id: "filterNWI", param: "NWIStatus" },
         { id: "filterFloodBottom", param: "floodplainbottomland" },
         { id: "filterUplandMesic", param: "uplandmesic" },
         { id: "filterUplandDry", param: "uplanddry" },
         { id: "filterSoilAcidTol", param: "soilacidtol" },
         { id: "filterSoilAlkTol", param: "soilalktol" },
         { id: "filterSoilSaltTol", param: "soilsalttol" },
-        { id: "filterEGLL", param: "easterngreatlakelowlands"},
-        { id: "filterNAP", param: "northernalleghenyplateau"},
-        { id: "filterEDP", param: "eriedriftplain"},
-        { id: "filterNCZ", param: "northercoastalzone"},
-        { id: "filterNP", param: "northernpiedmont"},
-        { id: "filterRV", param: "ridgeandvalley"},
-        { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
-        { id: "filterNH", param: "northeasternhighlands"},
-        { id: "filterNCA", param: "northcentralappalachian"}
 
 ];
 
@@ -88,31 +79,17 @@ async function fetchAndRenderTrees() {
     rows.forEach(r => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td class="col-species">${r.species ?? ""}</td>
-            <td class="col-CommonName">${r.CommonName ?? ""}</td>
-            <td class="col-AGCT">${r.AGCT ?? ""}</td>
-            <td class="col-ACProd">${r.ACProd ?? ""}</td>
-            <td class="col-NWIStatus">${r.NWIStatus ?? ""}</td>
-
-            <td class="col-lfp">${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandMesic)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandDry)}</td>
-
-            <td class="col-SoilAcidTol">${r.SoilAcidTol ?? ""}</td>
-            <td class="col-SoilAlkTol">${r.SoilAlkTol ?? ""}</td>
-            <td class="col-SoilSaltTol">${r.SoilSaltTol ?? ""}</td>
-
-            <td class="col-EasternGreatLakeLowLands">${booleanToYn(r.EasternGreatLakeLowLands)}</td>
-            <td class="col-NorthernAlleghenyPlateau">${booleanToYn(r.NorthernAlleghenyPlateau)}</td>
-            <td class="col-ErieDriftPlain">${booleanToYn(r.ErieDriftPlain)}</td>
-            <td class="col-NorthernCoastalZone">${booleanToYn(r.NorthernCoastalZone)}</td>
-            <td class="col-NorthernPiedmont">${booleanToYn(r.NorthernPiedmont)}</td>
-            <td class="col-RidgeAndValley">${booleanToYn(r.RidgeAndValley)}</td>
-            <td class="col-AtlanticCoastalPineBarrens">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
-            <td class="col-NortheasternHighlands">${booleanToYn(r.NortheasternHighlands)}</td>
-            <td class="col-NorthCentralAppalachian">${booleanToYn(r.NorthCentralAppalachian)}</td>
-            
-            
+            <td>${r.species ?? ""}</td>
+            <td>${r.CommonName ?? ""}</td>
+            <td>${r.AGCT ?? ""}</td>
+            <td>${r.ACProd ?? ""}</td>
+            <td>${r.NWIStatus ?? ""}</td>
+            <td>${booleanToYn(r.FloodPlainBottomLand)}</td>
+            <td>${booleanToYn(r.UplandMesic)}</td>
+            <td>${booleanToYn(r.UplandDry)}</td>
+            <td>${r.SoilAcidTol ?? ""}</td>
+            <td>${r.SoilAlkTol ?? ""}</td>
+            <td>${r.SoilSaltTol ?? ""}</td>
         `;
         tbody.appendChild(tr);
     });
@@ -125,57 +102,17 @@ function booleanToYn(val){
 }
 
 function clearFilters() {
-    filters.forEach(function(f){
-        document.getElementById(f.id).value = "";
-
-    });
-    // document.getElementById("filterSpecies").value = "";
-    // document.getElementById("filterCommon").value = "";
-    // document.getElementById("filterAGCT").value = "";
-    // document.getElementById("filterACProd").value = "";
-    // document.getElementById("filterNWI").value = "";
-    // document.getElementById("filterFloodBottom").value = "";
-    // document.getElementById("filterUplandMesic").value = "";
-    // document.getElementById("filterUplandDry").value = "";  
-    // document.getElementById("filterSoilAcidTol").value = "";
-    // document.getElementById("filterSoilAlkTol").value = "";
-    // document.getElementById("filterSoilSaltTol").value = "";
-}
-
-function buildColumnControls(){
-
-    const controls = document.getElementById("columnControls");
-    const headers = document.querySelectorAll("th[data-col]");
-
-        headers.forEach(function(th){
-
-    const col = th.dataset.col;
-    const label = th.textContent;
-
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = true;
-
-    checkbox.addEventListener("change", function(){
-
-        const cells = document.querySelectorAll(".col-" + col);
-
-        cells.forEach(function(cell){
-            cell.style.display = checkbox.checked ? "" : "none";
-        });
-
-    });
-
-    const wrapper = document.createElement("label");
-    wrapper.style.marginRight = "10px";
-
-    wrapper.appendChild(checkbox);
-    wrapper.appendChild(document.createTextNode(" " + label));
-
-    controls.appendChild(wrapper);
-
-  });
-
+    document.getElementById("filterSpecies").value = "";
+    document.getElementById("filterCommon").value = "";
+    document.getElementById("filterAGCT").value = "";
+    document.getElementById("filterACProd").value = "";
+    document.getElementById("filterNWI").value = "";
+    document.getElementById("filterFloodBottom").value = "";
+    document.getElementById("filterUplandMesic").value = "";
+    document.getElementById("filterUplandDry").value = "";  
+    document.getElementById("filterSoilAcidTol").value = "";
+    document.getElementById("filterSoilAlkTol").value = "";
+    document.getElementById("filterSoilSaltTol").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -188,19 +125,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSoilAlkTol", "SiteChemPref", "SoilAlkTol");
     await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
 
-document
+  document
     .getElementById("applyFilters")
     .addEventListener("click", fetchAndRenderTrees);
 
-document
+  document
     .getElementById("clearFilters")
     .addEventListener("click", () => {
       clearFilters();
       fetchAndRenderTrees();
     });
 
-
-    buildColumnControls();
-
-    fetchAndRenderTrees();
+  fetchAndRenderTrees();
 });

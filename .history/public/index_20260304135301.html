@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NY Trees — Filter</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="siteHeader">
+    <div class="container">
+        <h1>NY Collaborative Priority Species List</h1>
+        <p class="subtitle">Filter the dataset using the dropdowns below</p>
+    </div>
+</header>
+
+<main class="container">
+
+  <section class="card filters">
+    <h2 class="cardTitle">Filters</h2>
+
+    <div class="filterGrid">
+
+      <label>
+        Species
+        <select id="filterSpecies">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Common Name
+        <select id="filterCommon">
+            <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Aggregated Climate Tolerance
+        <select id="filterAGCT">
+            <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Aggregated Commercial Production
+        <select id="filterACProd">
+            <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        National Wetland Status
+        <select id="filterNWI">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Flood Plain / Bottom Land
+        <select id="filterFloodBottom">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </label>
+
+      <label>
+        Upland Mesic
+        <select id="filterUplandMesic">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </label>
+
+      <label>
+        Upland Dry
+        <select id="filterUplandDry">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </label>
+
+      <label>
+        Soil Acidity Tolerance
+        <select id="filterSoilAcidTol">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Soil Alkalinity Tolerance
+        <select id="filterSoilAlkTol">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+      <label>
+        Soil Tolerance
+        <select id="filterSoilSaltTol">
+          <option value="">Any</option>
+        </select>
+      </label>
+
+
+
+    </div>
+
+    <div class="actions">
+        <button id="applyFilters">Apply filters</button>
+        <button id="clearFilters">Clear</button>
+    </div>
+  </section>
+
+  <section class="card results">
+    <table class="reasults-table">
+      <thead>
+        <tr>
+            <th>Species</th>
+            <th>Common Name</th>
+            <th>Aggregated Climate Tolerance</th>
+            <th>Aggregated Commercial Production</th>
+            <th>National Wetland Status</th>
+            <th>Floodplain / Bottomland</th>
+            <th>Upland Mesic</th>
+            <th>Upland Dry</th>
+            <th>Soil Acidity Tolerance</th>
+            <th>Soil Alkalinity Tolerance</th>
+            <th>Soil Salt Tolerance</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

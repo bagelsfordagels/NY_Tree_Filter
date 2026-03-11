@@ -43,12 +43,6 @@ main.container{
 	text-transform: capitalize;
 }
 
-.groupControls{
-  margin-bottom:12px;
-  display:flex;
-  gap:10px;
-}
-
 .siteHeader{
 	background:linear-gradient(90deg,var(--green-700),var(--green-500));
 	color:white;

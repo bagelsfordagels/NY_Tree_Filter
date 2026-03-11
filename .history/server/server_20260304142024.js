@@ -12,30 +12,6 @@ const adminRoutes = require("./routes/admin");
 
 app.use("/api/admin", adminRoutes);
 
-const filtermap = {
-  species: "species",
-  CommonName: "CommonName",
-  agct: "AGCT",
-  acprod: "ACprod",
-  nwistatus: "NWIStatus",
-  floodplainbottomland: "FloodPlainBottomLand",
-  uplandmesic: "UplandMesic",
-  uplanddry: "UplandDry",
-  soilacidtol: "SoilAcidTol",
-  soilalktol: "SoilAlkTol",
-  soilsalttol: "SoilSaltTol",
-  easterngreatlakelowlands: "EasternGreatLakeLowLands",
-  northernalleghenyplateau: "NorthernAlleghenyPlateau",
-  eriedriftplain: "ErieDriftPlain",
-  northercoastalzone: "NorthernCoastalZone",
-  northernpiedmont: "NorthernPiedmont",
-  ridgeandvalley: "RidgeAndValley",
-  atlanticcoastalpinebarrens: "AtlanticCoastalPineBarrens",
-  northeasternhighlands: "NortheasternHighlands",
-  northcentralappalachian: "NorthCentralAppalachian"
-
-};
-
 // Basic health check
 app.get("/api/health", async (req, res) => {
   try {
@@ -70,8 +46,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         const allowed = {
             Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
             LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"],
-            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"],
-            Ecoregion: ["EasternGreatLakeLowLands", "NorthernAlleghenyPlateau","ErieDriftPlain", "NorthernCoastalZone", "NorthernPiedmont", "RidgeAndValley", "AtlanticCoastalPineBarrens", "NortheasternHighlands", "NorthCentralAppalachian"]
+            SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"]
         };
         if(!allowed[table] || !allowed[table].includes(column)){
             return res.status(400).json({error: "Invalid table or column"});
@@ -89,18 +64,17 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
 app.get("/api/filter", async (req, res) => {
     console.log("QUERY:", req.query);
   try {
-
-    // const species = (req.query.species || "").trim();
-    // const CommonName = (req.query.CommonName || "").trim();
-    // const agct = (req.query.agct || "").trim();
-    // const acprod = (req.query.acprod || "").trim();
-    // const nwistatus = (req.query.nwistatus || "").trim();
-    // const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
-    // const uplandmesic = (req.query.uplandmesic || "").trim();
-    // const uplanddry = (req.query.uplanddry || "").trim();
-    // const soilacidtol = (req.query.soilacidtol || "").trim();
-    // const soilalktol = (req.query.soilalktol || "").trim();
-    // const soilsalttol = (req.query.soilsalttol || "").trim();
+    const species = (req.query.species || "").trim();
+    const CommonName = (req.query.CommonName || "").trim();
+    const agct = (req.query.agct || "").trim();
+    const acprod = (req.query.acprod || "").trim();
+    const nwistatus = (req.query.nwistatus || "").trim();
+    const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
+    const uplandmesic = (req.query.uplandmesic || "").trim();
+    const uplanddry = (req.query.uplanddry || "").trim();
+    const soilacidtol = (req.query.soilacidtol || "").trim();
+    const soilalktol = (req.query.soilalktol || "").trim();
+    const soilsalttol = (req.query.soilsalttol || "").trim();
 
 
     let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
@@ -114,26 +88,18 @@ app.get("/api/filter", async (req, res) => {
               `;
     const where = []; 
     const params = [];
-    // replaced hard coded requests and filtering logic with dynamic for loop 
-    for (const key in filtermap){
-      const val = (req.query[key] || "").trim();
-      if(val) { 
-        where.push(`${filtermap[key]} = ?`);
-        params.push(val);
-      }
-    }
 
-    // if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
-    // if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
-    // if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
-    // if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
-    // if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
-    // if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    // if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    // if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
-    // if (soilacidtol) { where.push("LOWER(SoilAcidTol) = LOWER(?)"); params.push(soilacidtol); }
-    // if (soilalktol) { where.push("LOWER(SoilAlkTol) = LOWER(?)"); params.push(soilalktol); }
-    // if (soilsalttol) { where.push("LOWER(SoilSaltTol) = LOWER(?)"); params.push(soilsalttol); }
+    if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
+    if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
+    if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
+    if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
+    if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
+    if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
+    if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
+    if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
+    if (soilacidtol) { where.push("LOWER(SoilAcidTol) = LOWER(?)"); params.push(soilacidtol); }
+    if (soilalktol) { where.push("LOWER(SoilAlkTol) = LOWER(?)"); params.push(soilalktol); }
+    if (soilsalttol) { where.push("LOWER(SoilSaltTol) = LOWER(?)"); params.push(soilsalttol); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     //sql += " ORDER BY TreeId LIMIT 200";

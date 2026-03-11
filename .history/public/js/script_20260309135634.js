@@ -94,9 +94,9 @@ async function fetchAndRenderTrees() {
             <td class="col-ACProd">${r.ACProd ?? ""}</td>
             <td class="col-NWIStatus">${r.NWIStatus ?? ""}</td>
 
-            <td class="col-lfp">${booleanToYn(r.FloodPlainBottomLand)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandMesic)}</td>
-            <td class="col-lfp">${booleanToYn(r.UplandDry)}</td>
+            <td class="col-FloodPlainBottomLand">${booleanToYn(r.FloodPlainBottomLand)}</td>
+            <td class="col-UplandMesic">${booleanToYn(r.UplandMesic)}</td>
+            <td class="col-UplandDry">${booleanToYn(r.UplandDry)}</td>
 
             <td class="col-SoilAcidTol">${r.SoilAcidTol ?? ""}</td>
             <td class="col-SoilAlkTol">${r.SoilAlkTol ?? ""}</td>
