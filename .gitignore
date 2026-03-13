@@ -3,3 +3,4 @@ server/adminTest.http
 server/.env
 server/.env
 server/.env
+server/.env

@@ -1,27 +1,27 @@
-const pool = require('../db');
+const adminPool = require("../adminDB");
 
 //get functions
 async function getAllTrees(){ 
     let sql = 'SELECT * FROM Trees';
-    return await pool.query(sql);
+    return await adminPool.query(sql);
 }
 
 async function getTree(TreeId){
-    const [tree] = await pool.query('SELECT * FROM Trees WHERE TreeId = ?', [TreeId]);
-    const [landformPref] = await pool.query('SELECT * FROM LandformPref WHERE TreeId = ?', [TreeId]);
-    const [siteChemPref] = await pool.query('SELECT * FROM SiteChemPref WHERE TreeId = ?', [TreeId]);
-    const [ecoregion] = await pool.query('SELECT * FROM Ecoregion WHERE TreeId = ?', [TreeId]);
-    const [safforestTypeGroup] = await pool.query('SELECT * FROM SAFForestTypeGroup WHERE TreeId = ?', [TreeId]);
-    const [speciesCharacteristics] = await pool.query('SELECT * FROM SpeciesCharacteristics WHERE TreeId = ?', [TreeId]);
-    const [economicValue] = await pool.query('SELECT * FROM EconomicValue WHERE TreeId = ?', [TreeId]);
-    const [ecologicVal] = await pool.query('SELECT * FROM EcologicalValue WHERE TreeId = ?', [TreeId]);
-    const [plantingConsiderations] = await pool.query('SELECT * FROM PlantingConsiderations WHERE TreeId = ?', [TreeId]);
+    const [tree] = await adminPool.query('SELECT * FROM Trees WHERE TreeId = ?', [TreeId]);
+    const [landformPref] = await adminPool.query('SELECT * FROM LandformPref WHERE TreeId = ?', [TreeId]);
+    const [siteChemPref] = await adminPool.query('SELECT * FROM SiteChemPref WHERE TreeId = ?', [TreeId]);
+    const [ecoregion] = await adminPool.query('SELECT * FROM Ecoregion WHERE TreeId = ?', [TreeId]);
+    const [safforestTypeGroup] = await adminPool.query('SELECT * FROM SAFForestTypeGroup WHERE TreeId = ?', [TreeId]);
+    const [speciesCharacteristics] = await adminPool.query('SELECT * FROM SpeciesCharacteristics WHERE TreeId = ?', [TreeId]);
+    const [economicValue] = await adminPool.query('SELECT * FROM EconomicValue WHERE TreeId = ?', [TreeId]);
+    const [ecologicVal] = await adminPool.query('SELECT * FROM EcologicalValue WHERE TreeId = ?', [TreeId]);
+    const [plantingConsiderations] = await adminPool.query('SELECT * FROM PlantingConsiderations WHERE TreeId = ?', [TreeId]);
     return { tree, landformPref, siteChemPref, ecoregion, safforestTypeGroup, speciesCharacteristics, economicValue, ecologicVal, plantingConsiderations };
 }
 
 //Creating a tree
 async function createFullTree(treeData) {
-    const connection = await pool.getConnection();
+    const connection = await adminPool.getConnection();
     try{
         await connection.beginTransaction();
         const [result] = await createTree(connection, treeData);
@@ -100,7 +100,7 @@ async function createPlantingConsiderations(connection, treeId, treeData) {
 
 //Removing a tree
 async function removeFullTree(treeId) {
-    const connection = await pool.getConnection();
+    const connection = await adminPool.getConnection();
     try{
         await connection.beginTransaction();
         await removeLandformPref(connection, treeId);
@@ -203,7 +203,7 @@ async function updateTree(treeId, treeData) {
    }
    let sql = `UPDATE Trees SET ${update.join(', ')} WHERE TreeId = ?`;
    values.push(treeId);
-   return await pool.query(sql, values);
+   return await adminPool.query(sql, values);
 }
 
 async function updateLandformPref(treeId, treeData) {
@@ -224,7 +224,7 @@ async function updateLandformPref(treeId, treeData) {
     }
     let sql = `UPDATE LandformPref SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateSiteChemPref(treeId, treeData) {
@@ -245,7 +245,7 @@ async function updateSiteChemPref(treeId, treeData) {
     }
     let sql = `UPDATE SiteChemPref SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateEcoregion(treeId, treeData) {
@@ -290,7 +290,7 @@ async function updateEcoregion(treeId, treeData) {
     }
     let sql = `UPDATE Ecoregion SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateSAFForestTypeGroup(treeId, treeData) {
@@ -327,7 +327,7 @@ async function updateSAFForestTypeGroup(treeId, treeData) {
     }
     let sql = `UPDATE SAFForestTypeGroup SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateSpeciesCharacteristics(treeId, treeData) {
@@ -356,7 +356,7 @@ async function updateSpeciesCharacteristics(treeId, treeData) {
     }
     let sql = `UPDATE SpeciesCharacteristics SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateEconomicValue(treeId, treeData) {
@@ -377,7 +377,7 @@ async function updateEconomicValue(treeId, treeData) {
     }
     let sql = `UPDATE EconomicValue SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updateEcologicVal(treeId, treeData) {
@@ -398,7 +398,7 @@ async function updateEcologicVal(treeId, treeData) {
     }
     let sql = `UPDATE EcologicalValue SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 async function updatePlantingConsiderations(treeId, treeData) {
@@ -419,7 +419,7 @@ async function updatePlantingConsiderations(treeId, treeData) {
     }
     let sql = `UPDATE PlantingConsiderations SET ${update.join(', ')} WHERE TreeId = ?`;
     values.push(treeId);
-    return await pool.query(sql, values);
+    return await adminPool.query(sql, values);
 }
 
 module.exports = {getAllTrees, getTree, createFullTree, removeFullTree, updateTree, updateLandformPref, updateSiteChemPref, updateEcoregion, updateSAFForestTypeGroup, updateSpeciesCharacteristics, updateEconomicValue, updateEcologicVal, updatePlantingConsiderations};
