@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="pageShell">
-
-
 
 <header class="siteHeader">
     <div class="container">
@@ -199,13 +196,12 @@
   </section>
 
   <section class="card results">
+    <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
+    <button onclick="toggleGroup('soil')">Toggle Soil</button>
+    <button onclick="toggleGroup('landform')">Toggle Landform</button>
     <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
     <button onclick="toggleGroup('prod')">Toggle Production</button>
     <button onclick="toggleGroup('wetland')">Toggle Wetland Status</button>
-    <button onclick="toggleGroup('landform')">Toggle Landform</button>
-    <button onclick="toggleGroup('soil')">Toggle Soil</button>
-    <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
-    
     <table class="results-table">
       <thead>
         <tr>
@@ -241,6 +237,5 @@
 </main>
 
 <script src="/js/script.js"></script>
-</div>
 </body>
 </html>
