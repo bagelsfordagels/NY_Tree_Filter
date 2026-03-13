@@ -4,11 +4,8 @@ console.log("DB_NAME:", process.env.DB_NAME);
 const express = require("express");
 const pool = require("./db");
 const path = require("path");
-<<<<<<< Updated upstream
-=======
+
 const adminPool = require("./adminDB");
-console.log(adminPool);
->>>>>>> Stashed changes
 
 const app = express();
 app.use(express.json());
