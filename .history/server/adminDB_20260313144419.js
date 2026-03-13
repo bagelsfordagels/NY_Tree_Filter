@@ -1,5 +1,6 @@
  const mysql = require("mysql2/promise");
 
+
  const adminPool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_ADMIN_USER,
@@ -8,5 +9,5 @@
   waitForConnections: true,
   connectionLimit: 5,
  });
-//console.log(adminPool);
-module.exports = adminPool
+
+ module.export = adminPool
