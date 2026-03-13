@@ -1,9 +1,9 @@
 :root {
-  --bg: #f3efe6;
+  --bg: #ffffff;
   --card: #faf7f0;
   --text: #3d3528;
-  --muted: #6f6557;
-  --accent: #7a8b5a;
+  --muted: #064e3b;
+  --accent: #10b981;
   --accent-soft: #a3b18a;
   --border: #d8cfbf;
   --shadow: 0 8px 20px rgba(60, 52, 40, 0.08);
@@ -17,7 +17,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #f6f2e9, #ece4d8);
+  background: linear-gradient(to bottom, #fbfffb, #047857);
   color: var(--text);
   line-height: 1.6;
 }
@@ -206,6 +206,6 @@ h1 {
 }
 
 .start-button:hover {
-  background-color: #65754a;
+  background-color: #09af83;
   transform: translateY(-1px);
 }
