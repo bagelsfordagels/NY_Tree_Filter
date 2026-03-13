@@ -8,5 +8,5 @@
   waitForConnections: true,
   connectionLimit: 5,
  });
-
- module.export = adminPool
+//console.log(adminPool);
+module.exports = adminPool

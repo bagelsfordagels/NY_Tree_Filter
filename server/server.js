@@ -6,10 +6,12 @@ const pool = require("./db");
 const path = require("path");
 const { adminPool } = require("./adminDB");
 
+const adminPool = require("./adminDB");
+
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
-const adminRoutes = require("./routes/admin");
+const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/api/admin", adminRoutes);
 
