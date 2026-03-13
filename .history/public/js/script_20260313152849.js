@@ -22,16 +22,7 @@ const filters = [
         { id: "filterRV", param: "ridgeandvalley"},
         { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
         { id: "filterNH", param: "northeasternhighlands"},
-        { id: "filterNCA", param: "northcentralappalachian"},
-        { id: "filterAspenBirch", param: "aspenbirch"},
-        { id: "filterElmAshCottonwood", param: "elmashcottonwood"},
-        { id: "filterLobLolly", param: "loblollyshortleafpine"},
-        { id: "filterMapleBeechBirch", param: "maplebeechbirch"},
-        { id: "filterOakHickory", param: "oakhickory"},
-        { id: "filterSpruceFir", param: "sprucefir"},
-        { id: "filterWhiteRedJackPine", param: "whiteredjackpine"}
-
-
+        { id: "filterNCA", param: "northcentralappalachian"}
 
 ];
 
@@ -41,8 +32,7 @@ const hiddenGroups = {
     wetland: false,
     landform: false,
     soil: false,
-    ecoregion: false,
-    forestType: false
+    ecoregion: false
 };
     
 
@@ -108,15 +98,9 @@ async function fetchAndRenderTrees() {
             <td data-group="ecoregion">${booleanToYn(r.RidgeAndValley)}</td>
             <td data-group="ecoregion">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
             <td data-group="ecoregion">${booleanToYn(r.NortheasternHighlands)}</td>
-            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td> 
+            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td>
             
-            <td data-group="forestType">${booleanToYn(r.AspenBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.ElmAshCottonwood)}</td>
-            <td data-group="forestType">${booleanToYn(r.LoblollyShortleafPine)}</td>
-            <td data-group="forestType">${booleanToYn(r.MapleBeechBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.OakHickory)}</td>
-            <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
-            <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
+            
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();

@@ -9,7 +9,7 @@ const adminPool = require("./adminDB");
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")));
-const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require("./routes/admin");
 
 app.use("/api/admin", adminRoutes);
 
@@ -124,7 +124,7 @@ app.get("/api/filter", async (req, res) => {
     let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
-                      E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 
+                      E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian 
                       F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId

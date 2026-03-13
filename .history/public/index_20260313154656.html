@@ -180,15 +180,6 @@
         </select>
       </label>
 
-       <label>
-        North Central Appalachian
-        <select id="filterNCA">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
       <label>
         Aspen Birch
         <select id="filterAspenBirch">
@@ -197,55 +188,10 @@
           <option value="0">No</option>
         </select>
       </label>
-
       <label>
-        Elm Ash Cottonwood
-        <select id="filterElmAshCottonwood">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
 
-      <label>
-        Lob Lolly Short Leaf Pine
-        <select id="filterLobLolly">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Maple Beech Birch
-        <select id="filterMapleBeechBirch">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Oak Hickory
-        <select id="filterOakHickory">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Spruce Fir
-        <select id="filterSpruceFir">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        White Red Jack Pine
-        <select id="filterWhiteRedJackPine">
+        Aspen Birch
+        <select id="filterAspenBirch">
           <option value="">Any</option>
           <option value="1">Yes</option>
           <option value="0">No</option>
@@ -268,7 +214,6 @@
     <button onclick="toggleGroup('landform')">Toggle Landform</button>
     <button onclick="toggleGroup('soil')">Toggle Soil</button>
     <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
-    <button onclick="toggleGroup('forestType')">Toggle Forest Type</button>
     
     <table class="results-table">
       <thead>
@@ -296,14 +241,6 @@
             <th data-group="ecoregion">Atlantic Coastal Pine Barrens</th>
             <th data-group="ecoregion">Northeastern Highlands</th>
             <th data-group="ecoregion">North Central Appalachian</th>
-
-            <th data-group="forestType">Aspen / Birch</th>
-            <th data-group="forestType">Elm / Ash / Cottonwood</th>
-            <th data-group="forestType">Lob Lolly / Shortleaf Pine</th>
-            <th data-group="forestType">Maple / Beech / Birch</th>
-            <th data-group="forestType">Oak / Hickory</th>
-            <th data-group="forestType">Spruce / Fir</th>
-            <th data-group="forestType">White Red / Jack Pine</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
