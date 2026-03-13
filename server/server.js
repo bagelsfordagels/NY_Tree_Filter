@@ -4,8 +4,6 @@ console.log("DB_NAME:", process.env.DB_NAME);
 const express = require("express");
 const pool = require("./db");
 const path = require("path");
-const { adminPool } = require("./adminDB");
-
 const adminPool = require("./adminDB");
 
 const app = express();
