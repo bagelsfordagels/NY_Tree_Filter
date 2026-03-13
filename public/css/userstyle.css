@@ -76,13 +76,7 @@ nav a:hover {
   background: #f0eadf;
 }
 
-.hero {
-  border: 1px solid var(--border);
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 26px;
-  box-shadow: var(--shadow);
-}
+
 
 h1 {
   margin: 0 0 10px;
@@ -208,4 +202,30 @@ h1 {
 .start-button:hover {
   background-color: #09af83;
   transform: translateY(-1px);
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+    url("../images/treeHeader.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-image img {
+  width: 320px;     /* keeps image from taking too much space */
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 220px;
+  }
 }
