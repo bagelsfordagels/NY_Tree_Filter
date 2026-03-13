@@ -8,5 +8,12 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
 });
-
-module.exports = pool
+ const adminPool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_ADMIN_USER,
+  password: process.env.DB_ADMIN_PASS,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 5,
+ });
+module.exports = { pool, adminPool }
