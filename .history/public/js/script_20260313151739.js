@@ -22,16 +22,7 @@ const filters = [
         { id: "filterRV", param: "ridgeandvalley"},
         { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
         { id: "filterNH", param: "northeasternhighlands"},
-        { id: "filterNCA", param: "northcentralappalachian"},
-        { id: "filterAspenBirch", param: "aspenbirch"},
-        { id: "filterElmAshCottonwood", param: "elmashcottonwood"},
-        { id: "filterLobLolly", param: "loblollyshortleafpine"},
-        { id: "filterMapleBeechBirch", param: "maplebeechbirch"},
-        { id: "filterOakHickory", param: "oakhickory"},
-        { id: "filterSpruceFir", param: "sprucefir"},
-        { id: "filterWhiteRedJackPine", param: "whiteredjackpine"}
-
-
+        { id: "filterNCA", param: "northcentralappalachian"}
 
 ];
 
@@ -41,8 +32,7 @@ const hiddenGroups = {
     wetland: false,
     landform: false,
     soil: false,
-    ecoregion: false,
-    forestType: false
+    ecoregion: false
 };
     
 
@@ -56,6 +46,30 @@ function buildParams() {
         if(val) params.set(f.param, val);
 
     });
+    // const species = getVal("filterSpecies");
+    // const CommonName = getVal("filterCommon");
+    // const agct = getVal("filterAGCT");
+    // const acprod = getVal("filterACProd");
+    // const nwistatus = getVal("filterNWI")
+    // const floodplainbottomland = getVal("filterFloodBottom");
+    // const uplandmesic = getVal("filterUplandMesic");
+    // const uplanddry = getVal("filterUplandDry");
+    // const soilacidtol = getVal("filterSoilAcidTol");
+    // const soilalktol = getVal("filterSoilAlkTol");
+    // const soilsalttol = getVal("filterSoilSaltTol");
+    
+    // if (species) params.set("species", species);
+    // if (CommonName) params.set("CommonName", CommonName);
+    // if (agct) params.set("agct", agct);
+    // if (acprod) params.set("acprod", acprod);
+    // if (nwistatus) params.set("nwistatus", nwistatus);
+    // if (floodplainbottomland) params.set("floodplainbottomland", floodplainbottomland);
+    // if (uplandmesic) params.set("uplandmesic", uplandmesic);
+    // if (uplanddry) params.set("uplanddry", uplanddry);
+    // if (soilacidtol) params.set("soilacidtol", soilacidtol);
+    // if (soilalktol) params.set("soilalktol", soilalktol);
+    // if (soilsalttol) params.set("soilsalttol", soilsalttol);
+
     return params;
 }
 
@@ -108,15 +122,9 @@ async function fetchAndRenderTrees() {
             <td data-group="ecoregion">${booleanToYn(r.RidgeAndValley)}</td>
             <td data-group="ecoregion">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
             <td data-group="ecoregion">${booleanToYn(r.NortheasternHighlands)}</td>
-            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td> 
+            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td>
             
-            <td data-group="forestType">${booleanToYn(r.AspenBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.ElmAshCottonwood)}</td>
-            <td data-group="forestType">${booleanToYn(r.LoblollyShortleafPine)}</td>
-            <td data-group="forestType">${booleanToYn(r.MapleBeechBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.OakHickory)}</td>
-            <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
-            <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
+            
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();
@@ -134,6 +142,17 @@ function clearFilters() {
         document.getElementById(f.id).value = "";
 
     });
+    // document.getElementById("filterSpecies").value = "";
+    // document.getElementById("filterCommon").value = "";
+    // document.getElementById("filterAGCT").value = "";
+    // document.getElementById("filterACProd").value = "";
+    // document.getElementById("filterNWI").value = "";
+    // document.getElementById("filterFloodBottom").value = "";
+    // document.getElementById("filterUplandMesic").value = "";
+    // document.getElementById("filterUplandDry").value = "";  
+    // document.getElementById("filterSoilAcidTol").value = "";
+    // document.getElementById("filterSoilAlkTol").value = "";
+    // document.getElementById("filterSoilSaltTol").value = "";
 }
 
 function toggleGroup(group) {

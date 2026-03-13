@@ -41,8 +41,7 @@ const hiddenGroups = {
     wetland: false,
     landform: false,
     soil: false,
-    ecoregion: false,
-    forestType: false
+    ecoregion: false
 };
     
 
@@ -108,15 +107,7 @@ async function fetchAndRenderTrees() {
             <td data-group="ecoregion">${booleanToYn(r.RidgeAndValley)}</td>
             <td data-group="ecoregion">${booleanToYn(r.AtlanticCoastalPineBarrens)}</td>
             <td data-group="ecoregion">${booleanToYn(r.NortheasternHighlands)}</td>
-            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td> 
-            
-            <td data-group="forestType">${booleanToYn(r.AspenBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.ElmAshCottonwood)}</td>
-            <td data-group="forestType">${booleanToYn(r.LoblollyShortleafPine)}</td>
-            <td data-group="forestType">${booleanToYn(r.MapleBeechBirch)}</td>
-            <td data-group="forestType">${booleanToYn(r.OakHickory)}</td>
-            <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
-            <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
+            <td data-group="ecoregion">${booleanToYn(r.NorthCentralAppalachian)}</td>    
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();

@@ -124,13 +124,11 @@ app.get("/api/filter", async (req, res) => {
     let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
-                      E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 
-                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine
+                      E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian 
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId
                       LEFT JOIN SiteChemPref S ON T.TreeId = S.TreeId  
                       LEFT JOIN Ecoregion E ON T.TreeId = E.TreeId
-                      LEFT JOIN SAFForestTypeGroup F ON T.TreeId = F.TreeId
               `;
     const where = []; 
     const params = [];
