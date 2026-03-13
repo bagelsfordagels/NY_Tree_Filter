@@ -210,7 +210,6 @@ document.getElementById('updateTree').addEventListener('submit', async function(
         DeerResistance: document.getElementById('deerResistance').value || null,
         PestAndPathogenSusceptibility: document.getElementById('pestAndPathogenSusceptibility').value || null
     };
-
     try {
         // Update each table
         await Promise.all([
