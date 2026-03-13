@@ -90,9 +90,9 @@ async function fetchAndRenderTrees() {
         tr.innerHTML = `
             <td data-group="general">${r.species ?? ""}</td>
             <td data-group="general">${r.CommonName ?? ""}</td>
-            <td data-group="climate">${r.AGCT ?? ""}</td>
-            <td data-group="prod">${r.ACProd ?? ""}</td>
-            <td data-group="wetland">${r.NWIStatus ?? ""}</td>
+            <td data-group="general">${r.AGCT ?? ""}</td>
+            <td data-group="general">${r.ACProd ?? ""}</td>
+            <td data-group="general">${r.NWIStatus ?? ""}</td>
 
             <td data-group="landform">${booleanToYn(r.FloodPlainBottomLand)}</td>
             <td data-group="landform">${booleanToYn(r.UplandMesic)}</td>
@@ -142,16 +142,40 @@ function clearFilters() {
     // document.getElementById("filterSoilSaltTol").value = "";
 }
 
-function toggleGroup(group) {
-  const elements = document.querySelectorAll(`[data-group="${group}"]`);
+function buildColumnControls(){
 
-  elements.forEach(function(el) {
-    if (el.style.display === "none") {
-      el.style.display = "";
-    } else {
-      el.style.display = "none";
-    }
+    const controls = document.getElementById("columnControls");
+    const headers = document.querySelectorAll("th[data-col]");
+
+        headers.forEach(function(th){
+
+    const col = th.dataset.col;
+    const label = th.textContent;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = true;
+
+    checkbox.addEventListener("change", function(){
+
+        const cells = document.querySelectorAll(".col-" + col);
+
+        cells.forEach(function(cell){
+            cell.style.display = checkbox.checked ? "" : "none";
+        });
+
+    });
+
+    const wrapper = document.createElement("label");
+    wrapper.style.marginRight = "10px";
+
+    wrapper.appendChild(checkbox);
+    wrapper.appendChild(document.createTextNode(" " + label));
+
+    controls.appendChild(wrapper);
+
   });
+
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -174,6 +198,9 @@ document
       clearFilters();
       fetchAndRenderTrees();
     });
+
+
+    buildColumnControls();
 
     fetchAndRenderTrees();
 });

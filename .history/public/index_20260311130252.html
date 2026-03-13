@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="pageShell">
-
-
 
 <header class="siteHeader">
     <div class="container">
@@ -199,21 +196,18 @@
   </section>
 
   <section class="card results">
-    <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
-    <button onclick="toggleGroup('prod')">Toggle Production</button>
-    <button onclick="toggleGroup('wetland')">Toggle Wetland Status</button>
-    <button onclick="toggleGroup('landform')">Toggle Landform</button>
-    <button onclick="toggleGroup('soil')">Toggle Soil</button>
     <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
-    
+    <button onclick="toggleGroup('soil')">Toggle Soil</button>
+    <button onclick="toggleGroup('landform')">Toggle Landform</button>
+    <button onclick="toggleGroup('general')">Toggle General Info</button>
     <table class="results-table">
       <thead>
         <tr>
             <th data-group="general">Species</th>
             <th data-group="general">Common Name</th>
-            <th data-group="climate">Aggregated Climate Tolerance</th>
-            <th data-group="prod">Aggregated Commercial Production</th>
-            <th data-group="wetland">National Wetland Status</th>
+            <th data-group="general">Aggregated Climate Tolerance</th>
+            <th data-group="general">Aggregated Commercial Production</th>
+            <th data-group="general">National Wetland Status</th>
 
             <th data-group="landform">Floodplain / Bottomland</th>
             <th data-group="landform">Upland Mesic</th>
@@ -241,6 +235,5 @@
 </main>
 
 <script src="/js/script.js"></script>
-</div>
 </body>
 </html>

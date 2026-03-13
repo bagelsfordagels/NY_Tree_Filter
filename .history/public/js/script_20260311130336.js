@@ -90,9 +90,9 @@ async function fetchAndRenderTrees() {
         tr.innerHTML = `
             <td data-group="general">${r.species ?? ""}</td>
             <td data-group="general">${r.CommonName ?? ""}</td>
-            <td data-group="climate">${r.AGCT ?? ""}</td>
-            <td data-group="prod">${r.ACProd ?? ""}</td>
-            <td data-group="wetland">${r.NWIStatus ?? ""}</td>
+            <td data-group="general">${r.AGCT ?? ""}</td>
+            <td data-group="general">${r.ACProd ?? ""}</td>
+            <td data-group="general">${r.NWIStatus ?? ""}</td>
 
             <td data-group="landform">${booleanToYn(r.FloodPlainBottomLand)}</td>
             <td data-group="landform">${booleanToYn(r.UplandMesic)}</td>
