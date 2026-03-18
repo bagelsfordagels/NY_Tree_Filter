@@ -205,11 +205,22 @@ h1 {
 }
 
 .hero {
+  border: 1px solid var(--border);
+  border-radius: 20px;              /* makes it rounder */
+  padding: 40px 30px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+
+  /*  background image setup */
   background:
-    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+    linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
     url("../images/treeHeader.jpeg");
+
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;                 /* ensures rounded corners clip image */
 }
 
 .hero-image img {
