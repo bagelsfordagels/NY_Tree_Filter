@@ -1,9 +1,9 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
-    return el ? el.value.trim() : "";
+    //return el ? el.value.trim() : "";
 }
 
-let slider;
+// let slider;
 
 const filters = [
         { id: "filterSpecies", param: "species" },
@@ -134,7 +134,7 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
 
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
+            <td data-group="forestType">${r.LifeSpan ?? ""}</td>
             
         `;
         tbody.appendChild(tr);

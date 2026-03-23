@@ -177,31 +177,31 @@ app.get("/api/filter", async (req, res) => {
       }
     }
 
-    // range filters
-    const rangeFilterMap = {
-      lifespan: "C.LifeSpan",
-      treeheight: "C.TreeHeight",
-      canopyspread: "C.CanopySpread",
-      knowninteractions: "X.KnownInteractions"
-    };
+    // // range filters
+    // const rangeFilterMap = {
+    //   lifespan: "C.LifeSpan",
+    //   treeheight: "C.TreeHeight",
+    //   canopyspread: "C.CanopySpread",
+    //   knowninteractions: "X.KnownInteractions"
+    // };
 
-    for (const key in rangeFilterMap) {
-      const min = req.query[`${key}Min`];
-      const max = req.query[`${key}Max`];
+    // for (const key in rangeFilterMap) {
+    //   const min = req.query[`${key}Min`];
+    //   const max = req.query[`${key}Max`];
 
-      if (min !== undefined && min !== "" && max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} BETWEEN ? AND ?`);
-        params.push(Number(min), Number(max));
+    //   if (min !== undefined && min !== "" && max !== undefined && max !== "") {
+    //     where.push(`${rangeFilterMap[key]} BETWEEN ? AND ?`);
+    //     params.push(Number(min), Number(max));
 
-      } else if (min !== undefined && min !== "") {
-        where.push(`${rangeFilterMap[key]} >= ?`);
-        params.push(Number(min));
+    //   } else if (min !== undefined && min !== "") {
+    //     where.push(`${rangeFilterMap[key]} >= ?`);
+    //     params.push(Number(min));
 
-      } else if (max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} <= ?`);
-        params.push(Number(max));
-      }
-    }
+    //   } else if (max !== undefined && max !== "") {
+    //     where.push(`${rangeFilterMap[key]} <= ?`);
+    //     params.push(Number(max));
+    //   }
+    // }
 
     // if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
     // if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }

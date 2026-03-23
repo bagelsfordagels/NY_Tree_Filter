@@ -1,9 +1,6 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
-    return el ? el.value.trim() : "";
 }
-
-let slider;
 
 const filters = [
         { id: "filterSpecies", param: "species" },
@@ -66,8 +63,8 @@ function buildParams() {
         const max = Math.round(values[1]);
 
         if (min !== 0 || max !== 300) {
-            params.set("lifespanMin", min);
-            params.set("lifespanMax", max);
+            params.set("treeheightMin", min);
+            params.set("treeheightMax", max);
         }
     }
 
@@ -133,9 +130,6 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.OakHickory)}</td>
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
-
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
-            
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();
@@ -176,26 +170,6 @@ function applyHiddenGroups() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-
-    slider = document.getElementById('lifespanSlider');
-
-    if (slider) {
-        noUiSlider.create(slider, {
-            start: [0, 300],
-            connect: true,
-            range: { min: 0, max: 300 },
-            step: 1
-        });
-
-        const minVal = document.getElementById("lifeMinVal");
-        const maxVal = document.getElementById("lifeMaxVal");
-
-        slider.noUiSlider.on('update', (values) => {
-            minVal.textContent = Math.round(values[0]);
-            maxVal.textContent = Math.round(values[1]);
-        });
-    }
-
     await populateDropdown("filterAGCT", "Trees", "AGCT");
     await populateDropdown("filterACProd", "Trees", "ACProd");
     await populateDropdown("filterSpecies", "Trees", "species");

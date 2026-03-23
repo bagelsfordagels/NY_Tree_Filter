@@ -1,6 +1,5 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
-    return el ? el.value.trim() : "";
 }
 
 let slider;
@@ -66,8 +65,8 @@ function buildParams() {
         const max = Math.round(values[1]);
 
         if (min !== 0 || max !== 300) {
-            params.set("lifespanMin", min);
-            params.set("lifespanMax", max);
+            params.set("treeheightMin", min);
+            params.set("treeheightMax", max);
         }
     }
 
@@ -133,9 +132,6 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.OakHickory)}</td>
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
-
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
-            
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();
@@ -177,7 +173,7 @@ function applyHiddenGroups() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    slider = document.getElementById('lifespanSlider');
+    const slider = document.getElementById('heightSlider');
 
     if (slider) {
         noUiSlider.create(slider, {
@@ -187,14 +183,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             step: 1
         });
 
-        const minVal = document.getElementById("lifeMinVal");
-        const maxVal = document.getElementById("lifeMaxVal");
+        const minVal = document.getElementById("heightMinVal");
+        const maxVal = document.getElementById("heightMaxVal");
 
         slider.noUiSlider.on('update', (values) => {
             minVal.textContent = Math.round(values[0]);
             maxVal.textContent = Math.round(values[1]);
         });
     }
+
+    // your existing code continues...
 
     await populateDropdown("filterAGCT", "Trees", "AGCT");
     await populateDropdown("filterACProd", "Trees", "ACProd");

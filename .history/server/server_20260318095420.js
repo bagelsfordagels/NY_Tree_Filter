@@ -14,24 +14,20 @@ const adminRoutes = require("./routes/adminRoutes");
 app.use("/api/admin", adminRoutes);
 
 const filtermap = {
-  //Tree
   species: "species",
   CommonName: "CommonName",
   agct: "AGCT",
   acprod: "ACprod",
   nwistatus: "NWIStatus",
 
-  //LanfordPref
   floodplainbottomland: "FloodPlainBottomLand",
   uplandmesic: "UplandMesic",
   uplanddry: "UplandDry",
 
-  //SiteChemPref
   soilacidtol: "SoilAcidTol",
   soilalktol: "SoilAlkTol",
   soilsalttol: "SoilSaltTol",
 
-  //Ecoregion
   easterngreatlakelowlands: "EasternGreatLakeLowLands",
   northernalleghenyplateau: "NorthernAlleghenyPlateau",
   eriedriftplain: "ErieDriftPlain",
@@ -42,36 +38,14 @@ const filtermap = {
   northeasternhighlands: "NortheasternHighlands",
   northcentralappalachian: "NorthCentralAppalachian",
 
-  //SAFForestType
   aspenbirch: "AspenBirch",
   elmashcottonwood: "ElmAshCottonwood",
   loblollyshortleafpine: "LoblollyShortleafPine",
   maplebeechbirch: "MapleBeechBirch",
   oakhickory: "OakHickory",
   sprucefir: "SpruceFir",
-  whiteredjackpine: "WhiteRedJackPine",
+  whiteredjackpine: "WhiteRedJackPine"
 
-  //SpeciesCharacteristics
-  // lifespan: "LifeSpan",
-  // treeheight: "TreeHeight",
-  // canopyspread: "CanopySpread",
-  growthrate: "GrowthRate",
-  shadetol: "ShadeTol",
-
-  //EconomicValue
-  edible: "Edible",
-  lumber: "Lumber",
-  fuelwood: "FuelWood",
-
-  //EcologicalValue
-  knowninteractions: "KnownInteractions",
-  attractspollinators: "AttractsPollinators",
-  attractsbirds: "AttractsBirds",
-
-  //PlantingConsiderations
-  recomendedforwindbreak: "RecomendedForWindbreak",
-  deerresistance: "DeerResistance",
-  pestandpathogensusceptibility: "PestAndPathogenSusceptibility"
 
 };
 
@@ -134,37 +108,17 @@ app.get("/api/filter", async (req, res) => {
     console.log("QUERY:", req.query);
   try {
 
-    // const species = (req.query.species || "").trim();
-    // const CommonName = (req.query.CommonName || "").trim();
-    // const agct = (req.query.agct || "").trim();
-    // const acprod = (req.query.acprod || "").trim();
-    // const nwistatus = (req.query.nwistatus || "").trim();
-    // const floodplainbottomland = (req.query.floodplainbottomland || "").trim();
-    // const uplandmesic = (req.query.uplandmesic || "").trim();
-    // const uplanddry = (req.query.uplanddry || "").trim();
-    // const soilacidtol = (req.query.soilacidtol || "").trim();
-    // const soilalktol = (req.query.soilalktol || "").trim();
-    // const soilsalttol = (req.query.soilsalttol || "").trim();
-
 
     let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
                       E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 
-                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine,
-                      C.LifeSpan, C.TreeHeight, C.CanopySpread, C.GrowthRate, C.ShadeTol,
-                      V.Edible, V.Lumber, V.FuelWood,
-                      X.KnownInteractions, X.AttractsPollinators, X.AttractsBirds,
-                      P.RecomendedForWindbreak, P.DeerResistance, P.PestAndPathogenSusceptibility
+                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId
                       LEFT JOIN SiteChemPref S ON T.TreeId = S.TreeId  
                       LEFT JOIN Ecoregion E ON T.TreeId = E.TreeId
                       LEFT JOIN SAFForestTypeGroup F ON T.TreeId = F.TreeId
-                      LEFT JOIN SpeciesCharacteristics C ON T.TreeId = C.TreeId
-                      LEFT JOIN EconomicValue V ON T.TreeId = V.TreeId
-                      LEFT JOIN EcologicalValue X ON T.TreeId = X.TreeId
-                      LEFT JOIN PlantingConsiderations P ON T.TreeId = P.TreeId
               `;
     const where = []; 
     const params = [];
@@ -176,44 +130,6 @@ app.get("/api/filter", async (req, res) => {
         params.push(val);
       }
     }
-
-    // range filters
-    const rangeFilterMap = {
-      lifespan: "C.LifeSpan",
-      treeheight: "C.TreeHeight",
-      canopyspread: "C.CanopySpread",
-      knowninteractions: "X.KnownInteractions"
-    };
-
-    for (const key in rangeFilterMap) {
-      const min = req.query[`${key}Min`];
-      const max = req.query[`${key}Max`];
-
-      if (min !== undefined && min !== "" && max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} BETWEEN ? AND ?`);
-        params.push(Number(min), Number(max));
-
-      } else if (min !== undefined && min !== "") {
-        where.push(`${rangeFilterMap[key]} >= ?`);
-        params.push(Number(min));
-
-      } else if (max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} <= ?`);
-        params.push(Number(max));
-      }
-    }
-
-    // if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
-    // if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
-    // if (agct) { where.push("LOWER(AGCT) = LOWER(?)"); params.push(agct); }
-    // if (acprod) { where.push("LOWER(ACProd) = LOWER(?)"); params.push(acprod); }
-    // if (nwistatus) { where.push("LOWER(NWIStatus) = LOWER(?)"); params.push(nwistatus); }
-    // if (floodplainbottomland) { where.push("LOWER(FloodPlainBottomLand) = LOWER(?)"); params.push(floodplainbottomland); }
-    // if (uplandmesic) { where.push("LOWER(UplandMesic) = LOWER(?)"); params.push(uplandmesic); }
-    // if (uplanddry) { where.push("LOWER(UplandDry) = LOWER(?)"); params.push(uplanddry); }
-    // if (soilacidtol) { where.push("LOWER(SoilAcidTol) = LOWER(?)"); params.push(soilacidtol); }
-    // if (soilalktol) { where.push("LOWER(SoilAlkTol) = LOWER(?)"); params.push(soilalktol); }
-    // if (soilsalttol) { where.push("LOWER(SoilSaltTol) = LOWER(?)"); params.push(soilsalttol); }
 
     if (where.length) sql += " WHERE " + where.join(" AND ");
     //sql += " ORDER BY TreeId LIMIT 200";

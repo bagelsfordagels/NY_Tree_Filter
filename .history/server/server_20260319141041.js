@@ -52,9 +52,9 @@ const filtermap = {
   whiteredjackpine: "WhiteRedJackPine",
 
   //SpeciesCharacteristics
-  // lifespan: "LifeSpan",
-  // treeheight: "TreeHeight",
-  // canopyspread: "CanopySpread",
+  lifespan: "LifeSpan",
+  treeheight: "TreeHeight",
+  canopyspread: "CanopySpread",
   growthrate: "GrowthRate",
   shadetol: "ShadeTol",
 
@@ -72,6 +72,9 @@ const filtermap = {
   recomendedforwindbreak: "RecomendedForWindbreak",
   deerresistance: "DeerResistance",
   pestandpathogensusceptibility: "PestAndPathogenSusceptibility"
+
+
+
 
 };
 
@@ -151,10 +154,10 @@ app.get("/api/filter", async (req, res) => {
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
                       E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 
-                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine,
-                      C.LifeSpan, C.TreeHeight, C.CanopySpread, C.GrowthRate, C.ShadeTol,
-                      V.Edible, V.Lumber, V.FuelWood,
-                      X.KnownInteractions, X.AttractsPollinators, X.AttractsBirds,
+                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine
+                      C.LifeSpan, C.TreeHeight, C.CanopySpread, C.GrowthRate, C.ShadeTol
+                      V.Edible, V.Lumber, V.FuelWood
+                      X.KnownInteractions, X.AttractsPollinators, X.AttractsBirds
                       P.RecomendedForWindbreak, P.DeerResistance, P.PestAndPathogenSusceptibility
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId
@@ -184,24 +187,6 @@ app.get("/api/filter", async (req, res) => {
       canopyspread: "C.CanopySpread",
       knowninteractions: "X.KnownInteractions"
     };
-
-    for (const key in rangeFilterMap) {
-      const min = req.query[`${key}Min`];
-      const max = req.query[`${key}Max`];
-
-      if (min !== undefined && min !== "" && max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} BETWEEN ? AND ?`);
-        params.push(Number(min), Number(max));
-
-      } else if (min !== undefined && min !== "") {
-        where.push(`${rangeFilterMap[key]} >= ?`);
-        params.push(Number(min));
-
-      } else if (max !== undefined && max !== "") {
-        where.push(`${rangeFilterMap[key]} <= ?`);
-        params.push(Number(max));
-      }
-    }
 
     // if (species) { where.push("LOWER(species) = LOWER(?)"); params.push(species); }
     // if (CommonName) { where.push("CommonName = ?"); params.push(CommonName); }
