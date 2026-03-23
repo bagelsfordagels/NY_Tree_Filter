@@ -54,8 +54,7 @@ const hiddenGroups = {
     landform: false,
     soil: false,
     ecoregion: false,
-    forestType: false,
-    characteristics: false
+    forestType: false
 };
     
 
@@ -189,16 +188,6 @@ function clearFilters() {
     filters.forEach(function(f){
         document.getElementById(f.id).value = "";
     });
-
-    if(lifeSlider && lifeSlider.noUiSlider){
-        lifeSlider.noUiSlider.set([0, 300]);
-    }
-    if(heightSlider && heightSlider.noUiSlider){
-        heightSlider.noUiSlider.set([0, 100]);
-    }
-    if(canopySlider && canopySlider.noUiSlider){
-        canopySlider.noUiSlider.set([0, 100]);
-    }
 }
 
 function toggleGroup(group) {
@@ -287,8 +276,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSoilAcidTol", "SiteChemPref", "SoilAcidTol");
     await populateDropdown("filterSoilAlkTol", "SiteChemPref", "SoilAlkTol");
     await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
-    await populateDropdown("filterGrowthRate", "SpeciesCharacteristics", "GrowthRate");
-    await populateDropdown("filterShadeTolerance", "SpeciesCharacteristics", "ShadeTol");
 
 document
     .getElementById("applyFilters")
