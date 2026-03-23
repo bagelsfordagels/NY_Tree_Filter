@@ -13,15 +13,12 @@ const filters = [
         { id: "filterAGCT", param: "agct" },
         { id: "filterACProd", param: "acprod" },
         { id: "filterNWI", param: "nwistatus" },
-
         { id: "filterFloodBottom", param: "floodplainbottomland" },
         { id: "filterUplandMesic", param: "uplandmesic" },
         { id: "filterUplandDry", param: "uplanddry" },
-
         { id: "filterSoilAcidTol", param: "soilacidtol" },
         { id: "filterSoilAlkTol", param: "soilalktol" },
         { id: "filterSoilSaltTol", param: "soilsalttol" },
-
         { id: "filterEGLL", param: "easterngreatlakelowlands"},
         { id: "filterNAP", param: "northernalleghenyplateau"},
         { id: "filterEDP", param: "eriedriftplain"},
@@ -31,17 +28,13 @@ const filters = [
         { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
         { id: "filterNH", param: "northeasternhighlands"},
         { id: "filterNCA", param: "northcentralappalachian"},
-
         { id: "filterAspenBirch", param: "aspenbirch"},
         { id: "filterElmAshCottonwood", param: "elmashcottonwood"},
         { id: "filterLobLolly", param: "loblollyshortleafpine"},
         { id: "filterMapleBeechBirch", param: "maplebeechbirch"},
         { id: "filterOakHickory", param: "oakhickory"},
         { id: "filterSpruceFir", param: "sprucefir"},
-        { id: "filterWhiteRedJackPine", param: "whiteredjackpine"},
-
-        { id: "filterGrowthRate", param: "growthrate"},
-        { id: "filterShadeTolerance", param: "shadetol"}
+        { id: "filterWhiteRedJackPine", param: "whiteredjackpine"}
 
 
 
@@ -54,8 +47,7 @@ const hiddenGroups = {
     landform: false,
     soil: false,
     ecoregion: false,
-    forestType: false,
-    characteristics: false
+    forestType: false
 };
     
 
@@ -188,17 +180,8 @@ function booleanToYn(val){
 function clearFilters() {
     filters.forEach(function(f){
         document.getElementById(f.id).value = "";
-    });
 
-    if(lifeSlider && lifeSlider.noUiSlider){
-        lifeSlider.noUiSlider.set([0, 300]);
-    }
-    if(heightSlider && heightSlider.noUiSlider){
-        heightSlider.noUiSlider.set([0, 100]);
-    }
-    if(canopySlider && canopySlider.noUiSlider){
-        canopySlider.noUiSlider.set([0, 100]);
-    }
+    });
 }
 
 function toggleGroup(group) {
@@ -225,7 +208,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lifeSlider = document.getElementById('lifespanSlider');
     heightSlider = document.getElementById('heightSlider');
-    canopySlider = document.getElementById('canopySlider');
 
     if (lifeSlider) {
         noUiSlider.create(lifeSlider, {
@@ -271,9 +253,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         const canopyMinVal = document.getElementById("canopyMinVal");
-        const canopyMaxVal = document.getElementById("canopyMaxVal");
+        const canopyMaxVal = document.getElementById("canopyMaxval");
 
-        canopySlider.noUiSlider.on('update', (values) => {
+        heightSlider.noUiSlider.on('update', (values) => {
             canopyMinVal.textContent = Math.round(values[0]);
             canopyMaxVal.textContent = Math.round(values[1]);
         });
@@ -287,8 +269,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSoilAcidTol", "SiteChemPref", "SoilAcidTol");
     await populateDropdown("filterSoilAlkTol", "SiteChemPref", "SoilAlkTol");
     await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
-    await populateDropdown("filterGrowthRate", "SpeciesCharacteristics", "GrowthRate");
-    await populateDropdown("filterShadeTolerance", "SpeciesCharacteristics", "ShadeTol");
 
 document
     .getElementById("applyFilters")

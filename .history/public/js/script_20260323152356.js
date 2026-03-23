@@ -189,16 +189,6 @@ function clearFilters() {
     filters.forEach(function(f){
         document.getElementById(f.id).value = "";
     });
-
-    if(lifeSlider && lifeSlider.noUiSlider){
-        lifeSlider.noUiSlider.set([0, 300]);
-    }
-    if(heightSlider && heightSlider.noUiSlider){
-        heightSlider.noUiSlider.set([0, 100]);
-    }
-    if(canopySlider && canopySlider.noUiSlider){
-        canopySlider.noUiSlider.set([0, 100]);
-    }
 }
 
 function toggleGroup(group) {

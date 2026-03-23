@@ -256,7 +256,7 @@
         </select>
       </label>
 
-      <label title="Use Arrow Keys for Granular Adjustment">
+      <label>
         Life Span (Years)
         <div id="lifespanSlider"></div>
         <div>
@@ -265,43 +265,22 @@
         </div>
       </label>
 
-      <label title="Use Arrow Keys for Granular Adjustment">
+      <label>
         Tree Height (ft, avg)
-        <div id="heightSlider"></div>
+        <div id="heightspanSlider"></div>
         <div>
           <span id="heightMinVal">0</span> - 
           <span id="heightMaxVal">100</span>
         </div>
       </label>
 
-      <label title="Use Arrow Keys for Granular Adjustment">
-        Canopy Spread (ft, avg)
-        <div id="canopySlider"></div>
-        <div>
-          <span id="canopyMinVal">0</span> - 
-          <span id="canopyMaxVal">100</span>
-        </div>
-      </label>
 
-      <label>
-        Growth Rate
-        <select id="filterGrowthRate">
-          <option value="">Any</option>
-        </select>
-      </label>
-
-      <label>
-        Shade Tolerance
-        <select id="filterShadeTolerance">
-          <option value="">Any</option>
-        </select>
-      </label>
 
     </div>
 
     <div class="actions">
         <button id="applyFilters">Apply filters</button>
-        <button id="clearFilters" title="Clear All Fields">Clear</button>
+        <button id="clearFilters">Clear</button>
     </div>
   </section>
 
@@ -313,7 +292,6 @@
     <button onclick="toggleGroup('soil')">Toggle Soil</button>
     <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
     <button onclick="toggleGroup('forestType')">Toggle Forest Type</button>
-    <button onclick="toggleGroup('characteristics')">Toggle Species Characteristics</button>
     
     <table class="results-table">
       <thead>
@@ -350,11 +328,7 @@
             <th data-group="forestType">Spruce / Fir</th>
             <th data-group="forestType">White Red / Jack Pine</th>
 
-            <th data-group="characteristics">Lifespan</th>
-            <th data-group="characteristics">Height</th>
-            <th data-group="characteristics">Canopy Spread</th>
-            <th data-group="characteristics">Growth Rate</th>
-            <th data-group="characteristics">Shade Tolerance</th>
+            <th data-group="chatacteristics">lifespan</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
