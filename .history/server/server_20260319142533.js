@@ -151,10 +151,10 @@ app.get("/api/filter", async (req, res) => {
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
                       E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 
-                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine,
-                      C.LifeSpan, C.TreeHeight, C.CanopySpread, C.GrowthRate, C.ShadeTol,
-                      V.Edible, V.Lumber, V.FuelWood,
-                      X.KnownInteractions, X.AttractsPollinators, X.AttractsBirds,
+                      F.AspenBirch, F.ElmAshCottonwood, F.LoblollyShortleafPine, F.MapleBeechBirch, F.OakHickory, F.SpruceFir, F.WhiteRedJackPine
+                      C.LifeSpan, C.TreeHeight, C.CanopySpread, C.GrowthRate, C.ShadeTol
+                      V.Edible, V.Lumber, V.FuelWood
+                      X.KnownInteractions, X.AttractsPollinators, X.AttractsBirds
                       P.RecomendedForWindbreak, P.DeerResistance, P.PestAndPathogenSusceptibility
                       FROM Trees T 
                       LEFT JOIN LandformPref L ON T.TreeId = L.TreeId

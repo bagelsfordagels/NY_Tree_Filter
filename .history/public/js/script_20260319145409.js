@@ -1,9 +1,9 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
-    return el ? el.value.trim() : "";
+    //return el ? el.value.trim() : "";
 }
 
-let slider;
+// let slider;
 
 const filters = [
         { id: "filterSpecies", param: "species" },
@@ -134,7 +134,7 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
 
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
+            <td data-group="forestType">${r.LifeSpan ?? ""}</td>
             
         `;
         tbody.appendChild(tr);
@@ -177,24 +177,24 @@ function applyHiddenGroups() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    slider = document.getElementById('lifespanSlider');
+    // slider = document.getElementById('lifespanSlider');
 
-    if (slider) {
-        noUiSlider.create(slider, {
-            start: [0, 300],
-            connect: true,
-            range: { min: 0, max: 300 },
-            step: 1
-        });
+    // if (slider) {
+    //     noUiSlider.create(slider, {
+    //         start: [0, 300],
+    //         connect: true,
+    //         range: { min: 0, max: 300 },
+    //         step: 1
+    //     });
 
-        const minVal = document.getElementById("lifeMinVal");
-        const maxVal = document.getElementById("lifeMaxVal");
+    //     const minVal = document.getElementById("lifeMinVal");
+    //     const maxVal = document.getElementById("lifeMaxVal");
 
-        slider.noUiSlider.on('update', (values) => {
-            minVal.textContent = Math.round(values[0]);
-            maxVal.textContent = Math.round(values[1]);
-        });
-    }
+    //     slider.noUiSlider.on('update', (values) => {
+    //         minVal.textContent = Math.round(values[0]);
+    //         maxVal.textContent = Math.round(values[1]);
+    //     });
+    // }
 
     await populateDropdown("filterAGCT", "Trees", "AGCT");
     await populateDropdown("filterACProd", "Trees", "ACProd");

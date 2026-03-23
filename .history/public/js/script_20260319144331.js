@@ -66,8 +66,8 @@ function buildParams() {
         const max = Math.round(values[1]);
 
         if (min !== 0 || max !== 300) {
-            params.set("lifespanMin", min);
-            params.set("lifespanMax", max);
+            params.set("lifespanmin", min);
+            params.set("lifespanmax", max);
         }
     }
 
@@ -134,7 +134,7 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
 
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
+            <td data-group="forestType">${r.LifeSpan}</td>
             
         `;
         tbody.appendChild(tr);

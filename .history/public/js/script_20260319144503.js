@@ -134,7 +134,7 @@ async function fetchAndRenderTrees() {
             <td data-group="forestType">${booleanToYn(r.SpruceFir)}</td>
             <td data-group="forestType">${booleanToYn(r.WhiteRedJackPine)}</td> 
 
-            <td data-group="characteristics">${r.LifeSpan ?? ""}</td>
+            <td data-group="forestType">${r.LifeSpan}</td>
             
         `;
         tbody.appendChild(tr);
