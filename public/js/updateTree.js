@@ -160,7 +160,7 @@ document.getElementById('updateTree').addEventListener('submit', async function(
     const treeData = {
 //Basic Info
         species: document.getElementById('species').value,
-        CommonName: document.getElementById('CommonName').value,
+        commonName: document.getElementById('CommonName').value,
         AGCT: document.getElementById('agct').value,
         ACProd: document.getElementById('acProd').value,
         NWIStatus: document.getElementById('nwiStatus').value,

@@ -5,336 +5,415 @@
         <title>NY Tree  Filter - Admin - Update Tree</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #cbe5db;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        h1{
+                text-align: center;
+                margin-top: 20px;
+        }
+        .section-boxes{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .box{
+            display: inline-block;
+            margin: 20px auto;
+            background-color: #faf7f0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: left;
+        }
+        .box h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .form-group input {
+            width: 200px;
+        }
+        .sub-btn{
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .sub-btn:hover{
+            background-color: #45a049;
+        }
+        .can-btn{
+            padding: 10px 20px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px;
+        }
+        .can-btn:hover{
+            background-color: #da190b;
+        }
+    </style>
+    
     <body>
         <h1>Update Tree</h1>
         <form id="updateTree">
-            <h2>Basic Information</h2>
+            <div class = "section-boxes">
+                <div class = "box">
+                <h2>Basic Information</h2>
 
-            <div class="form-group">
-                <label for="species">Species</label>
-                <input type="text" id="species" required>
-            </div>
+                <div class="form-group">
+                    <label for="species">Species</label>
+                    <input type="text" id="species" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="CommonName">Common Name</label>
-                <input type="text" id="CommonName" required>
-            </div>
+                    <div class="form-group">
+                        <label for="CommonName">Common Name</label>
+                        <input type="text" id="CommonName" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="agct">Aggregated Global Change Tolerance</label>
-                <select id="agct" required>
-                    <option value="">Select</option>
-                    <option value="Uncertain">Uncertain</option>
-                    <option value="Very Poor">Very Poor</option>
-                    <option value="Poor">Poor</option>
-                    <option value="Fair">Fair</option>
-                    <option value="Good">Good</option>
-                    <option value="Very Good">Very Good</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="agct">Aggregated Global Change Tolerance</label>
+                        <select id="agct" required>
+                            <option value="">Select</option>
+                            <option value="Uncertain">Uncertain</option>
+                            <option value="Very Poor">Very Poor</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Good">Good</option>
+                            <option value="Very Good">Very Good</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="acProd">Aggregated Commercial Production</label>
-                <select id="acProd" required>
-                    <option value="">Select</option>
-                    <option value="Uncertain">Uncertain</option>
-                    <option value="Very Poor">Very Poor</option>
-                    <option value="Poor">Poor</option>
-                    <option value="Fair">Fair</option>
-                    <option value="Good">Good</option>
-                    <option value="Very Good">Very Good</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="acProd">Aggregated Commercial Production</label>
+                        <select id="acProd" required>
+                            <option value="">Select</option>
+                            <option value="Uncertain">Uncertain</option>
+                            <option value="Very Poor">Very Poor</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Good">Good</option>
+                            <option value="Very Good">Very Good</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="nwiStatus">National Wetland Indicator Status</label>
-                <select id="nwiStatus" required>
-                    <option value="">Select</option>
-                    <option value="Uncertain">Uncertain</option>
-                    <option value="OBL">OBL</option>
-                    <option value="FACW">FACW</option>
-                    <option value="FAC">FAC</option>
-                    <option value="FACU">FACU</option>
-                    <option value="UPL">UPL</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="nwiStatus">National Wetland Indicator Status</label>
+                        <select id="nwiStatus" required>
+                            <option value="">Select</option>
+                            <option value="Uncertain">Uncertain</option>
+                            <option value="OBL">OBL</option>
+                            <option value="FACW">FACW</option>
+                            <option value="FAC">FAC</option>
+                            <option value="FACU">FACU</option>
+                            <option value="UPL">UPL</option>
+                        </select>
+                    </div>
+                </div>
 
-            <h2>Landform Preferences</h2>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="floodPlain">
-                    Flood plain/Bottomland
-                </label>
-            </div>
+                <div class = "box">
+                    <h2>Landform Preferences</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="floodPlain">
+                            Flood plain/Bottomland
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="uplandMesic">
-                    Upland mesic
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="uplandMesic">
+                            Upland mesic
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="uplandDry">
-                    Upland dry
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="uplandDry">
+                            Upland dry
+                        </label>
+                    </div>
+                </div>
 
-            <h2>Site Chemistry Preferences</h2>
-            <div class="form-group">
-                <label for="soilAcidTol">Soil Acid Tolerance</label>
-                <select id="soilAcidTol" required>
-                    <option value="">Select</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                <div class = "box">
+                    <h2>Site Chemistry Preferences</h2>
+                    <div class="form-group">
+                        <label for="soilAcidTol">Soil Acid Tolerance</label>
+                        <select id="soilAcidTol" required>
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="soilAlkainTol">Soil Alkainity Tolerance</label>
-                <select id="soilAlkainTol" required>
-                    <option value="">Select</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="soilAlkainTol">Soil Alkainity Tolerance</label>
+                        <select id="soilAlkainTol" required>
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="saltTol">Salt Tolerance</label>
-                <select id="saltTol" required>
-                    <option value="">Select</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="saltTol">Salt Tolerance</label>
+                        <select id="saltTol" required>
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
 
-            <h2> Ecoregion</h2>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="easternGreatLakeLowLands">
-                    Eastern Great Lakes Lowlands
-                </label>
-            </div>
+                <div class = "box">
+                    <h2> Ecoregion</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="easternGreatLakeLowLands">
+                            Eastern Great Lakes Lowlands
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="northernAlleghenyPlateau">
-                    Northern Allegheny Plateau
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="northernAlleghenyPlateau">
+                            Northern Allegheny Plateau
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="erieDriftPlain">
-                    Erie Drift Plain
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="erieDriftPlain">
+                            Erie Drift Plain
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="northernCoastalZone">
-                    Northern Coastal Zone
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="northernCoastalZone">
+                            Northern Coastal Zone
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="northernPiedmont">
-                    Northern Piedmont
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="northernPiedmont">
+                            Northern Piedmont
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="ridgeAndValley">
-                    Ridge and Valley
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="ridgeAndValley">
+                            Ridge and Valley
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="atlanticCoastalPineBarrens">
-                    Atlantic Coastal Pine Barrens
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="atlanticCoastalPineBarrens">
+                            Atlantic Coastal Pine Barrens
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="northeasternHighlands">
-                    Northeastern Highlands
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="northeasternHighlands">
+                            Northeastern Highlands
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="northCentralAppalachian">
-                    North Central Appalachian
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="northCentralAppalachian">
+                            North Central Appalachian
+                        </label>
+                    </div>
+                </div>
 
-            <h2>SAF Forest Type Group</h2>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="aspenBirch">
-                    900 Aspen-Birch
-                </label>
-            </div>
+                <div class = "box">
+                    <h2>SAF Forest Type Group</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="aspenBirch">
+                            900 Aspen-Birch
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="elmAshCottonwood">
-                    700 Elm-Ash-Cottonwood
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="elmAshCottonwood">
+                            700 Elm-Ash-Cottonwood
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="loblollyShortleafPine">
-                    160 Loblolly-Shortleaf Pine
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="loblollyShortleafPine">
+                            160 Loblolly-Shortleaf Pine
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="mapleBeechBirch">
-                    800 Maple-Beech-Birch
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="mapleBeechBirch">
+                            800 Maple-Beech-Birch
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="oakHickory">
-                    500 Oak-Hickory
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="oakHickory">
+                            500 Oak-Hickory
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="spruceFir">
-                    120 Spruce-Fir
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="spruceFir">
+                            120 Spruce-Fir
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="whiteRedJackPine">
-                    100 White-Red-Jack Pine
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="whiteRedJackPine">
+                            100 White-Red-Jack Pine
+                        </label>
+                    </div>
+                </div>
 
-            <h2> Species Characteristics</h2>
-            <div class="form-group">
-                <label for="lifeSpan">Average Life Span (years):</label>
-                <input type="number" id="lifeSpan">
-            </div>
+                <div class = "box">
+                    <h2> Species Characteristics</h2>
+                    <div class="form-group">
+                        <label for="lifeSpan">Average Life Span (years):</label>
+                        <input type="number" id="lifeSpan">
+                    </div>
 
-            <div class="form-group">
-                <label for="treeHeight">Average Tree Height (ft):</label>
-                <input type="number" id="treeHeight">
-            </div>
+                    <div class="form-group">
+                        <label for="treeHeight">Average Tree Height (ft):</label>
+                        <input type="number" id="treeHeight">
+                    </div>
 
-            <div class="form-group">
-                <label for="canopySpread">Average Canopy Spread (ft):</label>
-                <input type="number" id="canopySpread">
-            </div>
+                    <div class="form-group">
+                        <label for="canopySpread">Average Canopy Spread (ft):</label>
+                        <input type="number" id="canopySpread">
+                    </div>
 
-            <div class="form-group">
-                <label for="growthrate">Growth Rate</label>
-                <select id="growthrate" required>
-                    <option value="">Select</option>
-                    <option value="Slow">Slow</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Rapid">Rapid</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="growthrate">Growth Rate</label>
+                        <select id="growthrate" required>
+                            <option value="">Select</option>
+                            <option value="Slow">Slow</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Rapid">Rapid</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="shadTol">Shade Tolerance</label>
-                <select id="shadTol" required>
-                    <option value="">Select</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="shadTol">Shade Tolerance</label>
+                        <select id="shadTol" required>
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
 
-            <h2>Economic Value</h2>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="edible">
-                    Edible Fruit/Nut/Seed
-                </label>
-            </div>
+                <div class = "box">
+                    <h2>Economic Value</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="edible">
+                            Edible Fruit/Nut/Seed
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="lumber">
-                    Lumber
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="lumber">
+                            Lumber
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="fuelWood">
-                    Fuel Wood
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="fuelWood">
+                            Fuel Wood
+                        </label>
+                    </div>
+                </div>
 
-            <h2>Ecological Value</h2>
-            <div class="form-group">
-                <label for="knownInteractions">Known Interactions:</label>
-                <input type="number" id="knownInteractions">
-            </div>
+                <div class = "box">
+                    <h2>Ecological Value</h2>
+                    <div class="form-group">
+                        <label for="knownInteractions">Known Interactions:</label>
+                        <input type="number" id="knownInteractions">
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="attractsPollinators">
-                    Attracts Pollinators
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="attractsPollinators">
+                            Attracts Pollinators
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="attractsBirds">
-                    Attracts Birds
-                </label>
-            </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="attractsBirds">
+                            Attracts Birds
+                        </label>
+                    </div>
+                </div>
 
-            <h2>Planting Considerations</h2>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="recommendedForWindbreak">
-                    Recommended for Windbreak
-                </label>
-            </div>
+                <div class = "box">
+                    <h2>Planting Considerations</h2>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="recommendedForWindbreak">
+                            Recommended for Windbreak
+                        </label>
+                    </div>
 
-            <div class="form-group">
-                <label for="deerResistance">Deer Resistance</label>
-                <select id="deerResistance" required>
-                    <option value="">Select</option>
-                    <option value="Very Low">Very Low</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="deerResistance">Deer Resistance</label>
+                        <select id="deerResistance" required>
+                            <option value="">Select</option>
+                            <option value="Very Low">Very Low</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
 
-            <div class="form-group">
-                <label for="pestAndPathogenSusceptibility">Pest and Pathogen Susceptibility</label>
-                <select id="pestAndPathogenSusceptibility" required>
-                    <option value="">Select</option>
-                    <option value="Low">Low</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
+                    <div class="form-group">
+                        <label for="pestAndPathogenSusceptibility">Pest and Pathogen Susceptibility</label>
+                        <select id="pestAndPathogenSusceptibility" required>
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+        </div>
 
-            <button type="submit">Update Tree</button>
-            <a href="admin.html"><button type="button">Cancel</button></a>
+            <button type="submit" button class ="sub-btn">Update Tree</button>
+            <a href="admin.html"><button type="button" button class = "can-btn">Cancel</button></a>
         </form>
 
         <div id="message"></div>
