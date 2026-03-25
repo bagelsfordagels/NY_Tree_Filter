@@ -41,11 +41,7 @@ const filters = [
         { id: "filterWhiteRedJackPine", param: "whiteredjackpine"},
 
         { id: "filterGrowthRate", param: "growthrate"},
-        { id: "filterShadeTolerance", param: "shadetol"},
-
-        { id: "filterEdible", param: "edible"},
-        { id: "filterLumber", param: "lumber"},
-        { id: "filterFuelWood", param: "fuelwood"}
+        { id: "filterShadeTolerance", param: "shadetol"}
 
 
 
@@ -59,8 +55,7 @@ const hiddenGroups = {
     soil: false,
     ecoregion: false,
     forestType: false,
-    characteristics: false,
-    economic: false
+    characteristics: false
 };
     
 
@@ -177,10 +172,6 @@ async function fetchAndRenderTrees() {
             <td data-group="characteristics">${r.CanopySpread ?? ""}</td>
             <td data-group="characteristics">${r.GrowthRate ?? ""}</td>
             <td data-group="characteristics">${r.ShadeTol ?? ""}</td>
-
-            <td data-group="economic">${booleanToYn(r.Edible)}</td>
-            <td data-group="economic">${booleanToYn(r.Lumber)}</td>
-            <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
             
         `;
         tbody.appendChild(tr);
@@ -222,9 +213,7 @@ function clearFilters() {
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
 
-    const headers = document.querySelectorAll(
-        `thead tr:nth-child(2) th[data-group="${groupName}"]`
-    );
+    const headers = document.querySelectorAll(`th[data-group="${groupName}"]`);
     const rows = document.querySelectorAll("#tableBody tr");
 
     headers.forEach(th => {
@@ -238,20 +227,6 @@ function toggleGroup(groupName) {
             }
         });
     });
-
-    // top grouped header row
-    const topHeader = document.querySelector(
-        `thead tr:nth-child(1) th[data-group="${groupName}"]`
-    );
-
-    if (topHeader) {
-        if (isHidden) {
-            topHeader.style.display = "none";
-        } else {
-            topHeader.style.display = "";
-            topHeader.colSpan = headers.length;
-        }
-    }
 }
 
 function applyHiddenGroups() {
@@ -346,17 +321,16 @@ document
     });
 
 document.querySelectorAll('[data-group-toggle]').forEach(cb => {
-    const group = cb.dataset.groupToggle;
-
-    // start checked when page loads
-    cb.checked = !hiddenGroups[group];
-
     cb.addEventListener('change', () => {
+        const group = cb.dataset.groupToggle;
+
+        // update hiddenGroups map
         hiddenGroups[group] = !cb.checked;
+
+        // call your existing toggle
         toggleGroup(group);
     });
 });
-
 
     fetchAndRenderTrees();
 });

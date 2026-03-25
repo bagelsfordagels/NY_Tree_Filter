@@ -178,9 +178,9 @@ async function fetchAndRenderTrees() {
             <td data-group="characteristics">${r.GrowthRate ?? ""}</td>
             <td data-group="characteristics">${r.ShadeTol ?? ""}</td>
 
-            <td data-group="economic">${booleanToYn(r.Edible)}</td>
-            <td data-group="economic">${booleanToYn(r.Lumber)}</td>
-            <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
+            <td data-group="forestType">${booleanToYn(r.Edible)}</td>
+            <td data-group="forestType">${booleanToYn(r.Lumber)}</td>
+            <td data-group="forestType">${booleanToYn(r.FuelWood)}</td> 
             
         `;
         tbody.appendChild(tr);
@@ -222,6 +222,7 @@ function clearFilters() {
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
 
+    // real column headers only
     const headers = document.querySelectorAll(
         `thead tr:nth-child(2) th[data-group="${groupName}"]`
     );

@@ -297,33 +297,6 @@
         </select>
       </label>
 
-      <label>
-        Edible
-        <select id="filterEdible">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Lumber
-        <select id="filterLumber">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        FuelWood
-        <select id="filterFuelWood">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
     </div>
 
     <div class="actions">
@@ -333,73 +306,27 @@
   </section>
 
   <section class="card results">
-    <!-- <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
+    <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
     <button onclick="toggleGroup('prod')">Toggle Production</button>
     <button onclick="toggleGroup('wetland')">Toggle Wetland Status</button>
     <button onclick="toggleGroup('landform')">Toggle Landform</button>
     <button onclick="toggleGroup('soil')">Toggle Soil</button>
     <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
     <button onclick="toggleGroup('forestType')">Toggle Forest Type</button>
-    <button onclick="toggleGroup('characteristics')">Toggle Species Characteristics</button> -->
-
-    <label>
-    <input type="checkbox" data-group-toggle="climate" checked>
-    Climate Tolerance
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="prod" checked>
-    Production
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="wetland" checked>
-    Wetland Status
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="landform" checked>
-    Landform
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="soil" checked>
-    Soil
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="ecoregion" checked>
-    Ecoregions
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="forestType" checked>
-    Forest Type
-  </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="characteristics" checked>
-    Species Characteristics
-  </label>
-
-   <label>
-    <input type="checkbox" data-group-toggle="economic" checked>
-    Economic Value
-  </label>
+    <button onclick="toggleGroup('characteristics')">Toggle Species Characteristics</button>
     
     <table class="results-table">
       <thead>
         <tr>
-          <th data-group="general" colspan="2"></th> <!-- Species + Common Name -->
-          <th data-group="climate" colspan="1"></th> <!-- climate -->
-          <th data-group="prod" colspan="1"></th> <!-- prod -->
-          <th data-group="wetland"colspan="1"></th> <!-- wetland -->
-          <th data-group="landform" colspan="3">Landform</th> 
-          <th data-group="soil" colspan="3">Soil</th> 
-          <th data-group="ecoregion" colspan="9">Ecoregion</th> 
-          <th data-group="forestType" colspan="7">Forest Type</th> 
-          <th data-group="characteristics" colspan="7">Characteristics</th> 
-          <th data-group="economic" colspan="3">Economic Value</th> 
+          <th colspan="2">Species/Common Name</th> <!-- Species + Common Name -->
+          <th colspan="1">Climate Status</th> <!-- climate -->
+          <th colspan="1">Commercial Production</th> <!-- prod -->
+          <th colspan="1">Wetland Status</th> <!-- wetland -->
+          <th colspan="3">Landform</th> 
+          <th colspan="3">Soil</th> 
+          <th colspan="9">Ecoregion</th> 
+          <th colspan="7">Forest Type</th> 
+          <th colspan="7">Characteristics</th> 
         </tr>
 
 
@@ -442,12 +369,6 @@
             <th data-group="characteristics">Canopy Spread</th>
             <th data-group="characteristics">Growth Rate</th>
             <th data-group="characteristics">Shade Tolerance</th>
-
-            <th data-group="economic">Edible</th>
-            <th data-group="economic">Lumber</th>
-            <th data-group="economic">Fuel Wood
-
-
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
