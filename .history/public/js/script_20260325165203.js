@@ -48,8 +48,8 @@ const filters = [
         { id: "filterLumber", param: "lumber"},
         { id: "filterFuelWood", param: "fuelwood"},
 
-        { id: "filterPollinators", param: "attractspollinators"},
-        { id: "filterBirds", param: "attractsbirds"}
+        { id: "filterAttractsPollinators", param: "attractspollinators"},
+        { id: "filterAttractsBirds", param: "attractsbirds"}
 
 
 

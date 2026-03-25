@@ -46,10 +46,7 @@ const filters = [
 
         { id: "filterEdible", param: "edible"},
         { id: "filterLumber", param: "lumber"},
-        { id: "filterFuelWood", param: "fuelwood"},
-
-        { id: "filterPollinators", param: "attractspollinators"},
-        { id: "filterBirds", param: "attractsbirds"}
+        { id: "filterFuelWood", param: "fuelwood"}
 
 
 
@@ -198,9 +195,9 @@ async function fetchAndRenderTrees() {
             <td data-group="economic">${booleanToYn(r.Lumber)}</td>
             <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
 
-            <td data-group="ecological">${r.KnownInteractions ?? ""}</td>
-            <td data-group="ecological">${booleanToYn(r.AttractsPollinators)}</td>
-            <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td> 
+            <td data-group="characteristics">${r.KnownInteractions ?? ""}</td>
+            <td data-group="economic">${booleanToYn(r.AttractsPollinators)}</td>
+            <td data-group="economic">${booleanToYn(r.AttractsBirds)}</td> 
             
         `;
         tbody.appendChild(tr);
