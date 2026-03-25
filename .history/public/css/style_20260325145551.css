@@ -80,171 +80,171 @@ main.container{
 	opacity:0.95;
 }
 
-/* GENERAL */
-thead tr:nth-child(2) th[data-group="general"],
+
 td[data-group="general"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="general"]:nth-child(1),
+/* left edge of group */
+th[data-group="general"]:nth-child(1),
 td[data-group="general"]:nth-child(1) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="general"]:nth-child(2),
+/* right edge of group */
+th[data-group="general"]:nth-child(2),
 td[data-group="general"]:nth-child(2) {
   border-right: 2px solid black;
 }
 
-
-/* CLIMATE */
-thead tr:nth-child(2) th[data-group="climate"],
+th[data-group="climate"],
 td[data-group="climate"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="climate"]:nth-child(3),
+/* left edge of group */
+th[data-group="climate"]:nth-child(3),
 td[data-group="climate"]:nth-child(3) {
   border-left: 2px solid black;
+}
+
+/* right edge of group */
+th[data-group="climate"]:nth-child(3),
+td[data-group="climate"]:nth-child(3) {
   border-right: 2px solid black;
 }
 
-
-/* PROD */
-thead tr:nth-child(2) th[data-group="prod"],
+th[data-group="prod"],
 td[data-group="prod"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="prod"]:nth-child(4),
+/* left edge of group */
+th[data-group="prod"]:nth-child(4),
 td[data-group="prod"]:nth-child(4) {
   border-left: 2px solid black;
+}
+
+/* right edge of group */
+th[data-group="prod"]:nth-child(4),
+td[data-group="prod"]:nth-child(4) {
   border-right: 2px solid black;
 }
 
-
-/* WETLAND */
-thead tr:nth-child(2) th[data-group="wetland"],
+th[data-group="wetland"],
 td[data-group="wetland"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="wetland"]:nth-child(5),
+/* left edge of group */
+th[data-group="wetland"]:nth-child(5),
 td[data-group="wetland"]:nth-child(5) {
   border-left: 2px solid black;
+}
+
+/* right edge of group */
+th[data-group="wetland"]:nth-child(5),
+td[data-group="wetland"]:nth-child(5) {
   border-right: 2px solid black;
 }
 
-
-/* LANDFORM */
-thead tr:nth-child(2) th[data-group="landform"],
+th[data-group="landform"],
 td[data-group="landform"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="landform"]:nth-child(6),
+/* left edge of group */
+th[data-group="landform"]:nth-child(6),
 td[data-group="landform"]:nth-child(6) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="landform"]:nth-child(8),
+/* right edge of group */
+th[data-group="landform"]:nth-child(8),
 td[data-group="landform"]:nth-child(8) {
   border-right: 2px solid black;
 }
 
-
-/* SOIL */
-thead tr:nth-child(2) th[data-group="soil"],
+th[data-group="soil"],
 td[data-group="soil"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="soil"]:nth-child(9),
+/* left edge of group */
+th[data-group="soil"]:nth-child(9),
 td[data-group="soil"]:nth-child(9) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="soil"]:nth-child(11),
+/* right edge of group */
+th[data-group="soil"]:nth-child(11),
 td[data-group="soil"]:nth-child(11) {
   border-right: 2px solid black;
 }
 
-
-/* ECOREGION */
-thead tr:nth-child(2) th[data-group="ecoregion"],
+th[data-group="ecoregion"],
 td[data-group="ecoregion"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="ecoregion"]:nth-child(10),
+/* left edge of group */
+th[data-group="ecoregion"]:nth-child(10),
 td[data-group="ecoregion"]:nth-child(10) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="ecoregion"]:nth-child(20),
+/* right edge of group */
+th[data-group="ecoregion"]:nth-child(20),
 td[data-group="ecoregion"]:nth-child(20) {
   border-right: 2px solid black;
 }
 
-
-/* FOREST TYPE */
-thead tr:nth-child(2) th[data-group="forestType"],
+th[data-group="forestType"],
 td[data-group="forestType"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="forestType"]:nth-child(21),
+/* left edge of group */
+th[data-group="forestType"]:nth-child(21),
 td[data-group="forestType"]:nth-child(21) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="forestType"]:nth-child(27),
+/* right edge of group */
+th[data-group="forestType"]:nth-child(27),
 td[data-group="forestType"]:nth-child(27) {
   border-right: 2px solid black;
 }
 
-
-/* CHARACTERISTICS */
-thead tr:nth-child(2) th[data-group="characteristics"],
+th[data-group="characteristics"],
 td[data-group="characteristics"] {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(28),
+/* left edge of group */
+th[data-group="characteristics"]:nth-child(28),
 td[data-group="characteristics"]:nth-child(28) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(32),
+/* right edge of group */
+th[data-group="characteristics"]:nth-child(32),
 td[data-group="characteristics"]:nth-child(32) {
   border-right: 2px solid black;
 }
 
-/* Economic */
-thead tr:nth-child(2) th[data-group="economic"],
-td[data-group="economic"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
 
-thead tr:nth-child(2) th[data-group="economic"]:nth-child(33),
-td[data-group="economic"]:nth-child(33) {
-  border-left: 2px solid black;
-}
 
-thead tr:nth-child(2) th[data-group="economic"]:nth-child(35),
-td[data-group="economic"]:nth-child(35) {
-  border-right: 2px solid black;
-}
+
 
 
 .card{

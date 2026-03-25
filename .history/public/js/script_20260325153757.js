@@ -41,11 +41,7 @@ const filters = [
         { id: "filterWhiteRedJackPine", param: "whiteredjackpine"},
 
         { id: "filterGrowthRate", param: "growthrate"},
-        { id: "filterShadeTolerance", param: "shadetol"},
-
-        { id: "filterEdible", param: "edible"},
-        { id: "filterLumber", param: "lumber"},
-        { id: "filterFuelWood", param: "fuelwood"}
+        { id: "filterShadeTolerance", param: "shadetol"}
 
 
 
@@ -59,8 +55,7 @@ const hiddenGroups = {
     soil: false,
     ecoregion: false,
     forestType: false,
-    characteristics: false,
-    economic: false
+    characteristics: false
 };
     
 
@@ -177,10 +172,6 @@ async function fetchAndRenderTrees() {
             <td data-group="characteristics">${r.CanopySpread ?? ""}</td>
             <td data-group="characteristics">${r.GrowthRate ?? ""}</td>
             <td data-group="characteristics">${r.ShadeTol ?? ""}</td>
-
-            <td data-group="economic">${booleanToYn(r.Edible)}</td>
-            <td data-group="economic">${booleanToYn(r.Lumber)}</td>
-            <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
             
         `;
         tbody.appendChild(tr);
@@ -219,6 +210,39 @@ function clearFilters() {
 //   });
 // }
 
+function updateEdgeBorders() {
+    // remove old edge classes
+    document.querySelectorAll('.is-first-visible, .is-last-visible').forEach(el => {
+        el.classList.remove('is-first-visible', 'is-last-visible');
+    });
+
+    // ONLY use the real header row (second row) to find visible columns
+    const headerCells = Array.from(
+        document.querySelectorAll('thead tr:nth-child(2) th')
+    );
+
+    const visibleIndexes = headerCells
+        .map((th, index) => ({ th, index }))
+        .filter(({ th }) => getComputedStyle(th).display !== 'none')
+        .map(({ index }) => index);
+
+    if (!visibleIndexes.length) return;
+
+    const firstIndex = visibleIndexes[0];
+    const lastIndex = visibleIndexes[visibleIndexes.length - 1];
+
+    // mark second header row
+    if (headerCells[firstIndex]) headerCells[firstIndex].classList.add('is-first-visible');
+    if (headerCells[lastIndex]) headerCells[lastIndex].classList.add('is-last-visible');
+
+    // mark every body row too
+    document.querySelectorAll('#tableBody tr').forEach(row => {
+        const cells = row.children;
+        if (cells[firstIndex]) cells[firstIndex].classList.add('is-first-visible');
+        if (cells[lastIndex]) cells[lastIndex].classList.add('is-last-visible');
+    });
+}
+
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
 
@@ -239,19 +263,14 @@ function toggleGroup(groupName) {
         });
     });
 
-    // top grouped header row
     const topHeader = document.querySelector(
         `thead tr:nth-child(1) th[data-group="${groupName}"]`
     );
 
     if (topHeader) {
-        if (isHidden) {
-            topHeader.style.display = "none";
-        } else {
-            topHeader.style.display = "";
-            topHeader.colSpan = headers.length;
-        }
+        topHeader.style.display = isHidden ? "none" : "";
     }
+    updateEdgeBorders();
 }
 
 function applyHiddenGroups() {
@@ -359,4 +378,5 @@ document.querySelectorAll('[data-group-toggle]').forEach(cb => {
 
 
     fetchAndRenderTrees();
+    updateEdgeBorders();
 });

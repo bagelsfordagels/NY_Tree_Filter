@@ -222,6 +222,7 @@ function clearFilters() {
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
 
+    // real column headers only
     const headers = document.querySelectorAll(
         `thead tr:nth-child(2) th[data-group="${groupName}"]`
     );

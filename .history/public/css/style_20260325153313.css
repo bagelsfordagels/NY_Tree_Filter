@@ -219,32 +219,7 @@ td[data-group="characteristics"] {
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(28),
-td[data-group="characteristics"]:nth-child(28) {
-  border-left: 2px solid black;
-}
 
-thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(32),
-td[data-group="characteristics"]:nth-child(32) {
-  border-right: 2px solid black;
-}
-
-/* Economic */
-thead tr:nth-child(2) th[data-group="economic"],
-td[data-group="economic"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
-
-thead tr:nth-child(2) th[data-group="economic"]:nth-child(33),
-td[data-group="economic"]:nth-child(33) {
-  border-left: 2px solid black;
-}
-
-thead tr:nth-child(2) th[data-group="economic"]:nth-child(35),
-td[data-group="economic"]:nth-child(35) {
-  border-right: 2px solid black;
-}
 
 
 .card{
@@ -328,6 +303,14 @@ select:focus{
 .results-table{
 	width: max-content;
 	min-width: 100%;
+	thead tr:nth-child(n+2) th:first-child,
+	tbody td:first-child {
+  		border-left: 2px solid black;
+	}
+	thead tr:nth-child(n+2) th:first-child,
+	tbody td:first-child {
+  		border-right: 2px solid black;
+	}
 	border-collapse: collapse;
 	margin-top: 8px;
 }
