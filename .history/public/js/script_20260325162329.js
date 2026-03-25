@@ -46,10 +46,7 @@ const filters = [
 
         { id: "filterEdible", param: "edible"},
         { id: "filterLumber", param: "lumber"},
-        { id: "filterFuelWood", param: "fuelwood"},
-
-        { id: "filterPollinators", param: "attractspollinators"},
-        { id: "filterBirds", param: "attractsbirds"}
+        { id: "filterFuelWood", param: "fuelwood"}
 
 
 
@@ -64,8 +61,7 @@ const hiddenGroups = {
     ecoregion: false,
     forestType: false,
     characteristics: false,
-    economic: false,
-    ecological: false
+    economic: false
 };
     
 
@@ -118,7 +114,7 @@ function buildParams() {
         const min = Math.round(values[0]);
         const max = Math.round(values[1]);
 
-        if (min !== 0 || max !== 800) {
+        if (min !== 0 || max !== 100) {
             params.set("knowninteractionsMin", min);
             params.set("knowninteractionsMax", max);
         }
@@ -197,10 +193,6 @@ async function fetchAndRenderTrees() {
             <td data-group="economic">${booleanToYn(r.Edible)}</td>
             <td data-group="economic">${booleanToYn(r.Lumber)}</td>
             <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
-
-            <td data-group="ecological">${r.KnownInteractions ?? ""}</td>
-            <td data-group="ecological">${booleanToYn(r.AttractsPollinators)}</td>
-            <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td> 
             
         `;
         tbody.appendChild(tr);
@@ -227,9 +219,6 @@ function clearFilters() {
     }
     if(canopySlider && canopySlider.noUiSlider){
         canopySlider.noUiSlider.set([0, 100]);
-    }
-    if(knownInteractionsSlider && knownInteractionsSlider.noUiSlider){
-        knownInteractionsSlider.noUiSlider.set([0, 800]);
     }
 }
 
@@ -293,7 +282,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     lifeSlider = document.getElementById('lifespanSlider');
     heightSlider = document.getElementById('heightSlider');
     canopySlider = document.getElementById('canopySlider');
-    knownInteractionsSlider = document.getElementById("knownInteractionsSlider");
 
     if (lifeSlider) {
         noUiSlider.create(lifeSlider, {
@@ -349,18 +337,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (knownInteractionsSlider) {
         noUiSlider.create(knownInteractionsSlider, {
-            start: [0, 800],
+            start: [0, 100],
             connect: true,
-            range: { min: 0, max: 800 },
+            range: { min: 0, max: 100 },
             step: 1
         });
 
-        const knownInteractionsMinVal = document.getElementById("knownInteractionsMinVal");
-        const knownInteractionsMaxVal = document.getElementById("knownInteractionsMaxVal");
+        const knownInteractionsMax = document.getElementById("canopyMinVal");
+        const knownInteractionsMin = document.getElementById("canopyMaxVal");
 
         knownInteractionsSlider.noUiSlider.on('update', (values) => {
-            knownInteractionsMinVal.textContent = Math.round(values[0]);
-            knownInteractionsMaxVal.textContent = Math.round(values[1]);
+            canopyMinVal.textContent = Math.round(values[0]);
+            canopyMaxVal.textContent = Math.round(values[1]);
         });
     }
 

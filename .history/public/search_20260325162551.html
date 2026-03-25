@@ -316,7 +316,7 @@
       </label>
 
       <label>
-        Fuel Wood
+        FuelWood
         <select id="filterFuelWood">
           <option value="">Any</option>
           <option value="1">Yes</option>
@@ -325,30 +325,12 @@
       </label>
 
       <label title="Use Arrow Keys for Granular Adjustment">
-        Known Ecological Interactions
+        Know Ecological Interactions
         <div id="knownInteractionsSlider"></div>
         <div>
           <span id="knownInteractionsMinVal">0</span> - 
-          <span id="knownInteractionsMaxVal">800</span>
+          <span id="knownInteractoinsMaxVal">800</span>
         </div>
-      </label>
-
-      <label>
-        Attracts Pollinators
-        <select id="filterPollinators">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
-      </label>
-
-      <label>
-        Attracts Birds
-        <select id="filterBirds">
-          <option value="">Any</option>
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
       </label>
 
     </div>
@@ -413,11 +395,6 @@
     <input type="checkbox" data-group-toggle="economic" checked>
     Economic Value
   </label>
-
-  <label>
-    <input type="checkbox" data-group-toggle="ecological" checked>
-    Ecological Value
-  </label>
     
     <table class="results-table">
       <thead>
@@ -430,9 +407,8 @@
           <th data-group="soil" colspan="3">Soil</th> 
           <th data-group="ecoregion" colspan="9">Ecoregion</th> 
           <th data-group="forestType" colspan="7">Forest Type</th> 
-          <th data-group="characteristics" colspan="5">Characteristics</th> 
+          <th data-group="characteristics" colspan="7">Characteristics</th> 
           <th data-group="economic" colspan="3">Economic Value</th> 
-          <th data-group="ecological" colspan="3">Ecological Value</th> 
         </tr>
 
 
@@ -478,7 +454,7 @@
 
             <th data-group="economic">Edible</th>
             <th data-group="economic">Lumber</th>
-            <th data-group="economic">Fuel Wood</th>
+            <th data-group="economic">Fuel Wood
             
             <th data-group="ecological">Known Ecological Interactions</th>
             <th data-group="ecological">Attracts Pollinators</th>
