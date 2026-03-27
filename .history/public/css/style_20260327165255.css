@@ -263,7 +263,7 @@ td[data-group="ecological"]:nth-child(38) {
   border-right: 2px solid black;
 }
 
-/* plantingConsiderations */
+/* plantingConsiderations
 thead tr:nth-child(2) th[data-group="plantingConsiderations"],
 td[data-group="plantingConsiderations"] {
   border-top: 2px solid black;
@@ -278,7 +278,7 @@ td[data-group="plantingConsiderations"]:nth-child(39) {
 thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
 td[data-group="plantingConsiderations"]:nth-child(42) {
   border-right: 2px solid black;
-}
+} */
 
 
 .card{
@@ -364,6 +364,10 @@ select:focus{
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
+	thead tr:nth-child(n+2) th:last-child,
+	tbody td:last-child {
+  		border-left: 2px solid black;
+	}
 	thead tr:nth-child(n+2) th:last-child,
 	tbody td:last-child {
   		border-right: 2px solid black;

@@ -263,7 +263,7 @@ td[data-group="ecological"]:nth-child(38) {
   border-right: 2px solid black;
 }
 
-/* plantingConsiderations */
+plantingConsiderations
 thead tr:nth-child(2) th[data-group="plantingConsiderations"],
 td[data-group="plantingConsiderations"] {
   border-top: 2px solid black;
@@ -364,6 +364,7 @@ select:focus{
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
+	border-top: 2px solid black;
 	thead tr:nth-child(n+2) th:last-child,
 	tbody td:last-child {
   		border-right: 2px solid black;

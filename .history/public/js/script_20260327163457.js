@@ -1,5 +1,6 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
+    return el ? el.value.trim() : "";
 }
 
 let lifeSlider;
@@ -68,8 +69,7 @@ const hiddenGroups = {
     forestType: false,
     characteristics: false,
     economic: false,
-    ecological: false,
-    plantingConsiderations: false
+    ecological: false
 };
     
 
@@ -204,11 +204,8 @@ async function fetchAndRenderTrees() {
 
             <td data-group="ecological">${r.KnownInteractions ?? ""}</td>
             <td data-group="ecological">${booleanToYn(r.AttractsPollinators)}</td>
-            <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td>
+            <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td> 
             
-            <td data-group="plantingConsiderations">${booleanToYn(r.RecomendedForWindbreak)}</td>
-            <td data-group="plantingConsiderations">${r.DeerResistance ?? ""}</td>
-            <td data-group="plantingConsiderations">${r.PestAndPathogenSusceptibility ?? ""}</td>
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();
@@ -381,8 +378,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
     await populateDropdown("filterGrowthRate", "SpeciesCharacteristics", "GrowthRate");
     await populateDropdown("filterShadeTolerance", "SpeciesCharacteristics", "ShadeTol");
-    await populateDropdown("filterDeer", "PlantingConsiderations", "DeerResistance");
-    await populateDropdown("filterPest", "PlantingConsiderations", "PestAndPathogenSusceptibility");
 
 document
     .getElementById("applyFilters")
