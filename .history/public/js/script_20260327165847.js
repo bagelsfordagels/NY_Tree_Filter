@@ -206,9 +206,9 @@ async function fetchAndRenderTrees() {
             <td data-group="ecological">${booleanToYn(r.AttractsPollinators)}</td>
             <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td>
             
-            <td data-group="plantingConsiderations">${booleanToYn(r.RecomendedForWindbreak)}</td>
-            <td data-group="plantingConsiderations">${r.DeerResistance ?? ""}</td>
-            <td data-group="plantingConsiderations">${r.PestAndPathogenSusceptibility ?? ""}</td>
+            <td data-group="ecological">${booleanToYn(r.RecomendedForWindbreak)}</td>
+            <td data-group="characteristics">${r.DeerResistance ?? ""}</td>
+            <td data-group="characteristics">${r.PestAndPathogenSusceptibility ?? ""}</td>
         `;
         tbody.appendChild(tr);
         applyHiddenGroups();

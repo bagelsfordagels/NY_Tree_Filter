@@ -258,8 +258,8 @@ td[data-group="ecological"]:nth-child(36) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="ecological"]:nth-child(38),
-td[data-group="ecological"]:nth-child(38) {
+thead tr:nth-child(2) th[data-group="ecological"]:nth-child(39),
+td[data-group="ecological"]:nth-child(39) {
   border-right: 2px solid black;
 }
 
@@ -270,13 +270,13 @@ td[data-group="plantingConsiderations"] {
   border-bottom: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(39),
-td[data-group="plantingConsiderations"]:nth-child(39) {
+thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(37),
+td[data-group="plantingConsiderations"]:nth-child(37) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
-td[data-group="plantingConsiderations"]:nth-child(42) {
+thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(40),
+td[data-group="plantingConsiderations"]:nth-child(40) {
   border-right: 2px solid black;
 }
 
@@ -359,15 +359,11 @@ select:focus{
 	margin:6px 0;
 }
 
-.results-table {
+.results-table{
 	width: max-content;
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
-  		border-right: 2px solid black;
-	}
 	margin-top: 8px;
 }
 

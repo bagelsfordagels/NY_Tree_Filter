@@ -275,8 +275,8 @@ td[data-group="plantingConsiderations"]:nth-child(39) {
   border-left: 2px solid black;
 }
 
-thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
-td[data-group="plantingConsiderations"]:nth-child(42) {
+thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(41),
+td[data-group="plantingConsiderations"]:nth-child(41) {
   border-right: 2px solid black;
 }
 
@@ -364,10 +364,8 @@ select:focus{
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
-  		border-right: 2px solid black;
-	}
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 	margin-top: 8px;
 }
 
