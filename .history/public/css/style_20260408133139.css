@@ -86,24 +86,22 @@ main.container{
 }
 
 .noUi-handle {
-	width: 20px !important;
+	width: 18px !important;
 	height: 22px !important;
 	right: -9px !important;
 	top: -4px !important;
 	border-radius: 50%;
-	border: none;
+	border: 2px solid var(--green-700);
 	background: white;
 	box-shadow: none;
 	cursor: pointer;
 }
 
-.noUi-horizontal .noUi-handle::before,
-.noUi-horizontal .noUi-handle::after,
-.noUi-vertical .noUi-handle::before,
-.noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
+.noUi-handle:before,
+.noUi-handle:after {
+  	display: none;
 }
+
 .pageShell{
 	width: max-content;
 	min-width: 100%;

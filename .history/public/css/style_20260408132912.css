@@ -56,54 +56,15 @@ main.container{
 }
 
 .groupControls{
-	margin-bottom:12px;
-	display:flex;
-	gap:10px;
+  margin-bottom:12px;
+  display:flex;
+  gap:10px;
 }
 
 .toggle{
 	padding-right: 20px;
 }
 
-#lifespanSlider,
-#heightSlider,
-#canopySlider,
-#knownInteractionsSlider {
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
-
-.noUi-target {
-	background: #e5e7eb;
-	border: none;
-	box-shadow: none;
-	border-radius: 999px;
-	height: 10px;
-}
-
-.noUi-connect {
-  	background: var(--green-500);
-}
-
-.noUi-handle {
-	width: 20px !important;
-	height: 22px !important;
-	right: -9px !important;
-	top: -4px !important;
-	border-radius: 50%;
-	border: none;
-	background: white;
-	box-shadow: none;
-	cursor: pointer;
-}
-
-.noUi-horizontal .noUi-handle::before,
-.noUi-horizontal .noUi-handle::after,
-.noUi-vertical .noUi-handle::before,
-.noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
-}
 .pageShell{
 	width: max-content;
 	min-width: 100%;
