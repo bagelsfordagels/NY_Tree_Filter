@@ -37,32 +37,20 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top:150px;
-  	height:calc(100vh - 230px);
+  	top:140px;
+  	max-height:calc(100vh - 40px);
   	overflow-y:auto;
 }
 .card.results{
 	padding-top: 140px;
 	flex:1 1 auto;
 	text-transform: capitalize;
-	height:calc(100vh - 100px);
-	overflow: auto;
-}
-.headerControls{
-	display: flex;
-	align-items: center;
-	justify-content: space-between; 
-	margin-top: -10px;
 }
 
 .groupControls{
   margin-bottom:12px;
   display:flex;
   gap:10px;
-}
-
-.toggle{
-	padding-right: 20px;
 }
 
 .pageShell{
@@ -85,7 +73,6 @@ main.container{
 	display:flex;
 	flex-direction:column;
 	gap:6px;
-	margin-top: -20px;
 }
 .siteHeader h1{
 	margin:0;
@@ -349,7 +336,7 @@ select:focus{
 .actions{
 	display:flex;
 	gap:10px;
-	padding-left: 100px;
+	margin-top:14px;
 }
 .btn{
 	padding:10px 14px;

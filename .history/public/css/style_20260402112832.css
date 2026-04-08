@@ -45,24 +45,13 @@ main.container{
 	padding-top: 140px;
 	flex:1 1 auto;
 	text-transform: capitalize;
-	height:calc(100vh - 100px);
-	overflow: auto;
-}
-.headerControls{
-	display: flex;
-	align-items: center;
-	justify-content: space-between; 
-	margin-top: -10px;
+	height:calc(100vh - 230px);
 }
 
 .groupControls{
   margin-bottom:12px;
   display:flex;
   gap:10px;
-}
-
-.toggle{
-	padding-right: 20px;
 }
 
 .pageShell{
@@ -85,7 +74,6 @@ main.container{
 	display:flex;
 	flex-direction:column;
 	gap:6px;
-	margin-top: -20px;
 }
 .siteHeader h1{
 	margin:0;

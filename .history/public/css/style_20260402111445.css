@@ -38,31 +38,19 @@ main.container{
   	max-width:320px;
   	position:sticky;
   	top:150px;
-  	height:calc(100vh - 230px);
+  	max-height:calc(100vh - 40px);
   	overflow-y:auto;
 }
 .card.results{
-	padding-top: 140px;
+	top: 150;
 	flex:1 1 auto;
 	text-transform: capitalize;
-	height:calc(100vh - 100px);
-	overflow: auto;
-}
-.headerControls{
-	display: flex;
-	align-items: center;
-	justify-content: space-between; 
-	margin-top: -10px;
 }
 
 .groupControls{
   margin-bottom:12px;
   display:flex;
   gap:10px;
-}
-
-.toggle{
-	padding-right: 20px;
 }
 
 .pageShell{
@@ -85,7 +73,6 @@ main.container{
 	display:flex;
 	flex-direction:column;
 	gap:6px;
-	margin-top: -20px;
 }
 .siteHeader h1{
 	margin:0;
@@ -349,7 +336,7 @@ select:focus{
 .actions{
 	display:flex;
 	gap:10px;
-	padding-left: 100px;
+	margin-top:14px;
 }
 .btn{
 	padding:10px 14px;
@@ -385,13 +372,12 @@ select:focus{
 	tbody td:last-child {
   		border-right: 2px solid black;
 	}
-	
+	margin-top: 8px;
 }
 
 .results-table thead th{
 	background:linear-gradient(180deg,#f0fff4,#ffffff);
 	text-align:center;
-	top: 200px;
 	padding:10px;
 	border-bottom:1px solid rgba(6,78,59,0.06);
 	font-weight:600;

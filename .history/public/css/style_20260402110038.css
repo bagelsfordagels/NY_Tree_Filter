@@ -13,7 +13,6 @@
 *{box-sizing:border-box}
 body{
 	margin:0;
-	padding-top: 0;
 	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 	background: linear-gradient(180deg, #f7fff7 0%, #ffffff 40%);
 	color:var(--green-900);
@@ -37,22 +36,13 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top:150px;
-  	height:calc(100vh - 230px);
+  	top:20px;
+  	max-height:calc(100vh - 40px);
   	overflow-y:auto;
 }
 .card.results{
-	padding-top: 140px;
 	flex:1 1 auto;
 	text-transform: capitalize;
-	height:calc(100vh - 100px);
-	overflow: auto;
-}
-.headerControls{
-	display: flex;
-	align-items: center;
-	justify-content: space-between; 
-	margin-top: -10px;
 }
 
 .groupControls{
@@ -61,21 +51,15 @@ main.container{
   gap:10px;
 }
 
-.toggle{
-	padding-right: 20px;
-}
-
 .pageShell{
 	width: max-content;
 	min-width: 100%;
 }
 
 .siteHeader{
-	position: fixed;
-	z-index: 1000;
 	background:linear-gradient(90deg,var(--green-700),var(--green-500));
 	color:white;
-	padding:5px 0;
+	padding:28px 0;
 	border-bottom-left-radius:var(--radius);
 	border-bottom-right-radius:var(--radius);
 	width: 100%;
@@ -85,7 +69,6 @@ main.container{
 	display:flex;
 	flex-direction:column;
 	gap:6px;
-	margin-top: -20px;
 }
 .siteHeader h1{
 	margin:0;
@@ -95,6 +78,20 @@ main.container{
 .subtitle{
 	margin:0;
 	opacity:0.95;
+}
+
+.clearApply {
+	position: fixed;
+	top: 80px;      /* adjust based on header height */
+	left: 50%;
+	transform: translateX(-50%);
+	
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+	z-index: 1000;
 }
 
 /* GENERAL */
@@ -349,7 +346,7 @@ select:focus{
 .actions{
 	display:flex;
 	gap:10px;
-	padding-left: 100px;
+	margin-top:14px;
 }
 .btn{
 	padding:10px 14px;
@@ -385,13 +382,12 @@ select:focus{
 	tbody td:last-child {
   		border-right: 2px solid black;
 	}
-	
+	margin-top: 8px;
 }
 
 .results-table thead th{
 	background:linear-gradient(180deg,#f0fff4,#ffffff);
 	text-align:center;
-	top: 200px;
 	padding:10px;
 	border-bottom:1px solid rgba(6,78,59,0.06);
 	font-weight:600;
