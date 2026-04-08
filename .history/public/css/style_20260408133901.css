@@ -101,8 +101,8 @@ main.container{
 .noUi-horizontal .noUi-handle::after,
 .noUi-vertical .noUi-handle::before,
 .noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
+  content: none !important;
+  display: none !important;
 }
 .pageShell{
 	width: max-content;

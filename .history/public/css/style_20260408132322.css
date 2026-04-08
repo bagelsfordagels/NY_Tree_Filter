@@ -56,54 +56,15 @@ main.container{
 }
 
 .groupControls{
-	margin-bottom:12px;
-	display:flex;
-	gap:10px;
+  margin-bottom:12px;
+  display:flex;
+  gap:10px;
 }
 
 .toggle{
 	padding-right: 20px;
 }
 
-#lifespanSlider,
-#heightSlider,
-#canopySlider,
-#knownInteractionsSlider {
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
-
-.noUi-target {
-	background: #e5e7eb;
-	border: none;
-	box-shadow: none;
-	border-radius: 999px;
-	height: 10px;
-}
-
-.noUi-connect {
-  	background: var(--green-500);
-}
-
-.noUi-handle {
-	width: 20px !important;
-	height: 22px !important;
-	right: -9px !important;
-	top: -4px !important;
-	border-radius: 50%;
-	border: none;
-	background: white;
-	box-shadow: none;
-	cursor: pointer;
-}
-
-.noUi-horizontal .noUi-handle::before,
-.noUi-horizontal .noUi-handle::after,
-.noUi-vertical .noUi-handle::before,
-.noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
-}
 .pageShell{
 	width: max-content;
 	min-width: 100%;
@@ -352,29 +313,24 @@ td[data-group="plantingConsiderations"]:nth-child(42) {
 	color:var(--green-900);
 }
 
-.filters .filterGrid{
+.filters .filterGrid > label{
 	display:flex;
 	flex-direction:column;
 	gap:12px;
 }
 
+/* Each filter row: label at left, select on right */
 .field{
 	display:flex;
-	align-items:flex-start;
+	flex-direction:row;
+	align-items:center;
 	gap:12px;
 }
-
 .labelText{
-	flex:0 0 160px;
 	font-size:0.9rem;
-	color:black;
-	line-height:1.2;
-}
-
-.field select,
-.field > div{
-	flex:1;
-	min-width:0;
+	color:var(--muted);
+	margin-bottom:0;
+	flex:0 0 140px;
 }
 select{flex:1}
 select{

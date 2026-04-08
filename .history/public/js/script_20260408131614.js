@@ -60,16 +60,16 @@ const filters = [
 
 const hiddenGroups = {
     climate: true,
-    prod: true,
-    wetland: true,
-    landform: true,
-    soil: true,
-    ecoregion: true,
-    forestType: true,
-    characteristics: true,
-    economic: true,
-    ecological: true,
-    plantingConsiderations: true
+    prod: false,
+    wetland: false,
+    landform: false,
+    soil: false,
+    ecoregion: false,
+    forestType: false,
+    characteristics: false,
+    economic: false,
+    ecological: false,
+    plantingConsiderations: false
 };
     
 

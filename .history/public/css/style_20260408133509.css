@@ -86,7 +86,7 @@ main.container{
 }
 
 .noUi-handle {
-	width: 20px !important;
+	width: 15px !important;
 	height: 22px !important;
 	right: -9px !important;
 	top: -4px !important;
@@ -97,13 +97,11 @@ main.container{
 	cursor: pointer;
 }
 
-.noUi-horizontal .noUi-handle::before,
-.noUi-horizontal .noUi-handle::after,
-.noUi-vertical .noUi-handle::before,
-.noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
+.noUi-handle:before,
+.noUi-handle:after {
+  	display: none;
 }
+
 .pageShell{
 	width: max-content;
 	min-width: 100%;

@@ -97,12 +97,23 @@ main.container{
 	cursor: pointer;
 }
 
+.noUi-target,
+.noUi-base,
+.noUi-connects,
+.noUi-connect,
+.noUi-origin,
+.noUi-handle,
+.noUi-touch-area {
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .noUi-horizontal .noUi-handle::before,
 .noUi-horizontal .noUi-handle::after,
 .noUi-vertical .noUi-handle::before,
 .noUi-vertical .noUi-handle::after {
-	content: none !important;
-	display: none !important;
+  content: none !important;
+  display: none !important;
 }
 .pageShell{
 	width: max-content;
