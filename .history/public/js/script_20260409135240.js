@@ -240,8 +240,9 @@ function clearFilters() {
     }
 
     document.querySelectorAll('select').forEach(select => {
-        updateColor(select);
-        select.addEventListener('change', () => updateColor(select));
+    updateColor(select);
+
+    select.addEventListener('change', () => updateColor(select));
     });
 }
 
@@ -424,6 +425,7 @@ document.querySelectorAll('[data-group-toggle]').forEach(cb => {
 
 document.querySelectorAll('select').forEach(select => {
     updateColor(select);
+
     select.addEventListener('change', () => updateColor(select));
 });
 

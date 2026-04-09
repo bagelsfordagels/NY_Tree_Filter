@@ -238,11 +238,6 @@ function clearFilters() {
     if(knownInteractionsSlider && knownInteractionsSlider.noUiSlider){
         knownInteractionsSlider.noUiSlider.set([0, 800]);
     }
-
-    document.querySelectorAll('select').forEach(select => {
-        updateColor(select);
-        select.addEventListener('change', () => updateColor(select));
-    });
 }
 
 // function toggleGroup(group) {
@@ -253,7 +248,6 @@ function clearFilters() {
 //     el.style.display = hiddenGroups[group] ? "none" : "";
 //   });
 // }
-
 
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
@@ -299,15 +293,6 @@ function applyHiddenGroups() {
       });
     }
   }
-}
-
-function updateColor(select){
-    if (select.value == ""){
-        select.classList.add("is-default");
-    }
-    else{
-        select.classList.remove("is-default");
-    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -423,8 +408,16 @@ document.querySelectorAll('[data-group-toggle]').forEach(cb => {
 });
 
 document.querySelectorAll('select').forEach(select => {
-    updateColor(select);
-    select.addEventListener('change', () => updateColor(select));
+    function updateColor() {
+        if (select.value === "") {
+        select.classList.add('is-default');
+        } else {
+        select.classList.remove('is-default');
+        }
+    }
+
+    updateColor(); // run on load
+    select.addEventListener('change', updateColor);
 });
 
 
