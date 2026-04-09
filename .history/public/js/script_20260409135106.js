@@ -239,10 +239,7 @@ function clearFilters() {
         knownInteractionsSlider.noUiSlider.set([0, 800]);
     }
 
-    document.querySelectorAll('select').forEach(select => {
-        updateColor(select);
-        select.addEventListener('change', () => updateColor(select));
-    });
+    
 }
 
 // function toggleGroup(group) {
@@ -424,6 +421,7 @@ document.querySelectorAll('[data-group-toggle]').forEach(cb => {
 
 document.querySelectorAll('select').forEach(select => {
     updateColor(select);
+
     select.addEventListener('change', () => updateColor(select));
 });
 
