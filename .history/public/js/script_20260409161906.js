@@ -157,14 +157,6 @@ async function fetchAndRenderTrees() {
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
 
-    if (rows.length === 0) {
-        const tr = document.createElement("tr");
-        tr.classList.add("noResults");
-        tr.innerHTML = `<td colspan="42">No results found</td>`;
-        tbody.appendChild(tr);
-        return;
-    }
-
     rows.forEach(r => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -222,6 +214,9 @@ async function fetchAndRenderTrees() {
         
     });
     applyHiddenGroups();
+    if (rows.length === 0){
+    tr.innerHTML = "No Results";
+}
 }
 
 function booleanToYn(val){
@@ -327,8 +322,6 @@ function updateColor(select){
         select.classList.remove("is-default");
     }
 }
-
-
 
 document.addEventListener("DOMContentLoaded", async () => {
 

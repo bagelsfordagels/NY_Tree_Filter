@@ -140,8 +140,21 @@ main.container{
 	border-left: 2px solid black;
 }
 
+.group-start {
+  	border-left: 2px solid black;
+}
 
-/*GENERAL*/
+.group-end {
+  	border-right: 2px solid black;
+}
+
+.results-table th,
+.results-table td {
+  	
+  	border-bottom: 2px solid black;
+}
+
+/* GENERAL
 thead tr:nth-child(2) th[data-group="general"],
 td[data-group="general"] {
   	border-top: 2px solid black;
@@ -324,7 +337,7 @@ td[data-group="ecological"]:nth-child(38) {
   	border-right: 2px solid black;
 }
 
-/* plantingConsiderations*/
+/* plantingConsiderations */
 thead tr:nth-child(2) th[data-group="plantingConsiderations"],
 td[data-group="plantingConsiderations"] {
   	border-top: 2px solid black;
@@ -339,7 +352,7 @@ td[data-group="plantingConsiderations"]:nth-child(39) {
 thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
 td[data-group="plantingConsiderations"]:nth-child(42) {
   	border-right: 2px solid black;
-}
+} */
 
 
 .card{
@@ -473,10 +486,9 @@ select.is-default {
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
-  		border-right: 2px solid black;
-	}
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+	
 }
 
 .results-table thead th{

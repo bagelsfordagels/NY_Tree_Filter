@@ -157,14 +157,6 @@ async function fetchAndRenderTrees() {
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
 
-    if (rows.length === 0) {
-        const tr = document.createElement("tr");
-        tr.classList.add("noResults");
-        tr.innerHTML = `<td colspan="42">No results found</td>`;
-        tbody.appendChild(tr);
-        return;
-    }
-
     rows.forEach(r => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -219,9 +211,8 @@ async function fetchAndRenderTrees() {
             <td data-group="plantingConsiderations">${r.PestAndPathogenSusceptibility ?? ""}</td>
         `;
         tbody.appendChild(tr);
-        
+        applyHiddenGroups();
     });
-    applyHiddenGroups();
 }
 
 function booleanToYn(val){
@@ -300,11 +291,10 @@ function toggleGroup(groupName) {
 }
 
 function toggleAll(){
-    const toggles = document.querySelectorAll('[data-group-toggle]');
-    const allChecked = [...toggles].every(t=>t.checked);
-    toggles.forEach(t =>{
-        t.checked = !allChecked;
-        t.dispatchEvent(new Event('change'));
+    const toggles = document.querySelectorAll('[data-toggle-group]');
+    toggles.forEach(toggle => {
+        toggle.checked = true;
+        toggle.dispatchEvent(new Event('change'));
     });
 }
 
@@ -327,8 +317,6 @@ function updateColor(select){
         select.classList.remove("is-default");
     }
 }
-
-
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -428,11 +416,6 @@ document
     .addEventListener("click", () => {
       clearFilters();
       fetchAndRenderTrees();
-    });
-document
-    .getElementById("toggleAll")
-    .addEventListener("click", () => {
-        toggleAll();
     });
 
 document.querySelectorAll('[data-group-toggle]').forEach(cb => {

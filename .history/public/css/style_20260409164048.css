@@ -140,8 +140,21 @@ main.container{
 	border-left: 2px solid black;
 }
 
+.group-start {
+  	border-left: 2px solid black;
+}
 
-/*GENERAL*/
+.group-end {
+  	border-right: 2px solid black;
+}
+
+.results-table th,
+.results-table td {
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
+}
+
+/* GENERAL
 thead tr:nth-child(2) th[data-group="general"],
 td[data-group="general"] {
   	border-top: 2px solid black;
@@ -159,7 +172,7 @@ td[data-group="general"]:nth-child(2) {
 }
 
 
-/* CLIMATE */
+/* CLIMATE 
 thead tr:nth-child(2) th[data-group="climate"],
 td[data-group="climate"] {
   	border-top: 2px solid black;
@@ -173,7 +186,7 @@ td[data-group="climate"]:nth-child(3) {
 }
 
 
-/* PROD */
+/* PROD 
 thead tr:nth-child(2) th[data-group="prod"],
 td[data-group="prod"] {
  	border-top: 2px solid black;
@@ -187,7 +200,7 @@ td[data-group="prod"]:nth-child(4) {
 }
 
 
-/* WETLAND */
+/* WETLAND 
 thead tr:nth-child(2) th[data-group="wetland"],
 td[data-group="wetland"] {
   	border-top: 2px solid black;
@@ -201,7 +214,7 @@ td[data-group="wetland"]:nth-child(5) {
 }
 
 
-/* LANDFORM */
+/* LANDFORM 
 thead tr:nth-child(2) th[data-group="landform"],
 td[data-group="landform"] {
   	border-top: 2px solid black;
@@ -219,7 +232,7 @@ td[data-group="landform"]:nth-child(8) {
 }
 
 
-/* SOIL */
+/* SOIL 
 thead tr:nth-child(2) th[data-group="soil"],
 td[data-group="soil"] {
   	border-top: 2px solid black;
@@ -237,7 +250,7 @@ td[data-group="soil"]:nth-child(11) {
 }
 
 
-/* ECOREGION */
+/* ECOREGION 
 thead tr:nth-child(2) th[data-group="ecoregion"],
 td[data-group="ecoregion"] {
   	border-top: 2px solid black;
@@ -255,7 +268,7 @@ td[data-group="ecoregion"]:nth-child(20) {
 }
 
 
-/* FOREST TYPE */
+/* FOREST TYPE 
 thead tr:nth-child(2) th[data-group="forestType"],
 td[data-group="forestType"] {
   	border-top: 2px solid black;
@@ -273,7 +286,7 @@ td[data-group="forestType"]:nth-child(27) {
 }
 
 
-/* CHARACTERISTICS */
+/* CHARACTERISTICS 
 thead tr:nth-child(2) th[data-group="characteristics"],
 td[data-group="characteristics"] {
   	border-top: 2px solid black;
@@ -290,7 +303,7 @@ td[data-group="characteristics"]:nth-child(32) {
   	border-right: 2px solid black;
 }
 
-/* Economic */
+/* Economic 
 thead tr:nth-child(2) th[data-group="economic"],
 td[data-group="economic"] {
 	border-top: 2px solid black;
@@ -307,7 +320,7 @@ td[data-group="economic"]:nth-child(35) {
   	border-right: 2px solid black;
 }
 
-/* ecological */
+/* ecological 
 thead tr:nth-child(2) th[data-group="ecological"],
 td[data-group="ecological"] {
 	border-top: 2px solid black;
@@ -324,7 +337,7 @@ td[data-group="ecological"]:nth-child(38) {
   	border-right: 2px solid black;
 }
 
-/* plantingConsiderations*/
+/* plantingConsiderations 
 thead tr:nth-child(2) th[data-group="plantingConsiderations"],
 td[data-group="plantingConsiderations"] {
   	border-top: 2px solid black;
@@ -339,7 +352,7 @@ td[data-group="plantingConsiderations"]:nth-child(39) {
 thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
 td[data-group="plantingConsiderations"]:nth-child(42) {
   	border-right: 2px solid black;
-}
+} */
 
 
 .card{
@@ -473,10 +486,26 @@ select.is-default {
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
-  		border-right: 2px solid black;
-	}
+	border-right: 2px solid black;
+	border-left: 2px solid black;	
+}
+
+/* skip first header row, keep borders everywhere else */
+.results-table tbody tr > *:first-child {
+  border-left: 2px solid black;
+}
+
+.results-table tbody tr > *:last-child {
+  border-right: 2px solid black;
+}
+
+/* apply to second header row only */
+.results-table thead tr:nth-child(2) > *:first-child {
+  border-left: 2px solid black;
+}
+
+.results-table thead tr:nth-child(2) > *:last-child {
+  border-right: 2px solid black;
 }
 
 .results-table thead th{
