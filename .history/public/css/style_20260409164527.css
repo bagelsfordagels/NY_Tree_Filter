@@ -473,10 +473,9 @@ select.is-default {
 	min-width: 100%;
 	border-collapse: collapse;
 	border-bottom: 2px solid black;
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
-  		border-right: 2px solid black;
-	}
+	border-right: 2px solid black;
+	border-left: 2px solid black;
+	
 }
 
 .results-table thead th{

@@ -328,8 +328,6 @@ function updateColor(select){
     }
 }
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
 
     lifeSlider = document.getElementById('lifespanSlider');

@@ -328,7 +328,40 @@ function updateColor(select){
     }
 }
 
+function updateGroupBorders() {
+    const rows = document.querySelectorAll("table tr");
 
+    rows.forEach(row => {
+        row.querySelectorAll(".group-start, .group-end").forEach(cell => {
+            cell.classList.remove("group-start", "group-end");
+        });
+
+        const visibleCells = [...row.children].filter(cell => {
+            return getComputedStyle(cell).display !== "none";
+        });
+
+        let lastGroup = null;
+        let lastCell = null;
+
+        visibleCells.forEach((cell, i) => {
+            const group = cell.dataset.group;
+
+            if (group !== lastGroup) {
+                cell.classList.add("group-start");
+                if (lastCell) {
+                    lastCell.classList.add("group-end");
+                }
+            }
+
+            lastGroup = group;
+            lastCell = cell;
+        });
+
+        if (lastCell) {
+            lastCell.classList.add("group-end");
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
 
