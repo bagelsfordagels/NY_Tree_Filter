@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NY Trees — Filter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+</head>
+<body>
+<div class="pageShell">
+
+<header class="siteHeader">
+    <div class="container">
+        <a href="index.html"><button>Homepage</button></a>
+        <h1>NY Collaborative Priority Species List</h1>
+        <p class="subtitle">Filter the dataset using the dropdowns below</p>
+        <nav> 
+      
+    </nav>
+    </div>
+    <div class="headerControls">
+      <div class="actions">
+          <button id="applyFilters">Apply filters</button>
+          <button id="clearFilters" title="Clear All Fields">Clear</button>
+      </div>
+      <div class="toggle">
+        <label>
+          <input title="Species Tolerance to Climate Change" type="checkbox" data-group-toggle="climate" checked>
+          Climate Tolerance
+        </label>
+
+        <label>
+          <input title="Species Aggregated Commercial Production" type="checkbox" data-group-toggle="prod" checked>
+          Production
+        </label>
+
+        <label>
+          <input title="Species National Wetland Status Indicator (NWI)" type="checkbox" data-group-toggle="wetland" checked>
+          Wetland Status
+        </label>
+
+        <label>
+          <input title="Species Landform Preference" type="checkbox" data-group-toggle="landform" checked>
+          Landform
+        </label>
+
+        <label>
+          <input title="Species Soil Type Preference" type="checkbox" data-group-toggle="soil" checked>
+          Soil
+        </label>
+
+        <label>
+          <input title="Species Prefered Ecoregion" type="checkbox" data-group-toggle="ecoregion" checked>
+          Ecoregions
+        </label>
+
+        <label>
+          <input title="Species Forest Type Preference" type="checkbox" data-group-toggle="forestType" checked>
+          Forest Type
+        </label>
+
+        <label>
+          <input title="Species Characteristics" type="checkbox" data-group-toggle="characteristics" checked>
+          Species Characteristics
+        </label>
+
+        <label>
+          <input title="Species Economic Value" type="checkbox" data-group-toggle="economic" checked>
+          Economic Value
+        </label>
+
+        <label>
+          <input title="Species Ecological Value" type="checkbox" data-group-toggle="ecological" checked>
+          Ecological Value
+        </label>
+
+        <label>
+          <input title="Species Planting Considerations" type="checkbox" data-group-toggle="plantingConsiderations" checked>
+          Planting Considerations
+        </label>
+      </div>
+    </div>
+    
+</header>
+
+<main class="container">
+
+  <section class="card filters">
+  <h2 class="cardTitle">Filters</h2>
+
+  <div class="filterGrid">
+
+    <div class="field">
+      <span class="labelText">Species</span>
+      <select id="filterSpecies">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Common Name</span>
+      <select id="filterCommon">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Aggregated Climate Tolerance</span>
+      <select id="filterAGCT">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Aggregated Commercial Production</span>
+      <select id="filterACProd">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">National Wetland Status</span>
+      <select id="filterNWI">
+        <option value="">Any</option>
+      </select>
+    </div>
+   <div class="LandformSeparator"> 
+      <div class="field">
+        <span class="labelText">Flood Plain / Bottom Land</span>
+        <select id="filterFloodBottom">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="labelText">Upland Mesic</span>
+        <select id="filterUplandMesic">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="labelText">Upland Dry</span>
+        <select id="filterUplandDry">
+          <option value="">Any</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Soil Acidity Tolerance</span>
+      <select id="filterSoilAcidTol">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Soil Alkalinity Tolerance</span>
+      <select id="filterSoilAlkTol">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Soil Salt Tolerance</span>
+      <select id="filterSoilSaltTol">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Eastern Great Lake Lowlands</span>
+      <select id="filterEGLL">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Northern Allegheny Plateau</span>
+      <select id="filterNAP">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Erie Drift Plain</span>
+      <select id="filterEDP">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Northern Coastal Zone</span>
+      <select id="filterNCZ">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Northern Peidmont</span>
+      <select id="filterNP">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Ridge and Valley</span>
+      <select id="filterRV">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Atlantic Coastal Pine Barrens</span>
+      <select id="filterACPB">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Northeastern Highlands</span>
+      <select id="filterNH">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">North Central Appalachian</span>
+      <select id="filterNCA">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Aspen Birch</span>
+      <select id="filterAspenBirch">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Elm Ash Cottonwood</span>
+      <select id="filterElmAshCottonwood">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Lob Lolly Short Leaf Pine</span>
+      <select id="filterLobLolly">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Maple Beech Birch</span>
+      <select id="filterMapleBeechBirch">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Oak Hickory</span>
+      <select id="filterOakHickory">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Spruce Fir</span>
+      <select id="filterSpruceFir">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">White Red Jack Pine</span>
+      <select id="filterWhiteRedJackPine">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field" title="Use Arrow Keys for Granular Adjustment">
+      <span class="labelText">Life Span (Years)</span>
+      <div>
+        <div id="lifespanSlider"></div>
+        <div>
+          <span id="lifeMinVal">0</span> -
+          <span id="lifeMaxVal">300</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" title="Use Arrow Keys for Granular Adjustment">
+      <span class="labelText">Tree Height (ft, avg)</span>
+      <div>
+        <div id="heightSlider"></div>
+        <div>
+          <span id="heightMinVal">0</span> -
+          <span id="heightMaxVal">100</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field" title="Use Arrow Keys for Granular Adjustment">
+      <span class="labelText">Canopy Spread (ft, avg)</span>
+      <div>
+        <div id="canopySlider"></div>
+        <div>
+          <span id="canopyMinVal">0</span> -
+          <span id="canopyMaxVal">100</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Growth Rate</span>
+      <select id="filterGrowthRate">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Shade Tolerance</span>
+      <select id="filterShadeTolerance">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Edible</span>
+      <select id="filterEdible">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Lumber</span>
+      <select id="filterLumber">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Fuel Wood</span>
+      <select id="filterFuelWood">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field" title="Use Arrow Keys for Granular Adjustment">
+      <span class="labelText">Known Ecological Interactions</span>
+      <div>
+        <div id="knownInteractionsSlider"></div>
+        <div>
+          <span id="knownInteractionsMinVal">0</span> -
+          <span id="knownInteractionsMaxVal">800</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Attracts Pollinators</span>
+      <select id="filterPollinators">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Attracts Birds</span>
+      <select id="filterBirds">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Recommended for Windbreak</span>
+      <select id="filterWindbreak">
+        <option value="">Any</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Deer Resistance</span>
+      <select id="filterDeer">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="labelText">Pest and Pathogen Susceptibility</span>
+      <select id="filterPest">
+        <option value="">Any</option>
+      </select>
+    </div>
+
+  </div>
+</section>
+
+  </section>
+
+  <section class="card results">
+    <!-- <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
+    <button onclick="toggleGroup('prod')">Toggle Production</button>
+    <button onclick="toggleGroup('wetland')">Toggle Wetland Status</button>
+    <button onclick="toggleGroup('landform')">Toggle Landform</button>
+    <button onclick="toggleGroup('soil')">Toggle Soil</button>
+    <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
+    <button onclick="toggleGroup('forestType')">Toggle Forest Type</button>
+    <button onclick="toggleGroup('characteristics')">Toggle Species Characteristics</button> -->
+
+    
+    
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th data-group="general" colspan="2"></th> <!-- Species + Common Name -->
+          <th data-group="climate" colspan="1"></th> <!-- climate -->
+          <th data-group="prod" colspan="1"></th> <!-- prod -->
+          <th data-group="wetland"colspan="1"></th> <!-- wetland -->
+          <th data-group="landform" colspan="3">Landform</th> 
+          <th data-group="soil" colspan="3">Soil</th> 
+          <th data-group="ecoregion" colspan="9">Ecoregion</th> 
+          <th data-group="forestType" colspan="7">Forest Type</th> 
+          <th data-group="characteristics" colspan="5">Characteristics</th> 
+          <th data-group="economic" colspan="3">Economic Value</th> 
+          <th data-group="ecological" colspan="3">Ecological Value</th> 
+          <th data-group="plantingConsiderations" colspan="3">Planting Considerations</th> 
+        </tr>
+
+
+
+        <tr>
+            <th data-group="general">Species</th>
+            <th data-group="general">Common Name</th>
+            <th data-group="climate">Aggregated Climate Tolerance</th>
+            <th data-group="prod">Aggregated Commercial Production</th>
+            <th data-group="wetland">National Wetland Status</th>
+            
+            <th data-group="landform">Floodplain / Bottomland</th>
+            <th data-group="landform">Upland Mesic</th>
+            <th data-group="landform">Upland Dry</th>
+
+            <th data-group="soil">Soil Acidity Tolerance</th>
+            <th data-group="soil">Soil Alkalinity Tolerance</th>
+            <th data-group="soil">Soil Salt Tolerance</th>
+
+            <th data-group="ecoregion">Eastern Great Lake Lowlands</th>
+            <th data-group="ecoregion">Northern Allegheny Plateau</th>
+            <th data-group="ecoregion">Erie Drift Plain</th>
+            <th data-group="ecoregion">Northern Coastal Zone</th>
+            <th data-group="ecoregion">Northern Piedmont</th>
+            <th data-group="ecoregion">Ridge and Valley</th>
+            <th data-group="ecoregion">Atlantic Coastal Pine Barrens</th>
+            <th data-group="ecoregion">Northeastern Highlands</th>
+            <th data-group="ecoregion">North Central Appalachian</th>
+
+            <th data-group="forestType">Aspen / Birch</th>
+            <th data-group="forestType">Elm / Ash / Cottonwood</th>
+            <th data-group="forestType">Lob Lolly / Shortleaf Pine</th>
+            <th data-group="forestType">Maple / Beech / Birch</th>
+            <th data-group="forestType">Oak / Hickory</th>
+            <th data-group="forestType">Spruce / Fir</th>
+            <th data-group="forestType">White Red / Jack Pine</th>
+
+            <th data-group="characteristics">Lifespan</th>
+            <th data-group="characteristics">Height</th>
+            <th data-group="characteristics">Canopy Spread</th>
+            <th data-group="characteristics">Growth Rate</th>
+            <th data-group="characteristics">Shade Tolerance</th>
+
+            <th data-group="economic">Edible</th>
+            <th data-group="economic">Lumber</th>
+            <th data-group="economic">Fuel Wood</th>
+            
+            <th data-group="ecological">Known Ecological Interactions</th>
+            <th data-group="ecological">Attracts Pollinators</th>
+            <th data-group="ecological">Attracts Birds</th>
+
+            <th data-group="plantingConsiderations">Recommended for Windbreak</th>
+            <th data-group="plantingConsiderations">Deer Resistance</th>
+            <th data-group="plantingConsiderations">Pest and Pathogen Susceptibility</th>
+
+
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+</div>
+</body>
+</html>
