@@ -36,6 +36,7 @@ main.container{
 .card.filters{
 	flex:0 0 300px;
   	max-width:320px;
+	min-width: 320px;
   	position:sticky;
   	top:150px;
   	height:calc(100vh - 230px);

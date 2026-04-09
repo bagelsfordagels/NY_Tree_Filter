@@ -32,10 +32,12 @@ main.container{
 	display:flex;
 	gap:24px;
 	align-items:flex-start;
+	flex-wrap: nowrap;
 }
 .card.filters{
 	flex:0 0 300px;
   	max-width:320px;
+	min-width:320px;
   	position:sticky;
   	top:150px;
   	height:calc(100vh - 230px);
@@ -364,6 +366,7 @@ td[data-group="plantingConsiderations"]:nth-child(42) {
 	background: var(--surface);
 	margin-bottom: 12px;
 	overflow: hidden;
+	width: 100%;
 }
 
 .filterGroup summary {
