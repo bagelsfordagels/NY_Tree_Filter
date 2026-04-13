@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NY Tree  Filter - Admin Login</title>
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+            .sub-btn{
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .sub-btn:hover{
+            background-color: #45a049;
+        }
+        .can-btn{
+            padding: 10px 20px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px;
+        }
+        .can-btn:hover{
+            background-color: #da190b;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Admin Login</h1>
+        <form id="adminLogin">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required/> 
+        <button type="submit" class = "sub-btn">Login</button>
+        </form>
+        <p id="error"></p>
+        <a href="index.html"><button type="button" class = "can-btn">Cancel</button></a>
+
+        <script type="module" src="js/adminAuth.js"></script> 
+    </body>
+</html>

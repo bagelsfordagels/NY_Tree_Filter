@@ -4,6 +4,22 @@ const router = Express.Router();
 
 router
 
+.post('/login', async (req, res) => {
+    const { password } = req.body;
+    if(password === process.env.DB_ADMIN_PASS){
+        res.json({
+            isAdmin: true,
+            message: "Login successful"
+        });
+    }
+    else{
+        res.status(401).json({
+            isAdmin: false,
+            message: "Invalid password"
+        })
+    }
+})
+
 .get('/getAllTrees', async (req, res) => {
     try{
         const [trees] = await admin.getAllTrees();
