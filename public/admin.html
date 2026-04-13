@@ -83,12 +83,26 @@
             .search-btn:hover{
                 background-color: #5a6268;
             }
-            
+            .logout-btn {
+                padding: 10px 20px;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            .logout-btn:hover {
+                background-color: #b52a37;
+            }
         </style>
     </head>
 
     <body>
         <h1>Manage Trees</h1>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
         <div class = "button-row">
             <a href="addTree.html"><button type="button" class="add-btn">Add</button></a>
             <a href="search.html"><button type="button" class="search-btn">User View</button></a>
@@ -105,6 +119,6 @@
             <tbody id="treeTableBody">
             </tbody>
         </table>
-        <script src="js/admin.js"></script>       
+        <script type="module" src="js/admin.js"></script>       
     </body>
 </html>
