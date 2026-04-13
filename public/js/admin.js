@@ -1,3 +1,11 @@
+//check if user is an admin
+import { checkAdmin, logout } from "./adminAuth.js";
+checkAdmin();
+//logout button connection
+const btn = document.getElementById("logoutBtn");
+if (btn) {
+    btn.addEventListener("click", logout);
+}
 //Loading tree
 async function loadTrees(){
     const res = await fetch(`/api/trees`);
@@ -27,7 +35,7 @@ async function loadTrees(){
 }
 
 //Delete tree
-async function deleteTree(treeId, CommonName){
+window.deleteTree =async function(treeId, CommonName){
     if(!confirm(`Delete ${CommonName}?`)){
         return;
     }
@@ -50,7 +58,7 @@ async function deleteTree(treeId, CommonName){
 }
 
 //Edit tree
-function editTree(treeId){
+window.editTree = function(treeId){
     window.location.href = `updateTree.html?id=${treeId}`;
 }
 

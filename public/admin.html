@@ -5,8 +5,32 @@
         <title>NY Tree  Filter - Admin</title>
         <link rel="stylesheet" href="css/style.css">
         <style>
+<<<<<<< Updated upstream
             table{
                 width: 100%;
+=======
+            body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #cbe5db;
+            color: var(--text);
+            line-height: 1.6;
+            }
+            h1{
+                text-align: center;
+                margin-top: 20px;
+            }
+            .button-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+           table{
+                width: 80%;
+                margin: 20px auto;
+>>>>>>> Stashed changes
                 border-collapse: collapse;
             }
             th, td{
@@ -48,12 +72,51 @@
             .delete-btn:hover{
                 background-color: #da190b;
             }
+<<<<<<< Updated upstream
+=======
+            .search-btn{
+                padding: 10px 20px;
+                background-color: #6c757d;
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-left: 10px;
+                border-radius: 10px;
+            }
+            .search-btn:hover{
+                background-color: #5a6268;
+            }
+            .logout-btn {
+                padding: 10px 20px;
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            .logout-btn:hover {
+                background-color: #b52a37;
+            }
+            
+>>>>>>> Stashed changes
         </style>
     </head>
 
     <body>
         <h1>Manage Trees</h1>
+<<<<<<< Updated upstream
         <a href="addTree.html"><button type="button" class="add-btn">Add</button></a>
+=======
+        <div class = "button-row">
+            <a href="addTree.html"><button type="button" class="add-btn">Add</button></a>
+            <a href="search.html"><button type="button" class="search-btn">User View</button></a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+>>>>>>> Stashed changes
         <table>
             <thead>
                 <tr>
@@ -66,6 +129,6 @@
             <tbody id="treeTableBody">
             </tbody>
         </table>
-        <script src="js/admin.js"></script>       
+        <script type="module" src="js/admin.js"></script>       
     </body>
 </html>

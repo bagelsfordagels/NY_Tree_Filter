@@ -1,3 +1,11 @@
+//check if user is an admin
+import { checkAdmin, logout} from "./adminAuth.js";
+checkAdmin();
+//logout button connection
+const btn = document.getElementById("logoutBtn");
+if (btn) {
+    btn.addEventListener("click", logout);
+}
 const params = new URLSearchParams(window.location.search);
 const treeId = params.get('id');
 const messageDiv = document.getElementById('message');
