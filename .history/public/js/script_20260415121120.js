@@ -168,7 +168,7 @@ async function fetchAndRenderTrees() {
 
     rows.forEach(r => {
         const tr = document.createElement("tr");
-        const marker = r.priority == 1 ? `<span class="priority-star">🟊</span>` : "";
+        const marker = r.priority == 1 ? `<span style="color: light-green;">🟊</span>` : "";
         tr.innerHTML = `
             <td data-group="general">
                 ${marker} ${r.species ?? ""}
