@@ -108,7 +108,7 @@ app.get("/api/distinct/:table/:column", async (req, res) => {
         const{ table, column } = req.params;
         // whitelist for SQL injection protection
         const allowed = {
-            Trees: ["species", "CommonName", "priority", "AGCT", "ACProd", "NWIStatus"],
+            Trees: ["species", "CommonName", "AGCT", "ACProd", "NWIStatus"],
             LandformPref: ["FloodPlainBottomLand", "UplandMesic", "UplandDry"],
             SiteChemPref: ["SoilAcidTol", "SoilAlkTol", "SoilSaltTol"],
             Ecoregion: ["EasternGreatLakeLowLands", "NorthernAlleghenyPlateau","ErieDriftPlain", "NorthernCoastalZone", "NorthernPiedmont", "RidgeAndValley", "AtlanticCoastalPineBarrens", "NortheasternHighlands", "NorthCentralAppalachian"],
@@ -148,7 +148,7 @@ app.get("/api/filter", async (req, res) => {
     // const soilsalttol = (req.query.soilsalttol || "").trim();
 
 
-    let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, T.priority, 
+    let sql = `SELECT T.species, T.CommonName, T.AGCT, T.ACProd, T.NWIStatus, 
                       L.FloodPlainBottomLand, L.UplandMesic, L.UplandDry,
                       S.SoilAcidTol, S.SoilAlkTol, S.SoilSaltTol,
                       E.EasternGreatLakeLowLands, E.NorthernAlleghenyPlateau, E.ErieDriftPlain, E.NorthernCoastalZone, E.NorthernPiedmont, E.RidgeAndValley, E.AtlanticCoastalPineBarrens, E.NortheasternHighlands, E.NorthCentralAppalachian, 

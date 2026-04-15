@@ -168,13 +168,12 @@ async function fetchAndRenderTrees() {
 
     rows.forEach(r => {
         const tr = document.createElement("tr");
-        const marker = r.priority == 1 ? `<span class="priority-star">🟊</span>` : "";
         tr.innerHTML = `
             <td data-group="general">
-                ${marker} ${r.species ?? ""}
+                ${r.priority == 1 ? "🟊" : ""} ${r.species ?? ""}
             </td>
             <td data-group="general">
-                ${marker} ${r.CommonName ?? ""} 
+                ${r.priority == 1 ? "🟊" : ""} ${r.CommonName ?? ""} 
             </td>
             <td data-group="climate">${r.AGCT ?? ""}</td>
             <td data-group="prod">${r.ACProd ?? ""}</td>
