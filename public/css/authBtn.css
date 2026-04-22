@@ -1,0 +1,45 @@
+.auth-btn {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* LOGIN state */
+.auth-btn.login {
+    background-color: #28a745;
+}
+
+.auth-btn.login:hover {
+    background-color: #1e7e34;
+}
+
+/* LOGOUT state */
+.auth-btn.logout {
+    background-color: #dc3545;
+}
+
+.auth-btn.logout:hover {
+    background-color: #b52a37;
+}
+
+.admin-btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 110px;
+}
+
+.admin-btn:hover {
+    background-color: #f2f2f2;
+}

@@ -19,6 +19,7 @@ form.addEventListener('submit', async function(event) {
         AGCT: document.getElementById('agct').value,
         ACProd: document.getElementById('acProd').value,
         NWIStatus: document.getElementById('nwiStatus').value,
+        priority: document.getElementById('priority').checked ? 1:0,
         
         // Landform Preferences
         FloodPlainBottomLand: document.getElementById('floodPlain').checked,

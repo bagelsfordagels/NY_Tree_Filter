@@ -6,6 +6,7 @@
     <title>NY Trees — Filter</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+    <link rel="stylesheet" href="css/authBtn.css" />
     <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
 </head>
 <body>
@@ -14,6 +15,8 @@
 <header class="siteHeader">
     <div class="container">
         <a href="index.html"><button>Homepage</button></a>
+        <button id="authBtn" class="auth-btn"></button>
+        <button id="adminBtn" class="admin-btn"></button>
         <h1>NY Collaborative Priority Species List</h1>
         <p class="subtitle">Filter the dataset using the dropdowns below</p>
         <nav> 
@@ -604,5 +607,6 @@
 
 <script src="/js/script.js"></script>
 </div>
+<script type="module" src="js/adminAuth.js"></script> 
 </body>
 </html>
