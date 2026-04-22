@@ -26,7 +26,7 @@ const filters = [
         { id: "filterEGLL", param: "easterngreatlakelowlands"},
         { id: "filterNAP", param: "northernalleghenyplateau"},
         { id: "filterEDP", param: "eriedriftplain"},
-        { id: "filterNCZ", param: "northerncoastalzone"},
+        { id: "filterNCZ", param: "northercoastalzone"},
         { id: "filterNP", param: "northernpiedmont"},
         { id: "filterRV", param: "ridgeandvalley"},
         { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
@@ -54,6 +54,8 @@ const filters = [
         { id: "filterWindbreak", param: "recomendedforwindbreak"},
         { id: "filterDeer", param: "deerresistance"},
         { id: "filterPest", param: "pestandpathogensusceptibility"}
+
+
 
 ];
 

@@ -55,6 +55,8 @@ const filters = [
         { id: "filterDeer", param: "deerresistance"},
         { id: "filterPest", param: "pestandpathogensusceptibility"}
 
+
+
 ];
 
 const hiddenGroups = {
