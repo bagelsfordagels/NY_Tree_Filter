@@ -51,7 +51,47 @@ export function checkAdmin() {
 export function logout() {
     const page = window.location.pathname.split("/").pop();
     sessionStorage.removeItem("admin");
+    switchBtn();
     if(page !== "index.html" && page !== "search.html"){
         window.location.href = "index.html";
     }    
 }
+
+//button switch
+const authBtn = document.getElementById("authBtn");
+const adminBtn = document.getElementById("adminBtn");
+export function switchBtn(){
+    if(!authBtn){
+        return;
+    }
+
+    const admin = JSON.parse(sessionStorage.getItem("admin"));
+    if(admin && admin.isAdmin){
+        authBtn.innerText = "Logout";
+        authBtn.classList.add("logout");
+        authBtn.classList.remove("login");
+        authBtn.onclick = logout;
+    }
+    else{
+        authBtn.innerText = "Admin Login";
+        authBtn.classList.add("login");
+        authBtn.classList.remove("logout");
+        authBtn.onclick = function(){
+            window.location.href = "adminLogin.html";
+        }
+    }
+
+        if (adminBtn) {
+        if (admin && admin.isAdmin) {
+            adminBtn.style.display = "block";
+            adminBtn.textContent = "Admin Page";
+            adminBtn.onclick = () => {
+                window.location.href = "admin.html";
+            };
+        } else {
+            adminBtn.style.display = "none";
+        }
+    }
+}
+
+switchBtn();

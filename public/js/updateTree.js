@@ -57,6 +57,7 @@ async function LoadTreeData(){
         else{
             document.getElementById('nwiStatus').value = '';
         }
+        document.getElementById('priority').checked = tree.priority === 1;
 // Land form Preferences
         document.getElementById('floodPlain').checked = landPref.FloodPlainBottomLand === 1;
         document.getElementById('uplandMesic').checked = landPref.UplandMesic === 1;
@@ -172,6 +173,7 @@ document.getElementById('updateTree').addEventListener('submit', async function(
         AGCT: document.getElementById('agct').value,
         ACProd: document.getElementById('acProd').value,
         NWIStatus: document.getElementById('nwiStatus').value,
+        priority: document.getElementById('priority').checked ? 1:0,
 //Landform Preferences
         FloodPlainBottomLand: document.getElementById('floodPlain').checked,
         UplandMesic: document.getElementById('uplandMesic').checked,

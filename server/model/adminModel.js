@@ -46,8 +46,8 @@ async function createFullTree(treeData) {
 }
 
 async function createTree(connection, treeData) {
-    let sql = 'INSERT INTO Trees (Species, CommonName, AGCT, ACProd, NWIStatus) VALUES (?, ?, ?, ?, ?)';
-    let values = [treeData.Species, treeData.CommonName, treeData.AGCT, treeData.ACProd, treeData.NWIStatus];
+    let sql = 'INSERT INTO Trees (Species, CommonName, AGCT, ACProd, NWIStatus, priority) VALUES (?, ?, ?, ?, ?,?)';
+    let values = [treeData.Species, treeData.CommonName, treeData.AGCT, treeData.ACProd, treeData.NWIStatus,treeData.priority];
     return await connection.query(sql, values);
 }
 
@@ -200,6 +200,10 @@ async function updateTree(treeId, treeData) {
    if(treeData.NWIStatus !== undefined){
     update.push('NWIStatus = ?');
     values.push(treeData.NWIStatus);
+   }
+   if(treeData.priority !== undefined){
+    update.push('priority = ?');
+    values.push(treeData.priority);
    }
    let sql = `UPDATE Trees SET ${update.join(', ')} WHERE TreeId = ?`;
    values.push(treeId);
