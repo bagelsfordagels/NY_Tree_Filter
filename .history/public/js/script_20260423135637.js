@@ -323,6 +323,8 @@ function exportPDF() {
         { header: "Notes",                dataKey: "__notes",                       group: "general" },
     ];
 
+    // const visibleColumns = allColumns.filter(col => !hiddenGroups[col.group]);
+
     const tableRows = currentRows.map(r => {
         const row = {};
         allColumns.forEach(col => {
@@ -374,7 +376,7 @@ function exportPDF() {
     const tableStartY = Math.max(66, summaryStartY + 11 + summaryRows * lineHeight + 16);
 
     doc.autoTable({
-        columns: allColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
+        columns: visibleColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
         body: tableRows,
         startY: tableStartY,
         styles: {
@@ -642,5 +644,7 @@ document.querySelectorAll('select').forEach(select => {
     updateColor(select);
     select.addEventListener('change', () => updateColor(select));
 });
+
+
     fetchAndRenderTrees();
 });

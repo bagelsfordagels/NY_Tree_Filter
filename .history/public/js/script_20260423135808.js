@@ -642,5 +642,7 @@ document.querySelectorAll('select').forEach(select => {
     updateColor(select);
     select.addEventListener('change', () => updateColor(select));
 });
+
+
     fetchAndRenderTrees();
 });
