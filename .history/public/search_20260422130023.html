@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
     <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
 <div class="pageShell">
@@ -113,7 +111,7 @@
         </div>
 
         <div class="field">
-            <span class="labelText">Priority Species *</span>
+            <span class="labelText">Priority Species 🟊</span>
             <select id="filterPriority">
               <option value="">Any</option>
               <option value="1">Yes</option>
@@ -514,7 +512,18 @@
 
 </section>
 
-  <section class="card results"> 
+  <section class="card results">
+    <!-- <button onclick="toggleGroup('climate')">Toggle climate Tolerance</button>
+    <button onclick="toggleGroup('prod')">Toggle Production</button>
+    <button onclick="toggleGroup('wetland')">Toggle Wetland Status</button>
+    <button onclick="toggleGroup('landform')">Toggle Landform</button>
+    <button onclick="toggleGroup('soil')">Toggle Soil</button>
+    <button onclick="toggleGroup('ecoregion')">Toggle Ecoregions</button>
+    <button onclick="toggleGroup('forestType')">Toggle Forest Type</button>
+    <button onclick="toggleGroup('characteristics')">Toggle Species Characteristics</button> -->
+
+    
+    
     <table class="results-table">
       <thead>
         <tr>

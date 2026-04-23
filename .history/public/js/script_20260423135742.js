@@ -323,6 +323,8 @@ function exportPDF() {
         { header: "Notes",                dataKey: "__notes",                       group: "general" },
     ];
 
+    const visibleColumns = allColumns.filter(col => !hiddenGroups[col.group]);
+
     const tableRows = currentRows.map(r => {
         const row = {};
         allColumns.forEach(col => {
@@ -642,5 +644,7 @@ document.querySelectorAll('select').forEach(select => {
     updateColor(select);
     select.addEventListener('change', () => updateColor(select));
 });
+
+
     fetchAndRenderTrees();
 });

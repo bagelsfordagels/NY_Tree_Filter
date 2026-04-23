@@ -8,7 +8,6 @@ let canopySlider;
 let knownInteractionsSlider;
 let currentRows = [];
 
-//filter map 
 const filters = [
         { id: "filterSpecies", param: "species" },
         { id: "filterCommon", param: "CommonName" },
@@ -59,7 +58,6 @@ const filters = [
 
 ];
 
-//groups start hidden
 const hiddenGroups = {
     climate: true,
     prod: true,
@@ -156,7 +154,7 @@ async function fetchAndRenderTrees() {
     const res = await fetch(`/api/filter?${params.toString()}`);
     const rows = await res.json();
 
-    currentRows = rows; //populate current rows for export function
+    currentRows = rows;
 
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
@@ -171,7 +169,7 @@ async function fetchAndRenderTrees() {
 
     rows.forEach(r => {
         const tr = document.createElement("tr");
-        const marker = r.priority == 1 ? `<span class="priority-star">*</span>` : "";
+        const marker = r.priority == 1 ? `<span class="priority-star">🟊</span>` : "";
         tr.innerHTML = `
             <td data-group="general">
                 ${marker} ${r.species ?? ""}
@@ -323,9 +321,11 @@ function exportPDF() {
         { header: "Notes",                dataKey: "__notes",                       group: "general" },
     ];
 
+    const visibleColumns = allColumns.filter(col => !hiddenGroups[col.group]);
+
     const tableRows = currentRows.map(r => {
         const row = {};
-        allColumns.forEach(col => {
+        visibleColumns.forEach(col => {
             if (col.dataKey.startsWith("__")) {
                 row[col.dataKey] = "";
             } else if (col.bool) {
@@ -374,7 +374,7 @@ function exportPDF() {
     const tableStartY = Math.max(66, summaryStartY + 11 + summaryRows * lineHeight + 16);
 
     doc.autoTable({
-        columns: allColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
+        columns: visibleColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
         body: tableRows,
         startY: tableStartY,
         styles: {
@@ -642,5 +642,7 @@ document.querySelectorAll('select').forEach(select => {
     updateColor(select);
     select.addEventListener('change', () => updateColor(select));
 });
+
+
     fetchAndRenderTrees();
 });

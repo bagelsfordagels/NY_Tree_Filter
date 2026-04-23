@@ -8,7 +8,6 @@ let canopySlider;
 let knownInteractionsSlider;
 let currentRows = [];
 
-//filter map 
 const filters = [
         { id: "filterSpecies", param: "species" },
         { id: "filterCommon", param: "CommonName" },
@@ -59,7 +58,6 @@ const filters = [
 
 ];
 
-//groups start hidden
 const hiddenGroups = {
     climate: true,
     prod: true,
@@ -156,7 +154,7 @@ async function fetchAndRenderTrees() {
     const res = await fetch(`/api/filter?${params.toString()}`);
     const rows = await res.json();
 
-    currentRows = rows; //populate current rows for export function
+    currentRows = rows;
 
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
@@ -171,7 +169,7 @@ async function fetchAndRenderTrees() {
 
     rows.forEach(r => {
         const tr = document.createElement("tr");
-        const marker = r.priority == 1 ? `<span class="priority-star">*</span>` : "";
+        const marker = r.priority == 1 ? `<span class="priority-star">🟊</span>` : "";
         tr.innerHTML = `
             <td data-group="general">
                 ${marker} ${r.species ?? ""}
@@ -319,13 +317,54 @@ function exportPDF() {
     const allColumns = [
         { header: "Species",              dataKey: "species",                       group: "general" },
         { header: "Common Name",          dataKey: "CommonName",                    group: "general" },
+        { header: "Climate Tolerance",    dataKey: "AGCT",                          group: "climate" },
+        { header: "Commercial Prod.",     dataKey: "ACProd",                        group: "prod" },
+        { header: "Wetland Status",       dataKey: "NWIStatus",                     group: "wetland" },
+        { header: "Floodplain",           dataKey: "FloodPlainBottomLand",          group: "landform", bool: true },
+        { header: "Upland Mesic",         dataKey: "UplandMesic",                   group: "landform", bool: true },
+        { header: "Upland Dry",           dataKey: "UplandDry",                     group: "landform", bool: true },
+        { header: "Soil Acid",            dataKey: "SoilAcidTol",                   group: "soil" },
+        { header: "Soil Alk",             dataKey: "SoilAlkTol",                    group: "soil" },
+        { header: "Soil Salt",            dataKey: "SoilSaltTol",                   group: "soil" },
+        { header: "E. Great Lake",        dataKey: "EasternGreatLakeLowLands",      group: "ecoregion", bool: true },
+        { header: "N. Allegheny",         dataKey: "NorthernAlleghenyPlateau",      group: "ecoregion", bool: true },
+        { header: "Erie Drift",           dataKey: "ErieDriftPlain",                group: "ecoregion", bool: true },
+        { header: "N. Coastal",           dataKey: "NorthernCoastalZone",           group: "ecoregion", bool: true },
+        { header: "N. Piedmont",          dataKey: "NorthernPiedmont",              group: "ecoregion", bool: true },
+        { header: "Ridge & Valley",       dataKey: "RidgeAndValley",                group: "ecoregion", bool: true },
+        { header: "Atlantic Pine",        dataKey: "AtlanticCoastalPineBarrens",    group: "ecoregion", bool: true },
+        { header: "NE Highlands",         dataKey: "NortheasternHighlands",         group: "ecoregion", bool: true },
+        { header: "N. Appalachian",       dataKey: "NorthCentralAppalachian",       group: "ecoregion", bool: true },
+        { header: "Aspen/Birch",          dataKey: "AspenBirch",                    group: "forestType", bool: true },
+        { header: "Elm/Ash/Cotton.",      dataKey: "ElmAshCottonwood",              group: "forestType", bool: true },
+        { header: "Loblolly Pine",        dataKey: "LoblollyShortleafPine",         group: "forestType", bool: true },
+        { header: "Maple/Beech/Birch",    dataKey: "MapleBeechBirch",               group: "forestType", bool: true },
+        { header: "Oak/Hickory",          dataKey: "OakHickory",                    group: "forestType", bool: true },
+        { header: "Spruce/Fir",           dataKey: "SpruceFir",                     group: "forestType", bool: true },
+        { header: "White/Jack Pine",      dataKey: "WhiteRedJackPine",              group: "forestType", bool: true },
+        { header: "Lifespan (yr)",        dataKey: "LifeSpan",                      group: "characteristics" },
+        { header: "Height (ft)",          dataKey: "TreeHeight",                    group: "characteristics" },
+        { header: "Canopy (ft)",          dataKey: "CanopySpread",                  group: "characteristics" },
+        { header: "Growth Rate",          dataKey: "GrowthRate",                    group: "characteristics" },
+        { header: "Shade Tol.",           dataKey: "ShadeTol",                      group: "characteristics" },
+        { header: "Edible",               dataKey: "Edible",                        group: "economic", bool: true },
+        { header: "Lumber",               dataKey: "Lumber",                        group: "economic", bool: true },
+        { header: "Fuel Wood",            dataKey: "FuelWood",                      group: "economic", bool: true },
+        { header: "Eco. Interactions",    dataKey: "KnownInteractions",             group: "ecological" },
+        { header: "Pollinators",          dataKey: "AttractsPollinators",           group: "ecological", bool: true },
+        { header: "Birds",                dataKey: "AttractsBirds",                 group: "ecological", bool: true },
+        { header: "Windbreak",            dataKey: "RecomendedForWindbreak",        group: "plantingConsiderations", bool: true },
+        { header: "Deer Resistance",      dataKey: "DeerResistance",                group: "plantingConsiderations" },
+        { header: "Pest Susceptibility",  dataKey: "PestAndPathogenSusceptibility", group: "plantingConsiderations" },
         { header: "Order Qty",            dataKey: "__orderQty",                    group: "general" },
         { header: "Notes",                dataKey: "__notes",                       group: "general" },
     ];
 
+    const visibleColumns = allColumns.filter(col => !hiddenGroups[col.group]);
+
     const tableRows = currentRows.map(r => {
         const row = {};
-        allColumns.forEach(col => {
+        visibleColumns.forEach(col => {
             if (col.dataKey.startsWith("__")) {
                 row[col.dataKey] = "";
             } else if (col.bool) {
@@ -374,7 +413,7 @@ function exportPDF() {
     const tableStartY = Math.max(66, summaryStartY + 11 + summaryRows * lineHeight + 16);
 
     doc.autoTable({
-        columns: allColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
+        columns: visibleColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
         body: tableRows,
         startY: tableStartY,
         styles: {
@@ -642,5 +681,7 @@ document.querySelectorAll('select').forEach(select => {
     updateColor(select);
     select.addEventListener('change', () => updateColor(select));
 });
+
+
     fetchAndRenderTrees();
 });

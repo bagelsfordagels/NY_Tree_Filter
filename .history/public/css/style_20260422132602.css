@@ -72,7 +72,7 @@ main.container{
 .actions{
 	display:flex;
 	gap:10px;
-	padding-left: 50px;
+	
 }
 
 #lifespanSlider,
