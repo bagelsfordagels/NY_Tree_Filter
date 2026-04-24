@@ -37,7 +37,7 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top: calc(var(--header-h, 150px) + 16px);
+  	top:150px;
   	height:calc(100vh - 230px);
   	overflow-y:auto;
 }
@@ -48,38 +48,41 @@ main.container{
 	height:calc(100vh - 100px);
 	overflow: auto;
 }
-.headerControls {
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    margin-top: -10px;
+.headerControls{
+	display: flex;
+	align-items: center;
+	justify-content: space-between; 
+	margin-top: -10px;
 }
 
-.toggle {
-    display: flex;
-    flex-wrap:wrap;
-    gap: 3px;
-    padding-right: 10px;
-    max-width: 100%;
-    justify-content: flex-start;
+.groupControls{
+	margin-bottom:12px;
+	display:flex;
+	gap:10px;
+}
+
+.toggle{
+	padding-right: 20px;
+	display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: right;
 }
 
 .toggle label {
     white-space: nowrap;
 }
 
+.applyFilters{
+	padding-left: 5px;
+}
+
 .actions{
 	display:flex;
 	gap:10px;
 	padding-left: 50px;
-	align-self: flex-start;
 }
 
-.toggleBtns{
-	align-self: flex-start;
-	display: flex;
-    align-items: flex-start;
-}
 #lifespanSlider,
 #heightSlider,
 #canopySlider,

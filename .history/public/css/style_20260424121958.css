@@ -37,7 +37,7 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top: calc(var(--header-h, 150px) + 16px);
+  	top:150px;
   	height:calc(100vh - 230px);
   	overflow-y:auto;
 }
@@ -50,17 +50,18 @@ main.container{
 }
 .headerControls {
     display: flex;
-    align-items: flex-start;
-    gap: 30px;
+    align-items: center;
+    gap: 24px;
     margin-top: -10px;
 }
 
 .toggle {
     display: flex;
-    flex-wrap:wrap;
-    gap: 3px;
-    padding-right: 10px;
-    max-width: 100%;
+    flex-wrap:nowrap;
+    gap: 10px;
+    align-items: left;
+    padding-right: 30px;
+    max-width: 70%;
     justify-content: flex-start;
 }
 
@@ -68,18 +69,16 @@ main.container{
     white-space: nowrap;
 }
 
+.applyFilters{
+	padding-left: 5px;
+}
+
 .actions{
 	display:flex;
 	gap:10px;
 	padding-left: 50px;
-	align-self: flex-start;
 }
 
-.toggleBtns{
-	align-self: flex-start;
-	display: flex;
-    align-items: flex-start;
-}
 #lifespanSlider,
 #heightSlider,
 #canopySlider,
