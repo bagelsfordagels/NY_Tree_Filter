@@ -37,7 +37,7 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top: calc(var(--header-h, 150px) + 16px);
+  	top:150px;
   	height:calc(100vh - 230px);
   	overflow-y:auto;
 }
@@ -59,7 +59,7 @@ main.container{
     display: flex;
     flex-wrap:wrap;
     gap: 3px;
-    padding-right: 10px;
+    padding-right: 20px;
     max-width: 100%;
     justify-content: flex-start;
 }
@@ -77,9 +77,9 @@ main.container{
 
 .toggleBtns{
 	align-self: flex-start;
-	display: flex;
+} display: flex;
     align-items: flex-start;
-}
+
 #lifespanSlider,
 #heightSlider,
 #canopySlider,

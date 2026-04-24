@@ -37,7 +37,7 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top: calc(var(--header-h, 150px) + 16px);
+  	top:150px;
   	height:calc(100vh - 230px);
   	overflow-y:auto;
 }
