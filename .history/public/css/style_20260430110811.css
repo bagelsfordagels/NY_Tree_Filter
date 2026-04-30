@@ -13,6 +13,7 @@
 *{box-sizing:border-box}
 body{
 	margin:0;
+	padding-top: 0;
 	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 	background: linear-gradient(180deg, #f7fff7 0%, #ffffff 40%);
 	color:var(--green-900);
@@ -36,30 +37,99 @@ main.container{
 	flex:0 0 300px;
   	max-width:320px;
   	position:sticky;
-  	top:20px;
-  	max-height:calc(100vh - 40px);
+  	top: calc(var(--header-h, 150px) + 16px);
+  	height:calc(100vh - 230px);
   	overflow-y:auto;
 }
 .card.results{
+	padding-top: 140px;
 	flex:1 1 auto;
 	text-transform: capitalize;
+	height:calc(100vh - 100px);
+	overflow: auto;
+}
+.headerControls {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: -10px;
 }
 
-.groupControls{
-  margin-bottom:12px;
-  display:flex;
-  gap:10px;
+.toggle {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 3px;
+    padding-right: 10px;
+    max-width: 100%;
+    justify-content: flex-start;
 }
 
+.toggle label {
+    white-space: nowrap;
+}
+
+.actions{
+	display:flex;
+	gap:10px;
+	padding-left: 50px;
+	align-self: flex-start;
+}
+
+.toggleBtns{
+	align-self: flex-start;
+	display: flex;
+    align-items: flex-start;
+}
+#lifespanSlider,
+#heightSlider,
+#canopySlider,
+#knownInteractionsSlider {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.noUi-target {
+	background: #e5e7eb;
+	border: none;
+	box-shadow: none;
+	border-radius: 999px;
+	height: 10px;
+}
+
+.noUi-connect {
+  	background: var(--green-500);
+}
+
+.noUi-handle {
+	width: 20px !important;
+	height: 22px !important;
+	right: -9px !important;
+	top: -4px !important;
+	border-radius: 50%;
+	border: none;
+	background: white;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.noUi-horizontal .noUi-handle::before,
+.noUi-horizontal .noUi-handle::after,
+.noUi-vertical .noUi-handle::before,
+.noUi-vertical .noUi-handle::after {
+	content: none !important;
+	display: none !important;
+}
 .pageShell{
 	width: max-content;
 	min-width: 100%;
 }
 
 .siteHeader{
+	position: fixed;
+	z-index: 1000;
 	background:linear-gradient(90deg,var(--green-700),var(--green-500));
 	color:white;
-	padding:28px 0;
+	padding:5px 0;
 	border-bottom-left-radius:var(--radius);
 	border-bottom-right-radius:var(--radius);
 	width: 100%;
@@ -69,6 +139,7 @@ main.container{
 	display:flex;
 	flex-direction:column;
 	gap:6px;
+	margin-top: -20px;
 }
 .siteHeader h1{
 	margin:0;
@@ -79,206 +150,214 @@ main.container{
 	margin:0;
 	opacity:0.95;
 }
+.noResults{
+	border-left: 2px solid black;
+}
 
-/* GENERAL */
+.priority-star{
+	color: black;
+}
+
+
+/*GENERAL*/
 thead tr:nth-child(2) th[data-group="general"],
 td[data-group="general"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="general"]:nth-child(1),
 td[data-group="general"]:nth-child(1) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="general"]:nth-child(2),
 td[data-group="general"]:nth-child(2) {
-  border-right: 2px solid black;
+	border-right: 2px solid black;
 }
 
 
 /* CLIMATE */
 thead tr:nth-child(2) th[data-group="climate"],
 td[data-group="climate"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="climate"]:nth-child(3),
 td[data-group="climate"]:nth-child(3) {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  	border-left: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* PROD */
 thead tr:nth-child(2) th[data-group="prod"],
 td[data-group="prod"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+ 	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="prod"]:nth-child(4),
 td[data-group="prod"]:nth-child(4) {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  	border-left: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* WETLAND */
 thead tr:nth-child(2) th[data-group="wetland"],
 td[data-group="wetland"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="wetland"]:nth-child(5),
 td[data-group="wetland"]:nth-child(5) {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  	border-left: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* LANDFORM */
 thead tr:nth-child(2) th[data-group="landform"],
 td[data-group="landform"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="landform"]:nth-child(6),
 td[data-group="landform"]:nth-child(6) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="landform"]:nth-child(8),
 td[data-group="landform"]:nth-child(8) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* SOIL */
 thead tr:nth-child(2) th[data-group="soil"],
 td[data-group="soil"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="soil"]:nth-child(9),
 td[data-group="soil"]:nth-child(9) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="soil"]:nth-child(11),
 td[data-group="soil"]:nth-child(11) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* ECOREGION */
 thead tr:nth-child(2) th[data-group="ecoregion"],
 td[data-group="ecoregion"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="ecoregion"]:nth-child(10),
 td[data-group="ecoregion"]:nth-child(10) {
-  border-left: 2px solid black;
+ 	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="ecoregion"]:nth-child(20),
 td[data-group="ecoregion"]:nth-child(20) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* FOREST TYPE */
 thead tr:nth-child(2) th[data-group="forestType"],
 td[data-group="forestType"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="forestType"]:nth-child(21),
 td[data-group="forestType"]:nth-child(21) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="forestType"]:nth-child(27),
 td[data-group="forestType"]:nth-child(27) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 
 /* CHARACTERISTICS */
 thead tr:nth-child(2) th[data-group="characteristics"],
 td[data-group="characteristics"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(28),
 td[data-group="characteristics"]:nth-child(28) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="characteristics"]:nth-child(32),
 td[data-group="characteristics"]:nth-child(32) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 /* Economic */
 thead tr:nth-child(2) th[data-group="economic"],
 td[data-group="economic"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="economic"]:nth-child(33),
 td[data-group="economic"]:nth-child(33) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="economic"]:nth-child(35),
 td[data-group="economic"]:nth-child(35) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
 /* ecological */
 thead tr:nth-child(2) th[data-group="ecological"],
 td[data-group="ecological"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="ecological"]:nth-child(36),
 td[data-group="ecological"]:nth-child(36) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="ecological"]:nth-child(38),
 td[data-group="ecological"]:nth-child(38) {
-  border-right: 2px solid black;
+  	border-right: 2px solid black;
 }
 
-/* plantingConsiderations
+/* plantingConsiderations*/
 thead tr:nth-child(2) th[data-group="plantingConsiderations"],
 td[data-group="plantingConsiderations"] {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  	border-top: 2px solid black;
+  	border-bottom: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(39),
 td[data-group="plantingConsiderations"]:nth-child(39) {
-  border-left: 2px solid black;
+  	border-left: 2px solid black;
 }
 
 thead tr:nth-child(2) th[data-group="plantingConsiderations"]:nth-child(42),
 td[data-group="plantingConsiderations"]:nth-child(42) {
-  border-right: 2px solid black;
-} */
+  	border-right: 2px solid black;
+}
 
 
 .card{
@@ -302,20 +381,63 @@ td[data-group="plantingConsiderations"]:nth-child(42) {
 	gap:12px;
 }
 
-/* Each filter row: label at left, select on right */
+.filterGroup {
+	border: 1px solid rgba(6,78,59,0.08);
+	border-radius: 10px;
+	background: var(--surface);
+	margin-bottom: 12px;
+	overflow: hidden;
+}
+
+.filterGroup summary {
+	cursor: pointer;
+	font-weight: 600;
+	padding: 12px 14px;
+	background: #f4fbf7;
+	list-style: none;
+}
+
+.filterGroup summary::-webkit-details-marker {
+  	display: none;
+}
+
+.filterGroup summary::after {
+	content: "▾";
+	float: right;
+}
+
+.filterGroup:not([open]) summary::after {
+  	content: "▸";
+}
+
+.filterGroup .filterGrid {
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
 .field{
 	display:flex;
-	flex-direction:row;
-	align-items:center;
+	align-items:flex-start;
 	gap:12px;
 }
+
 .labelText{
+	flex:0 0 130px;
 	font-size:0.9rem;
-	color:var(--muted);
-	margin-bottom:0;
-	flex:0 0 140px;
+	color:black;
+	line-height:1.2;
 }
+
+.field select,
+.field > div{
+	flex:1;
+	min-width:0;
+}
+
 select{flex:1}
+
 select{
 	appearance:none;
 	padding:10px 12px;
@@ -329,11 +451,10 @@ select:focus{
 	border-color:var(--green-300);
 }
 
-.actions{
-	display:flex;
-	gap:10px;
-	margin-top:14px;
+select.is-default {
+  	color: var(--green-500); 
 }
+
 .btn{
 	padding:10px 14px;
 	border-radius:10px;
@@ -366,18 +487,14 @@ select:focus{
 	border-bottom: 2px solid black;
 	thead tr:nth-child(n+2) th:last-child,
 	tbody td:last-child {
-  		border-left: 2px solid black;
-	}
-	thead tr:nth-child(n+2) th:last-child,
-	tbody td:last-child {
   		border-right: 2px solid black;
 	}
-	margin-top: 8px;
 }
 
 .results-table thead th{
 	background:linear-gradient(180deg,#f0fff4,#ffffff);
 	text-align:center;
+	top: 200px;
 	padding:10px;
 	border-bottom:1px solid rgba(6,78,59,0.06);
 	font-weight:600;

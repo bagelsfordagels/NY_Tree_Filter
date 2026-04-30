@@ -424,7 +424,7 @@ td[data-group="plantingConsiderations"]:nth-child(42) {
 }
 
 .labelText{
-	flex:0 0 160px;
+	flex:0 0 130px;
 	font-size:0.9rem;
 	color:black;
 	line-height:1.2;
@@ -445,6 +445,7 @@ select{
 	border:1px solid rgba(6,78,59,0.08);
 	background:var(--surface);
 	outline:none;
+	text-align: center;
 }
 select:focus{
 	box-shadow:0 4px 12px rgba(16,185,129,0.08);
