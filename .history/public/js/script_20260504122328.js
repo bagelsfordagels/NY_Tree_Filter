@@ -392,8 +392,8 @@ function exportPDF() {
             halign: "center",
         },
         columnStyles: {
-            species:     { cellWidth: 80, halign: "left" },
-            CommonName:  { cellWidth: 80, halign: "left" },
+            species:     { cellWidth: 80 },
+            CommonName:  { cellWidth: 80 },
             __orderQty:  { cellWidth: 70 },
             __notes:     { cellWidth: 500 },
         },
