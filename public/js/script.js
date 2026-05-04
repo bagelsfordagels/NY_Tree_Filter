@@ -392,8 +392,10 @@ function exportPDF() {
             halign: "center",
         },
         columnStyles: {
-            __orderQty: { cellWidth: 40 },
-            __notes:    { cellWidth: 80 },
+            species:     { cellWidth: 80 },
+            CommonName:  { cellWidth: 80 },
+            __orderQty:  { cellWidth: 70 },
+            __notes:     { cellWidth: 500 },
         },
         alternateRowStyles: {
             fillColor: [244, 251, 247],

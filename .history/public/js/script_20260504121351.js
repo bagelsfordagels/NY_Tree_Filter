@@ -1,16 +1,18 @@
 function getVal(id) {
     return document.getElementById(id).value.trim();
-    return el ? el.value.trim() : "";
 }
 
 let lifeSlider;
 let heightSlider;
 let canopySlider;
 let knownInteractionsSlider;
+let currentRows = [];
 
+//filter map 
 const filters = [
         { id: "filterSpecies", param: "species" },
         { id: "filterCommon", param: "CommonName" },
+        { id: "filterPriority", param: "priority" },
         { id: "filterAGCT", param: "agct" },
         { id: "filterACProd", param: "acprod" },
         { id: "filterNWI", param: "nwistatus" },
@@ -26,7 +28,7 @@ const filters = [
         { id: "filterEGLL", param: "easterngreatlakelowlands"},
         { id: "filterNAP", param: "northernalleghenyplateau"},
         { id: "filterEDP", param: "eriedriftplain"},
-        { id: "filterNCZ", param: "northercoastalzone"},
+        { id: "filterNCZ", param: "northerncoastalzone"},
         { id: "filterNP", param: "northernpiedmont"},
         { id: "filterRV", param: "ridgeandvalley"},
         { id: "filterACPB", param: "atlanticcoastalpinebarrens"},
@@ -46,23 +48,30 @@ const filters = [
 
         { id: "filterEdible", param: "edible"},
         { id: "filterLumber", param: "lumber"},
-        { id: "filterFuelWood", param: "fuelwood"}
+        { id: "filterFuelWood", param: "fuelwood"},
 
+        { id: "filterPollinators", param: "attractspollinators"},
+        { id: "filterBirds", param: "attractsbirds"},
 
+        { id: "filterWindbreak", param: "recomendedforwindbreak"},
+        { id: "filterDeer", param: "deerresistance"},
+        { id: "filterPest", param: "pestandpathogensusceptibility"}
 
 ];
 
+//groups start hidden
 const hiddenGroups = {
-    climate: false,
-    prod: false,
-    wetland: false,
-    landform: false,
-    soil: false,
-    ecoregion: false,
-    forestType: false,
-    characteristics: false,
-    economic: false,
-    ecological: false
+    climate: true,
+    prod: true,
+    wetland: true,
+    landform: true,
+    soil: true,
+    ecoregion: true,
+    forestType: true,
+    characteristics: true,
+    economic: true,
+    ecological: true,
+    plantingConsiderations: true
 };
     
 
@@ -147,14 +156,29 @@ async function fetchAndRenderTrees() {
     const res = await fetch(`/api/filter?${params.toString()}`);
     const rows = await res.json();
 
+    currentRows = rows; //populate current rows for export function
+
     const tbody = document.getElementById("tableBody");
     tbody.innerHTML = "";
 
+    if (rows.length === 0) {
+        const tr = document.createElement("tr");
+        tr.classList.add("noResults");
+        tr.innerHTML = `<td colspan="42">No results found</td>`;
+        tbody.appendChild(tr);
+        return;
+    }
+
     rows.forEach(r => {
         const tr = document.createElement("tr");
+        const marker = r.priority == 1 ? `<span class="priority-star">*</span>` : "";
         tr.innerHTML = `
-            <td data-group="general">${r.species ?? ""}</td>
-            <td data-group="general">${r.CommonName ?? ""}</td>
+            <td data-group="general">
+                ${marker} ${r.species ?? ""}
+            </td>
+            <td data-group="general">
+                ${marker} ${r.CommonName ?? ""} 
+            </td>
             <td data-group="climate">${r.AGCT ?? ""}</td>
             <td data-group="prod">${r.ACProd ?? ""}</td>
             <td data-group="wetland">${r.NWIStatus ?? ""}</td>
@@ -195,14 +219,210 @@ async function fetchAndRenderTrees() {
             <td data-group="economic">${booleanToYn(r.Lumber)}</td>
             <td data-group="economic">${booleanToYn(r.FuelWood)}</td> 
 
-            <td data-group="characteristics">${r.KnownInteractions ?? ""}</td>
-            <td data-group="economic">${booleanToYn(r.AttractsPollinators)}</td>
-            <td data-group="economic">${booleanToYn(r.AttractsBirds)}</td> 
+            <td data-group="ecological">${r.KnownInteractions ?? ""}</td>
+            <td data-group="ecological">${booleanToYn(r.AttractsPollinators)}</td>
+            <td data-group="ecological">${booleanToYn(r.AttractsBirds)}</td>
             
+            <td data-group="plantingConsiderations">${booleanToYn(r.RecomendedForWindbreak)}</td>
+            <td data-group="plantingConsiderations">${r.DeerResistance ?? ""}</td>
+            <td data-group="plantingConsiderations">${r.PestAndPathogenSusceptibility ?? ""}</td>
         `;
         tbody.appendChild(tr);
-        applyHiddenGroups();
+        
     });
+    applyHiddenGroups();
+}
+
+function buildFilterSummary() {
+    const parts = [];
+
+    const filterLabels = {
+        filterSpecies:      "Species",
+        filterCommon:       "Common Name",
+        filterPriority:     "Priority",
+        filterAGCT:         "Climate Tolerance",
+        filterACProd:       "Commercial Production",
+        filterNWI:          "Wetland Status",
+        filterFloodBottom:  "Floodplain",
+        filterUplandMesic:  "Upland Mesic",
+        filterUplandDry:    "Upland Dry",
+        filterSoilAcidTol:  "Soil Acidity",
+        filterSoilAlkTol:   "Soil Alkalinity",
+        filterSoilSaltTol:  "Soil Salt",
+        filterEGLL:         "E. Great Lake Lowlands",
+        filterNAP:          "N. Allegheny Plateau",
+        filterEDP:          "Erie Drift Plain",
+        filterNCZ:          "N. Coastal Zone",
+        filterNP:           "N. Piedmont",
+        filterRV:           "Ridge & Valley",
+        filterACPB:         "Atlantic Coastal Pine Barrens",
+        filterNH:           "NE Highlands",
+        filterNCA:          "N. Central Appalachian",
+        filterAspenBirch:       "Aspen/Birch",
+        filterElmAshCottonwood: "Elm/Ash/Cottonwood",
+        filterLobLolly:         "Loblolly Pine",
+        filterMapleBeechBirch:  "Maple/Beech/Birch",
+        filterOakHickory:       "Oak/Hickory",
+        filterSpruceFir:        "Spruce/Fir",
+        filterWhiteRedJackPine: "White/Jack Pine",
+        filterGrowthRate:       "Growth Rate",
+        filterShadeTolerance:   "Shade Tolerance",
+        filterEdible:           "Edible",
+        filterLumber:           "Lumber",
+        filterFuelWood:         "Fuel Wood",
+        filterPollinators:      "Attracts Pollinators",
+        filterBirds:            "Attracts Birds",
+        filterWindbreak:        "Windbreak",
+        filterDeer:             "Deer Resistance",
+        filterPest:             "Pest Susceptibility",
+    };
+
+    const boolDisplay = { "1": "Yes", "0": "No" };
+
+    Object.entries(filterLabels).forEach(([id, label]) => {
+        const el = document.getElementById(id);
+        if (el && el.value !== "") {
+            const display = boolDisplay[el.value] ?? el.value;
+            parts.push(`${label}: ${display}`);
+        }
+    });
+
+    if (lifeSlider?.noUiSlider) {
+        const [min, max] = lifeSlider.noUiSlider.get().map(Math.round);
+        if (min !== 0 || max !== 300) parts.push(`Lifespan: ${min}–${max} yrs`);
+    }
+    if (heightSlider?.noUiSlider) {
+        const [min, max] = heightSlider.noUiSlider.get().map(Math.round);
+        if (min !== 0 || max !== 100) parts.push(`Height: ${min}–${max} ft`);
+    }
+    if (canopySlider?.noUiSlider) {
+        const [min, max] = canopySlider.noUiSlider.get().map(Math.round);
+        if (min !== 0 || max !== 100) parts.push(`Canopy: ${min}–${max} ft`);
+    }
+    if (knownInteractionsSlider?.noUiSlider) {
+        const [min, max] = knownInteractionsSlider.noUiSlider.get().map(Math.round);
+        if (min !== 0 || max !== 800) parts.push(`Known Interactions: ${min}–${max}`);
+    }
+
+    return parts.length > 0 ? parts : ["No filters applied — showing all species"];
+}
+
+function exportPDF() {
+    if (!currentRows || currentRows.length === 0) {
+        alert("No results to export. Apply filters first.");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: "landscape", unit: "pt", format: "letter" });
+
+    const allColumns = [
+        { header: "Species",              dataKey: "species",                       group: "general" },
+        { header: "Common Name",          dataKey: "CommonName",                    group: "general" },
+        { header: "Order Qty",            dataKey: "__orderQty",                    group: "general" },
+        { header: "Notes",                dataKey: "__notes",                       group: "general" },
+    ];
+
+    const tableRows = currentRows.map(r => {
+        const row = {};
+        allColumns.forEach(col => {
+            if (col.dataKey.startsWith("__")) {
+                row[col.dataKey] = "";
+            } else if (col.bool) {
+                row[col.dataKey] = booleanToYn(r[col.dataKey]);
+            } else {
+                row[col.dataKey] = r[col.dataKey] ?? "";
+            }
+        });
+        return row;
+    });
+
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const dateStr = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(0);
+    doc.text("NY Collaborative Priority Species — Order Sheet", 40, 36);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text(`Generated: ${dateStr}   |   Results: ${currentRows.length} species`, 40, 52);
+
+    const filterSummary = buildFilterSummary();
+    const rightX = pageWidth / 2;
+    const colCount = 2;
+    const colWidth = (pageWidth - rightX - 40) / colCount;
+    const lineHeight = 11;
+    const summaryStartY = 20;
+
+    doc.setFontSize(7.5);
+    doc.setTextColor(60);
+    doc.setFont("helvetica", "bold");
+    doc.text("Active Filters:", rightX, summaryStartY);
+    doc.setFont("helvetica", "normal");
+
+    filterSummary.forEach((text, i) => {
+        const col = i % colCount;
+        const row = Math.floor(i / colCount);
+        const x = rightX + col * colWidth;
+        const y = summaryStartY + 11 + row * lineHeight;
+        doc.text(`• ${text}`, x, y);
+    });
+
+    const summaryRows = Math.ceil(filterSummary.length / colCount);
+    const tableStartY = Math.max(66, summaryStartY + 11 + summaryRows * lineHeight + 16);
+
+    doc.autoTable({
+        columns: allColumns.map(col => ({ header: col.header, dataKey: col.dataKey })),
+        body: tableRows,
+        startY: tableStartY,
+        styles: {
+            fontSize: 7,
+            cellPadding: 3,
+            overflow: "linebreak",
+        },
+        headStyles: {
+            fillColor: [4, 120, 87],
+            textColor: 255,
+            fontStyle: "bold",
+            halign: "center",
+        },
+        bodyStyles: {
+            halign: "center",
+        },
+        columnStyles: {
+            species:     { cellWidth: 80 },
+            CommonName:  { cellWidth: 80 },
+            __orderQty:  { cellWidth: 50 },
+            __notes:     { cellWidth: 520 },
+        },
+        alternateRowStyles: {
+            fillColor: [244, 251, 247],
+        },
+        didParseCell: function(data) {
+            const row = currentRows[data.row.index];
+            if (row && row.priority == 1 && data.section === "body") {
+                data.cell.styles.fontStyle = "bold";
+            }
+        },
+        margin: { left: 30, right: 30 },
+    });
+
+    const pageCount = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setTextColor(150);
+        doc.text(
+            `Page ${i} of ${pageCount}`,
+            doc.internal.pageSize.getWidth() / 2,
+            doc.internal.pageSize.getHeight() - 20,
+            { align: "center" }
+        );
+    }
+
+    doc.save(`ny-species-order-sheet-${new Date().toISOString().slice(0,10)}.pdf`);
 }
 
 function booleanToYn(val){
@@ -228,16 +448,12 @@ function clearFilters() {
     if(knownInteractionsSlider && knownInteractionsSlider.noUiSlider){
         knownInteractionsSlider.noUiSlider.set([0, 800]);
     }
+
+    document.querySelectorAll('select').forEach(select => {
+        updateColor(select);
+        select.addEventListener('change', () => updateColor(select));
+    });
 }
-
-// function toggleGroup(group) {
-//   hiddenGroups[group] = !hiddenGroups[group];
-
-//   const elements = document.querySelectorAll(`[data-group="${group}"]`);
-//   elements.forEach(function(el) {
-//     el.style.display = hiddenGroups[group] ? "none" : "";
-//   });
-// }
 
 function toggleGroup(groupName) {
     const isHidden = hiddenGroups[groupName];
@@ -259,7 +475,6 @@ function toggleGroup(groupName) {
         });
     });
 
-    // top grouped header row
     const topHeader = document.querySelector(
         `thead tr:nth-child(1) th[data-group="${groupName}"]`
     );
@@ -274,6 +489,15 @@ function toggleGroup(groupName) {
     }
 }
 
+function toggleAll(){
+    const toggles = document.querySelectorAll('[data-group-toggle]');
+    const allChecked = [...toggles].every(t=>t.checked);
+    toggles.forEach(t =>{
+        t.checked = !allChecked;
+        t.dispatchEvent(new Event('change'));
+    });
+}
+
 function applyHiddenGroups() {
   for (const group in hiddenGroups) {
     if (hiddenGroups[group]) {
@@ -285,11 +509,23 @@ function applyHiddenGroups() {
   }
 }
 
+function updateColor(select){
+    if (select.value == ""){
+        select.classList.add("is-default");
+    }
+    else{
+        select.classList.remove("is-default");
+    }
+}
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     lifeSlider = document.getElementById('lifespanSlider');
     heightSlider = document.getElementById('heightSlider');
     canopySlider = document.getElementById('canopySlider');
+    knownInteractionsSlider = document.getElementById("knownInteractionsSlider");
 
     if (lifeSlider) {
         noUiSlider.create(lifeSlider, {
@@ -370,6 +606,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     await populateDropdown("filterSoilSaltTol", "SiteChemPref", "SoilSaltTol");
     await populateDropdown("filterGrowthRate", "SpeciesCharacteristics", "GrowthRate");
     await populateDropdown("filterShadeTolerance", "SpeciesCharacteristics", "ShadeTol");
+    await populateDropdown("filterDeer", "PlantingConsiderations", "DeerResistance");
+    await populateDropdown("filterPest", "PlantingConsiderations", "PestAndPathogenSusceptibility");
+
+const header = document.querySelector('.siteHeader');
+const observer = new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+});
+observer.observe(header);
 
 document
     .getElementById("applyFilters")
@@ -381,6 +625,14 @@ document
       clearFilters();
       fetchAndRenderTrees();
     });
+document
+    .getElementById("toggleAll")
+    .addEventListener("click", () => {
+        toggleAll();
+    });
+document
+    .getElementById("export")
+    .addEventListener("click", exportPDF);
 
 document.querySelectorAll('[data-group-toggle]').forEach(cb => {
     const group = cb.dataset.groupToggle;
@@ -394,6 +646,9 @@ document.querySelectorAll('[data-group-toggle]').forEach(cb => {
     });
 });
 
-
+document.querySelectorAll('select').forEach(select => {
+    updateColor(select);
+    select.addEventListener('change', () => updateColor(select));
+});
     fetchAndRenderTrees();
 });
